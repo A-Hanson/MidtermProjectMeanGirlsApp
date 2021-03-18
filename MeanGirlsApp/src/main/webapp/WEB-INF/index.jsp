@@ -10,5 +10,9 @@
 <body>
 <h3 style="background-color: pink; color="purple">MEAN GIRLS</h3>
 <h1><em>Front end designed by Eric P</em></h1>
+
+<!-- DEBUG, REMOVE AFTER TEST -->
+${TEST} 
+
 </body>
 </html>
