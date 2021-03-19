@@ -9,6 +9,13 @@
     </provider>
     
     <!-- Entities -->
+    <class>com.skilldistillery.jpameangirls.entities.Badge</class>
+    <class>com.skilldistillery.jpameangirls.entities.BookCommentVote</class>
+    <class>com.skilldistillery.jpameangirls.entities.BurnBookComment</class>
+    <class>com.skilldistillery.jpameangirls.entities.Clique</class>
+    <class>com.skilldistillery.jpameangirls.entities.Comment</class>
+    <class>com.skilldistillery.jpameangirls.entities.CommentVote</class>
+    <class>com.skilldistillery.jpameangirls.entities.Student</class>
     <class>com.skilldistillery.jpameangirls.entities.User</class>
     <!-- End entities -->
 
