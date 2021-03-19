@@ -62,42 +62,6 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `character_property_details`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `character_property_details` ;
-
-CREATE TABLE IF NOT EXISTS `character_property_details` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(45) NOT NULL,
-  `description` VARCHAR(100) NULL,
-  PRIMARY KEY (`id`))
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `character_properties`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `character_properties` ;
-
-CREATE TABLE IF NOT EXISTS `character_properties` (
-  `character_id` INT NOT NULL,
-  `character_property_details_id` INT NOT NULL,
-  INDEX `fk_character_properties_character1_idx` (`character_id` ASC),
-  INDEX `fk_character_properties_character_property_details1_idx` (`character_property_details_id` ASC),
-  CONSTRAINT `fk_character_properties_character1`
-    FOREIGN KEY (`character_id`)
-    REFERENCES `student` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_character_properties_character_property_details1`
-    FOREIGN KEY (`character_property_details_id`)
-    REFERENCES `character_property_details` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
 -- Table `clique`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `clique` ;
@@ -204,55 +168,6 @@ CREATE TABLE IF NOT EXISTS `student_badge` (
   CONSTRAINT `fk_character_badge_badge1`
     FOREIGN KEY (`badge_id`)
     REFERENCES `badge` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `burn_book_page`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `burn_book_page` ;
-
-CREATE TABLE IF NOT EXISTS `burn_book_page` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `c_id` INT NOT NULL,
-  PRIMARY KEY (`id`),
-  INDEX `fk_burn_book_page_character1_idx` (`c_id` ASC),
-  CONSTRAINT `fk_burn_book_page_character1`
-    FOREIGN KEY (`c_id`)
-    REFERENCES `student` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `cafeteria_comment`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `cafeteria_comment` ;
-
-CREATE TABLE IF NOT EXISTS `cafeteria_comment` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `student_id` INT NOT NULL,
-  `content` TEXT(1000) NULL,
-  `created_date` DATETIME NULL,
-  `last_edited` DATETIME NULL,
-  `fetch_score` INT NULL,
-  `visible` TINYINT NULL,
-  `replying_to` INT NULL,
-  `flagged` TINYINT NULL,
-  PRIMARY KEY (`id`),
-  INDEX `fk_cafeteria_comment_character1_idx` (`student_id` ASC),
-  INDEX `fk_cafeteria_comment_cafeteria_comment1_idx` (`replying_to` ASC),
-  CONSTRAINT `fk_cafeteria_comment_character1`
-    FOREIGN KEY (`student_id`)
-    REFERENCES `student` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_cafeteria_comment_cafeteria_comment1`
-    FOREIGN KEY (`replying_to`)
-    REFERENCES `cafeteria_comment` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
