@@ -1,18 +1,30 @@
 package com.skilldistillery.jpameangirls.entities;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="book_comment_vote")
 public class BookCommentVote {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
-	private boolean vote;
+	public Boolean getVote() {
+		return vote;
+	}
+
+	public void setVote(Boolean vote) {
+		this.vote = vote;
+	}
+	
+	@Column(columnDefinition = "TINYINT")
+	private Boolean vote;
 
 // TODO: mapping
 //		@Column(name="burn_book_comment_id")
