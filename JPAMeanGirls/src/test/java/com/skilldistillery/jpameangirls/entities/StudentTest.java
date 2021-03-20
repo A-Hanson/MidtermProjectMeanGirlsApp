@@ -56,4 +56,12 @@ class StudentTest {
 		assertEquals(11, student.getGradeLevel());
 		assertEquals(19, student.getCreatedDate().getDayOfMonth());
 	}
+	
+	@Test
+	@DisplayName("Test Student User Mapping")
+	void test3() {
+		assertNotNull(student.getUser());
+		assertEquals("user2020", student.getUser().getUsername());
+	}
+	
 }
