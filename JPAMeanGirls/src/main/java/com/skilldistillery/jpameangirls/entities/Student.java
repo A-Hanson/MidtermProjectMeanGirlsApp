@@ -1,6 +1,7 @@
 package com.skilldistillery.jpameangirls.entities;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 @Entity
@@ -41,6 +43,9 @@ public class Student {
 	
 	@Column(name="image_url")
 	private String imageUrl;
+	
+	@ManyToMany(mappedBy = "students")
+	private List<Badge> badges;
 	
 	
 	// constructors
@@ -121,8 +126,17 @@ public class Student {
 		this.imageUrl = imageUrl;
 	}
 	
+	
 	// other methods
 	
+	public List<Badge> getBadges() {
+		return badges;
+	}
+
+	public void setBadges(List<Badge> badges) {
+		this.badges = badges;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;

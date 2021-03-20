@@ -1,6 +1,8 @@
 package com.skilldistillery.jpameangirls.entities;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -62,6 +64,13 @@ class StudentTest {
 	void test3() {
 		assertNotNull(student.getUser());
 		assertEquals("user2020", student.getUser().getUsername());
+	}
+	
+	@Test
+	@DisplayName("Test Student badge Mapping")
+	void test4() {
+		assertNotNull(student.getBadges());
+		assertTrue(student.getBadges().size() > 0);
 	}
 	
 }
