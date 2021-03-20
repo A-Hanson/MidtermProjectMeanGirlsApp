@@ -80,4 +80,11 @@ class StudentTest {
 		assertTrue(student.getCliques().size() > 0);
 	}
 	
+	@Test
+	@DisplayName("Test Student Comment Mapping")
+	void test6() {
+		assertNotNull(student.getComment());
+		assertTrue(student.getComment().size() > 0);
+	}
+	
 }

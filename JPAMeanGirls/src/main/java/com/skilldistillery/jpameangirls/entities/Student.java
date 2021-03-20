@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Student {
@@ -50,6 +51,9 @@ public class Student {
 	@ManyToMany(mappedBy="students")
 	private List<Clique> cliques;
 	
+	@OneToMany(mappedBy="student")
+	private List<Comment> comment;
+	
 	
 	// constructors
 	
@@ -57,6 +61,16 @@ public class Student {
 
 	// getters and setters
 	
+	
+	
+	public List<Comment> getComment() {
+		return comment;
+	}
+
+	public void setComment(List<Comment> comment) {
+		this.comment = comment;
+	}
+
 	public User getUser() {
 		return user;
 	}
