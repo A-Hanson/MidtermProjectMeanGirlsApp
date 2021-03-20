@@ -47,6 +47,9 @@ public class Student {
 	@ManyToMany(mappedBy = "students")
 	private List<Badge> badges;
 	
+	@ManyToMany(mappedBy="students")
+	private List<Clique> cliques;
+	
 	
 	// constructors
 	
@@ -56,6 +59,14 @@ public class Student {
 	
 	public User getUser() {
 		return user;
+	}
+
+	public List<Clique> getCliques() {
+		return cliques;
+	}
+
+	public void setCliques(List<Clique> cliques) {
+		this.cliques = cliques;
 	}
 
 	public void setUser(User user) {

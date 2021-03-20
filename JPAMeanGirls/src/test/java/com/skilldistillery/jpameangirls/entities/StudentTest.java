@@ -73,4 +73,11 @@ class StudentTest {
 		assertTrue(student.getBadges().size() > 0);
 	}
 	
+	@Test
+	@DisplayName("Test Student Clique Mapping")
+	void test5() {
+		assertNotNull(student.getCliques());
+		assertTrue(student.getCliques().size() > 0);
+	}
+	
 }
