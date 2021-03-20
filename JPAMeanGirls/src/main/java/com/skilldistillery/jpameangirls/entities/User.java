@@ -1,12 +1,14 @@
 package com.skilldistillery.jpameangirls.entities;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class User {
@@ -41,8 +43,19 @@ public class User {
 
 	private String gender;
 	
+	  @OneToMany(mappedBy="user")
+	  private List<Student> students;
+	
 	// constructors
 	
+	public List<Student> getStudents() {
+		return students;
+	}
+
+	public void setStudents(List<Student> students) {
+		this.students = students;
+	}
+
 	public User() {}
 	
 	//getters and setters
