@@ -43,10 +43,10 @@ class CommentVoteTest {
 	}
 
 	@Test
-	@DisplayName("Test Comment entity mapping")
+	@DisplayName("Test CommentVote entity mapping")
 	void test1() {
 		assertNotNull(cv);
-		assertEquals(1, cv.getVote());
+		assertEquals(true, cv.getVote());
 	}
 
 
