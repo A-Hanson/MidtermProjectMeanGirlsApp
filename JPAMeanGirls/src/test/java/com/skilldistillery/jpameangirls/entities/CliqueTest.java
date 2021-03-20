@@ -58,4 +58,14 @@ class CliqueTest {
 		assertNotNull(clique.getStudents());
 		assertTrue(clique.getStudents().size() > 0);
 	}
+	
+	@Test
+	@DisplayName("Test clique-comment mapping")
+	void test3() {
+		assertNotNull(clique);
+		assertNotNull(clique.getComments());
+		assertTrue(clique.getComments().size() > 0);
+	}
+	
+	
 }

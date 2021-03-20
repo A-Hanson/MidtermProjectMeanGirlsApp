@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Clique {
@@ -34,6 +35,9 @@ public class Clique {
 	    inverseJoinColumns=@JoinColumn(name="clique_id")
 	  )
 	private List<Student> students;
+	
+	@OneToMany(mappedBy = "clique")
+	private List<Comment> comments;
 	
 //	Constructor
 	public Clique() {}
@@ -85,6 +89,15 @@ public class Clique {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+	
+
+	public List<Comment> getComments() {
+		return comments;
+	}
+
+	public void setComments(List<Comment> comments) {
+		this.comments = comments;
 	}
 
 	@Override
