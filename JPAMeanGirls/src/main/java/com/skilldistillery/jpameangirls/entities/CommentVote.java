@@ -1,44 +1,22 @@
 package com.skilldistillery.jpameangirls.entities;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+@Table(name="comment_vote")
 @Entity
-@Table(name="book_comment_vote")
-public class BookCommentVote {
+public class CommentVote {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-
-	public Boolean getVote() {
-		return vote;
-	}
-
-	public void setVote(Boolean vote) {
-		this.vote = vote;
-	}
 	
-	@Column(columnDefinition = "TINYINT")
 	private Boolean vote;
-
-// TODO: mapping
-//		@Column(name="burn_book_comment_id")
-//		private Integer burnBookCommentId;
-
-// TODO: mapping
-//		@Column(name="student_id")
-//		private Integer studentId;
-
-	// Methods:
-	// TODO: getters and setters for burnBookCommentId and studentId
-	// TODO: generate toString() when all fields complete
-	public BookCommentVote() {
-	}
+	
+	public CommentVote(){}
 
 	public int getId() {
 		return id;
@@ -48,11 +26,11 @@ public class BookCommentVote {
 		this.id = id;
 	}
 
-	public boolean isVote() {
+	public Boolean getVote() {
 		return vote;
 	}
 
-	public void setVote(boolean vote) {
+	public void setVote(Boolean vote) {
 		this.vote = vote;
 	}
 
@@ -61,7 +39,6 @@ public class BookCommentVote {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + id;
-		result = prime * result + (vote ? 1231 : 1237);
 		return result;
 	}
 
@@ -73,14 +50,16 @@ public class BookCommentVote {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		BookCommentVote other = (BookCommentVote) obj;
+		CommentVote other = (CommentVote) obj;
 		if (id != other.id)
-			return false;
-		if (vote != other.vote)
 			return false;
 		return true;
 	}
 
-
-
+	@Override
+	public String toString() {
+		return "CommentVote [id=" + id + ", vote=" + vote + "]";
+	}
+	
+	
 }

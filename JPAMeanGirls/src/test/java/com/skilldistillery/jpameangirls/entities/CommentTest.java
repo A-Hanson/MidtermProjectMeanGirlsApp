@@ -13,14 +13,16 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-class CliqueTest {
+class CommentTest {
+
 	private static EntityManagerFactory emf;
 	private EntityManager em;
-	private Clique clique;
+	private Comment comment;
+	
 	
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
-		emf = Persistence.createEntityManagerFactory("MeanGirls");		
+		emf = Persistence.createEntityManagerFactory("MeanGirls");
 	}
 
 	@AfterAll
@@ -31,22 +33,20 @@ class CliqueTest {
 	@BeforeEach
 	void setUp() throws Exception {
 		em = emf.createEntityManager();
-		clique = em.find(Clique.class, 1);
+		comment = em.find(Comment.class, 1);
 	}
 
 	@AfterEach
 	void tearDown() throws Exception {
 		em.close();
-		clique = null;
+		comment = null;
 	}
 
 	@Test
-	@DisplayName("Test Clique mapping")
-	void test_1() {
-		assertNotNull(clique);
-		assertEquals("Cafeteria", clique.getName());
-		assertEquals(-500, clique.getMinimumFetchLevel());
-		assertEquals("Place to eat and talk", clique.getDescription());
+	@DisplayName("Test Comment entity mapping")
+	void test1() {
+		assertNotNull(comment);
+		assertEquals("Hi everyone! i cant help that im so popular", comment.getContent());
 	}
 
 }

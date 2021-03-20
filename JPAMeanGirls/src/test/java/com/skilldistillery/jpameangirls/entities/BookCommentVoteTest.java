@@ -2,7 +2,6 @@ package com.skilldistillery.jpameangirls.entities;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.fail;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -59,9 +58,7 @@ class BookCommentVoteTest {
 	@DisplayName("Test Badge entity mapping")
 	void test() {
 		assertNotNull(bcv);
-//		TODO: cannot yet write test because fields not complete (need mappings)
-//		assertEquals(XXXXXXXXXX, em.find(BookCommentVote.class, XXXXXXXXXXXXX));
-		fail();
+		assertEquals(true, bcv.getVote());
 	}
 
 }
