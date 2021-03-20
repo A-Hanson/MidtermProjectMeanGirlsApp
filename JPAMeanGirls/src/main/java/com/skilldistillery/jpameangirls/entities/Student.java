@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Student {
@@ -15,8 +17,9 @@ public class Student {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-//	@Column(name="user_id")
-//	private int userId;
+	@ManyToOne
+	@JoinColumn(name="user_id")
+	private User user;
 	
 	@Column(name="first_name")
 	private String firstName;
@@ -45,6 +48,14 @@ public class Student {
 	public Student() {}
 
 	// getters and setters
+	
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
 	
 	public int getId() {
 		return id;
@@ -132,6 +143,13 @@ public class Student {
 		if (id != other.id)
 			return false;
 		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "Student [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", gender=" + gender
+				+ ", gradeLevel=" + gradeLevel + ", createdDate=" + createdDate + ", birthdayDate=" + birthdayDate
+				+ ", imageUrl=" + imageUrl + "]";
 	} 
 	
 }
