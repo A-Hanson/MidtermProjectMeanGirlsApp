@@ -7,23 +7,26 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Badge {
-
+public class Clique {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-
+	
 	private String name;
+	
+	@Column(name="min_fetch_level")
+	private Integer minimumFetchLevel;
 
-	private String description;
-
-	@Column(name = "image_url")
+	@Column(name="image_url")
 	private String imageUrl;
+	
+	private String description;
+	
+//	Constructor
+	public Clique() {}
 
-	// Methods:
-	public Badge() {
-	}
-
+//	Methods
 	public int getId() {
 		return id;
 	}
@@ -40,12 +43,12 @@ public class Badge {
 		this.name = name;
 	}
 
-	public String getDescription() {
-		return description;
+	public Integer getMinimumFetchLevel() {
+		return minimumFetchLevel;
 	}
 
-	public void setDescription(String description) {
-		this.description = description;
+	public void setMinimumFetchLevel(Integer minimumFetchLevel) {
+		this.minimumFetchLevel = minimumFetchLevel;
 	}
 
 	public String getImageUrl() {
@@ -54,6 +57,20 @@ public class Badge {
 
 	public void setImageUrl(String imageUrl) {
 		this.imageUrl = imageUrl;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	@Override
+	public String toString() {
+		return "Clique [id=" + id + ", name=" + name + ", minimumFetchLevel=" + minimumFetchLevel + ", imageUrl="
+				+ imageUrl + ", description=" + description + "]";
 	}
 
 	@Override
@@ -72,14 +89,11 @@ public class Badge {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Badge other = (Badge) obj;
+		Clique other = (Clique) obj;
 		if (id != other.id)
 			return false;
 		return true;
 	}
-
-	@Override
-	public String toString() {
-		return "Badge [id=" + id + ", name=" + name + ", description=" + description + ", imageUrl=" + imageUrl + "]";
-	}
+	
+	
 }
