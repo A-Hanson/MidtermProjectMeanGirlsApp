@@ -48,6 +48,13 @@ class CommentVoteTest {
 		assertNotNull(cv);
 		assertEquals(true, cv.getVote());
 	}
+	
+	@Test
+	@DisplayName("Test CommentVote entity mapping")
+	void test2() {
+		assertNotNull(cv);
+		assertEquals("Hi everyone! i cant help that im so popular",cv.getComment().getContent());
+	}
 
 
 }

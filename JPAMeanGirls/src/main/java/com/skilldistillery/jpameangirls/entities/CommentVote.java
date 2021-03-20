@@ -4,6 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Table(name="comment_vote")
@@ -15,6 +17,10 @@ public class CommentVote {
 	private int id;
 	
 	private Boolean vote;
+	
+	@ManyToOne
+	@JoinColumn(name="comment_id")
+	private Comment comment;
 	
 	public CommentVote(){}
 
@@ -32,6 +38,15 @@ public class CommentVote {
 
 	public void setVote(Boolean vote) {
 		this.vote = vote;
+	}
+	
+
+	public Comment getComment() {
+		return comment;
+	}
+
+	public void setComment(Comment comment) {
+		this.comment = comment;
 	}
 
 	@Override
