@@ -1,6 +1,7 @@
 package com.skilldistillery.jpameangirls.entities;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Comment {
@@ -36,6 +38,9 @@ public class Comment {
 	@ManyToOne
 	@JoinColumn(name = "student_id")
 	private Student student;
+	
+	@OneToMany(mappedBy="comment")
+	private List<CommentVote> commentVotes;
 
 //	Constructor
 	public Comment() {
@@ -104,6 +109,14 @@ public class Comment {
 
 	public void setStudent(Student student) {
 		this.student = student;
+	}
+
+	public List<CommentVote> getCommentVotes() {
+		return commentVotes;
+	}
+
+	public void setCommentVotes(List<CommentVote> commentVotes) {
+		this.commentVotes = commentVotes;
 	}
 
 	@Override

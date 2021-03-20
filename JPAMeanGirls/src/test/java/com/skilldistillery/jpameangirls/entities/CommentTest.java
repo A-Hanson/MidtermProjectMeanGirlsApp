@@ -1,7 +1,6 @@
 package com.skilldistillery.jpameangirls.entities;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -80,6 +79,16 @@ class CommentTest {
 +------------+-----------+
 1 row in set (0.00 sec)
 		 */
+		
+	}
+	
+	@Test
+	@DisplayName("Test Comment to CommentVote mapping")
+	void test_4() {
+		assertNotNull(comment);
+		assertNotNull(comment.getCommentVotes());
+		assertTrue(comment.getCommentVotes().size() > 0);
+	
 		
 	}
 
