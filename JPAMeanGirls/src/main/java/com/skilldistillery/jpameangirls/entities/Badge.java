@@ -1,10 +1,15 @@
 package com.skilldistillery.jpameangirls.entities;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 
 @Entity
 public class Badge {
@@ -19,11 +24,17 @@ public class Badge {
 
 	@Column(name = "image_url")
 	private String imageUrl;
+	
+	@ManyToMany
+	@JoinTable(name="student_badge",
+			joinColumns=@JoinColumn(name="badge_id"),
+			inverseJoinColumns = @JoinColumn(name="student_id"))
+	private List<Student> students;
 
-	// Methods:
+//	Constructor
 	public Badge() {
 	}
-
+	// Methods:
 	public int getId() {
 		return id;
 	}
@@ -56,6 +67,12 @@ public class Badge {
 		this.imageUrl = imageUrl;
 	}
 
+	public List<Student> getStudents() {
+		return students;
+	}
+	public void setStudents(List<Student> students) {
+		this.students = students;
+	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;

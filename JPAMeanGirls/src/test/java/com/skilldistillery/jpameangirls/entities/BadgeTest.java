@@ -2,6 +2,7 @@ package com.skilldistillery.jpameangirls.entities;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -54,9 +55,17 @@ class BadgeTest {
 	
 	@Test
 	@DisplayName("Test Badge entity mapping")
-	void test() {
+	void test_1() {
 		assertNotNull(badge);
 		assertEquals("First day at North Shore High School", badge.getDescription());
+	}
+	
+	@Test
+	@DisplayName("Test Badge to Student mapping")
+	void test_2() {
+		assertNotNull(badge);
+		assertNotNull(badge.getStudents());
+		assertTrue(badge.getStudents().size() > 0);
 	}
 
 }
