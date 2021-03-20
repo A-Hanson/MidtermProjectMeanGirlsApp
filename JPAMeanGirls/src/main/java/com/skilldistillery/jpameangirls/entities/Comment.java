@@ -23,9 +23,9 @@ public class Comment {
 	@Column(name="last_edited")
 	private LocalDateTime lastEdited;
 	
-	private int enabled;
+	private Boolean enabled;
 	
-	private int flagged;
+	private Boolean flagged;
 	
 	
 	public Comment() {}
@@ -62,19 +62,19 @@ public class Comment {
 		this.lastEdited = lastEdited;
 	}
 
-	public int getEnabled() {
+	public Boolean getEnabled() {
 		return enabled;
 	}
 
-	public void setEnabled(int enabled) {
+	public void setEnabled(Boolean enabled) {
 		this.enabled = enabled;
 	}
 
-	public int getFlagged() {
+	public Boolean getFlagged() {
 		return flagged;
 	}
 
-	public void setFlagged(int flagged) {
+	public void setFlagged(Boolean flagged) {
 		this.flagged = flagged;
 	}
 

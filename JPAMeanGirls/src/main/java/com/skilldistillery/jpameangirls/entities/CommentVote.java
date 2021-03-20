@@ -14,7 +14,7 @@ public class CommentVote {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	private int vote;
+	private Boolean vote;
 	
 	public CommentVote(){}
 
@@ -26,11 +26,11 @@ public class CommentVote {
 		this.id = id;
 	}
 
-	public int getVote() {
+	public Boolean getVote() {
 		return vote;
 	}
 
-	public void setVote(int vote) {
+	public void setVote(Boolean vote) {
 		this.vote = vote;
 	}
 
