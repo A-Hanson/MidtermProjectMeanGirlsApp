@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Comment {
@@ -27,9 +29,14 @@ public class Comment {
 	
 	private Boolean flagged;
 	
+	@ManyToOne
+	@JoinColumn(name="clique_id")
+	private Clique clique;
 	
+//	Constructor
 	public Comment() {}
 
+//	Methods
 	public int getId() {
 		return id;
 	}
@@ -76,6 +83,14 @@ public class Comment {
 
 	public void setFlagged(Boolean flagged) {
 		this.flagged = flagged;
+	}
+
+	public Clique getClique() {
+		return clique;
+	}
+
+	public void setClique(Clique clique) {
+		this.clique = clique;
 	}
 
 	@Override

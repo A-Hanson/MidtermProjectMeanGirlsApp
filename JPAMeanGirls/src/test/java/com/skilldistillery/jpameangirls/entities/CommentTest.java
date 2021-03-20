@@ -48,5 +48,19 @@ class CommentTest {
 		assertNotNull(comment);
 		assertEquals("Hi everyone! i cant help that im so popular", comment.getContent());
 	}
+	
+	@Test
+	@DisplayName("Test Comment to Clique mapping")
+	void test_2() {
+//		SELECT clique.name FROM comment JOIN clique ON comment.clique_id = clique.id WHERE comment.id = 1;
+//		+-----------+
+//		| name      |
+//		+-----------+
+//		| Cafeteria |
+//		+-----------+
+		assertNotNull(comment);
+		assertNotNull(comment.getClique());
+		assertEquals("Cafeteria", comment.getClique().getName());
+	}
 
 }
