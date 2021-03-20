@@ -16,25 +16,30 @@ public class Comment {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
+
 	private String content;
-	
-	@Column( name= "created_date")
+
+	@Column(name = "created_date")
 	private LocalDateTime createdDate;
-	
-	@Column(name="last_edited")
+
+	@Column(name = "last_edited")
 	private LocalDateTime lastEdited;
-	
+
 	private Boolean enabled;
-	
+
 	private Boolean flagged;
-	
+
 	@ManyToOne
-	@JoinColumn(name="clique_id")
+	@JoinColumn(name = "clique_id")
 	private Clique clique;
-	
+
+	@ManyToOne
+	@JoinColumn(name = "student_id")
+	private Student student;
+
 //	Constructor
-	public Comment() {}
+	public Comment() {
+	}
 
 //	Methods
 	public int getId() {
@@ -93,6 +98,14 @@ public class Comment {
 		this.clique = clique;
 	}
 
+	public Student getStudent() {
+		return student;
+	}
+
+	public void setStudent(Student student) {
+		this.student = student;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -120,7 +133,5 @@ public class Comment {
 		return "Comment [id=" + id + ", content=" + content + ", createdDate=" + createdDate + ", lastEdited="
 				+ lastEdited + ", enabled=" + enabled + ", flagged=" + flagged + "]";
 	}
-	
-	
-	
+
 }

@@ -1,6 +1,7 @@
 package com.skilldistillery.jpameangirls.entities;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -61,6 +62,25 @@ class CommentTest {
 		assertNotNull(comment);
 		assertNotNull(comment.getClique());
 		assertEquals("Cafeteria", comment.getClique().getName());
+	}
+	
+	@Test
+	@DisplayName("Test Comment to Student mapping")
+	void test3() {
+		assertNotNull(comment);
+		assertNotNull(comment.getStudent());
+		assertEquals("Regina", comment.getStudent().getFirstName());
+		assertEquals("George", comment.getStudent().getLastName());
+		/*
+		 * mysql> SELECT student.first_name, student.last_name FROM student JOIN comment ON comment.student_id = student.id WHERE comment.id = 1;
++------------+-----------+
+| first_name | last_name |
++------------+-----------+
+| Regina     | George    |
++------------+-----------+
+1 row in set (0.00 sec)
+		 */
+		
 	}
 
 }
