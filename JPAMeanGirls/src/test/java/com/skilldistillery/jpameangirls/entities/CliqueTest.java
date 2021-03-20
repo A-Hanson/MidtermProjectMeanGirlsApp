@@ -1,6 +1,8 @@
 package com.skilldistillery.jpameangirls.entities;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -17,10 +19,10 @@ class CliqueTest {
 	private static EntityManagerFactory emf;
 	private EntityManager em;
 	private Clique clique;
-	
+
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
-		emf = Persistence.createEntityManagerFactory("MeanGirls");		
+		emf = Persistence.createEntityManagerFactory("MeanGirls");
 	}
 
 	@AfterAll
@@ -49,4 +51,11 @@ class CliqueTest {
 		assertEquals("Place to eat and talk", clique.getDescription());
 	}
 
+	@Test
+	@DisplayName("Test clique-student mapping")
+	void test2() {
+		assertNotNull(clique);
+		assertNotNull(clique.getStudents());
+		assertTrue(clique.getStudents().size() > 0);
+	}
 }

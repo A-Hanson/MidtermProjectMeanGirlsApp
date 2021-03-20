@@ -1,10 +1,15 @@
 package com.skilldistillery.jpameangirls.entities;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 
 @Entity
 public class Clique {
@@ -23,6 +28,13 @@ public class Clique {
 	
 	private String description;
 	
+	@ManyToMany
+	@JoinTable(name="student_clique",
+	    joinColumns=@JoinColumn(name="student_id"),
+	    inverseJoinColumns=@JoinColumn(name="clique_id")
+	  )
+	private List<Student> students;
+	
 //	Constructor
 	public Clique() {}
 
@@ -37,6 +49,14 @@ public class Clique {
 
 	public String getName() {
 		return name;
+	}
+
+	public List<Student> getStudents() {
+		return students;
+	}
+
+	public void setStudents(List<Student> students) {
+		this.students = students;
 	}
 
 	public void setName(String name) {
