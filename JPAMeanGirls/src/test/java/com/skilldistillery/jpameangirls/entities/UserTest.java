@@ -48,6 +48,7 @@ class UserTest {
 	void test() {
 		assertNotNull(user);
 		assertEquals("admin@gmail.com", user.getEmail());
+		assertEquals(7, user.getBirthdayDate().getMonthValue());
 	}
 
 }
