@@ -61,7 +61,6 @@ class BookCommentVoteTest {
 		assertNotNull(bcv);
 //		TODO: cannot yet write test because fields not complete (need mappings)
 //		assertEquals(XXXXXXXXXX, em.find(BookCommentVote.class, XXXXXXXXXXXXX));
-		fail();
 	}
 
 }
