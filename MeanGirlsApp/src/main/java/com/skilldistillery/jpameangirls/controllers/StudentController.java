@@ -26,7 +26,7 @@ public class StudentController {
 	
 	@RequestMapping(path={"submitNewStudent.do"}, method = RequestMethod.POST)
 	public ModelAndView submitNewStudent(Student newStudent) {
-		
+		studentDao.create(newStudent);
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("student", newStudent);
 		mv.setViewName("dashboard");
