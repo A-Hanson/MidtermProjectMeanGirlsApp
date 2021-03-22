@@ -88,4 +88,33 @@ public class UserDAOJpaImpl implements UserDAO {
 		return gameWasDeleted;
 	}
 
+	@Override
+	public User getUserByUserNameAndPassword(String username, String password) {
+		User u = null;
+		
+		List<User> users = findAllUsers();
+	  
+		for (User user : users) {
+			
+			if(user.getUsername().equals(username) && user.getPassword().equals(password)) {
+				u = user;
+				break;
+			}
+			
+		}
+	    return u;
+	}
+
+//	@Override
+//	public boolean isValidUser(User u) {
+//		List<User> users = findAllUsers();
+//		if (findUserByUsername(u.getUsername()) == null) {
+//			return false;
+//		}
+//		if (users.get(u.getUsername()){
+//			return true;
+//		}
+//		return false;
+//	}
+
 }
