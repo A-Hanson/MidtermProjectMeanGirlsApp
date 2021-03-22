@@ -1,6 +1,7 @@
 package com.skilldistillery.jpameangirls.entities;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -60,10 +61,10 @@ public class Student {
 	@OneToMany(mappedBy="authorId")
 	private List<BurnBookComment> burnBookCommentsAuthored;
 	
-	@OneToMany(mappedBy="student")
+	@OneToMany(mappedBy="studentId")
 	private List<BurnBookComment> burnBookCommentsAboutMe;
 	
-	@OneToMany(mappedBy="studentId")
+	@OneToMany(mappedBy="student")
 	private List<BookCommentVote> burnCommentVotes;
 	
 	
@@ -113,6 +114,23 @@ public class Student {
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+	
+	public void addClique(Clique clique) {
+		if (cliques == null) {
+			cliques = new ArrayList<>();
+		}
+		if (! cliques.contains(clique)) {
+			cliques.add(clique);
+			clique.addStudent(this);
+		}
+	}
+	
+	public void removeClique(Clique clique) {
+		if (cliques != null && cliques.contains(clique)) {
+			cliques.remove(clique);
+			clique.removeStudent(this);
+		}
 	}
 	
 	public int getId() {
