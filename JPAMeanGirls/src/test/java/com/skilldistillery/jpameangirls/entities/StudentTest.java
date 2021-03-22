@@ -108,4 +108,11 @@ class StudentTest {
 		assertTrue(student.getBurnBookCommentsAuthored().size() > 0);
 	}
 	
+	@Test
+	@DisplayName("Test Student BookCommentVote Mapping")
+	void test10() {
+		assertNotNull(student.getBurnCommentVotes());
+		assertTrue(student.getBurnCommentVotes().size() > 0);
+	}
+	
 }
