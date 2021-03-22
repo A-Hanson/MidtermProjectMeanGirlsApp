@@ -17,10 +17,6 @@ public class LoginController {
 	@Autowired
 	private UserDAO userDao;
 	
-//	@RequestMapping(path="login.do")
-//	public String loginPage() {
-//		return "login";
-//	}
 	
 	@RequestMapping(path = {"login.do"})
 	  public ModelAndView login(HttpSession session) {
@@ -34,26 +30,26 @@ public class LoginController {
 	    return mv;
 	  }
 	
-//	@RequestMapping(path = {"login.do"}, method=RequestMethod.POST)
-//	public ModelAndView loginPost(User user, HttpSession session) {
-//		
-//		ModelAndView mv = new ModelAndView();
-//		if(session.getAttribute("loggedInUser") != null) {
-//			mv.setViewName("redirect:index.do");
-//			return mv;
-//		}
-//		
-////		User u = userDao.getUserByUserNameAndPassword(user.getUserName(), user.getPassword());
-//		
-//		if(u != null) {
-//			session.setAttribute("loggedInUser", u);
-//			mv.setViewName("redirect:account.do");
-//
-//			return mv;
-//		}
-//		
-//		mv.setViewName("login");
-//		return mv;
-//	}
+	@RequestMapping(path = {"login.do"}, method=RequestMethod.POST)
+	public ModelAndView loginPost(User user, HttpSession session) {
+		
+		ModelAndView mv = new ModelAndView();
+		if(session.getAttribute("loggedInUser") != null) {
+			mv.setViewName("redirect:index.do");
+			return mv;
+		}
+		
+		User u = userDao.getUserByUserNameAndPassword(user.getUsername(), user.getPassword());
+		
+		if(u != null) {
+			session.setAttribute("loggedInUser", u);
+			mv.setViewName("redirect:dashboard.do");
+
+			return mv;
+		}
+		
+		mv.setViewName("login");
+		return mv;
+	}
 	
 }

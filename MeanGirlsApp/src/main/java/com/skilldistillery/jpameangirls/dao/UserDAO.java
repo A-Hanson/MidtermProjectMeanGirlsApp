@@ -1,12 +1,8 @@
 package com.skilldistillery.jpameangirls.dao;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.OneToMany;
 
-import com.skilldistillery.jpameangirls.entities.Student;
 import com.skilldistillery.jpameangirls.entities.User;
 
 public interface UserDAO {
@@ -25,4 +21,7 @@ public interface UserDAO {
 
 //////// DELETE
 	public boolean deleteUser(int id);
+	
+	public User getUserByUserNameAndPassword(String username, String password);
+//	public boolean isValidUser(User u) ;
 }
