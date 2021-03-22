@@ -9,4 +9,10 @@ public interface StudentDAO {
 	Student findById(int studentId);
 	
 	List<Student> findAll();
+	
+	Student create(Student student);
+	
+	Student update(int id, Student student);
+	
+	boolean deletePermanently(int id);
 }
