@@ -15,15 +15,6 @@ public class StudentController {
 	@Autowired
 	private StudentDAO studentDao;
 	
-	@RequestMapping(path= {"/","home.do"}, method = RequestMethod.GET)
-	public ModelAndView index() {
-		
-		ModelAndView mv = new ModelAndView();
-		  
-		mv.setViewName("index");
-		return mv; // (ViewResolver in use)
-	}
-	
 	@RequestMapping(path= {"createStudent.do"}, method = RequestMethod.GET)
 	public ModelAndView createStudent() {
 		
