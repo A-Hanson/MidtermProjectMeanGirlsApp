@@ -14,7 +14,7 @@ public class HomeController {
 	
 	@RequestMapping(path= { "/", "home.do"})
 	public String home(Model model) {
-		model.addAttribute("TEST", userDao.findById(1)); // DEBUG, DELETE LATER
+//		model.addAttribute("TEST", userDao.findById(1)); // DEBUG, DELETE LATER
 		return "index";
 	}
 }
