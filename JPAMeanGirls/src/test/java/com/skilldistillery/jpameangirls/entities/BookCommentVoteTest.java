@@ -61,4 +61,22 @@ class BookCommentVoteTest {
 		assertEquals(true, bcv.getVote());
 	}
 
+	
+	@Test
+	@DisplayName("Test BCV to BBC mapping")
+	void test1() {
+		assertNotNull(bcv);
+		assertEquals("Regina George is super fetch", bcv.getBurnBookCommentId().getContent());
+	}
+	/*
+	 * mysql> select * from burn_book_comment join book_comment_vote on book_comment_vote.burn_book_comment_id = burn_book_comment.id where book_comment_vote.id = 1;
++----+------------------------------+---------+---------+-----------+---------------------+------------+------+----+------+----------------------+------------+
+| id | content                      | enabled | flagged | author_id | created_date        | student_id | vote | id | vote | burn_book_comment_id | student_id |
++----+------------------------------+---------+---------+-----------+---------------------+------------+------+----+------+----------------------+------------+
+|  1 | Regina George is super fetch |       1 |       0 |         1 | 2020-03-19 00:00:00 |          1 |    1 |  1 |    1 |                    1 |          1 |
++----+------------------------------+---------+---------+-----------+---------------------+------------+------+----+------+----------------------+------------+
+1 row in set (0.00 sec)
+
+	 */
+	
 }

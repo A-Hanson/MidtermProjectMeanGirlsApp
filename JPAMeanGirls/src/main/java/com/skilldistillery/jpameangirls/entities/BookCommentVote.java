@@ -5,10 +5,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="book_comment_vote")
+@Table(name = "book_comment_vote")
 public class BookCommentVote {
 
 	@Id
@@ -22,22 +24,26 @@ public class BookCommentVote {
 	public void setVote(Boolean vote) {
 		this.vote = vote;
 	}
-	
+
 	@Column(columnDefinition = "TINYINT")
 	private Boolean vote;
 
-// TODO: mapping
-//		@Column(name="burn_book_comment_id")
-//		private Integer burnBookCommentId;
+	@ManyToOne
+	@JoinColumn(name = "burn_book_comment_id")
+	private BurnBookComment burnBookCommentId;
 
 // TODO: mapping
-//		@Column(name="student_id")
 //		private Integer studentId;
 
-	// Methods:
-	// TODO: getters and setters for burnBookCommentId and studentId
-	// TODO: generate toString() when all fields complete
 	public BookCommentVote() {
+	}
+
+	public BurnBookComment getBurnBookCommentId() {
+		return burnBookCommentId;
+	}
+
+	public void setBurnBookCommentId(BurnBookComment burnBookCommentId) {
+		this.burnBookCommentId = burnBookCommentId;
 	}
 
 	public int getId() {
@@ -80,7 +86,5 @@ public class BookCommentVote {
 			return false;
 		return true;
 	}
-
-
 
 }
