@@ -73,6 +73,15 @@ public class Badge {
 	public void setStudents(List<Student> students) {
 		this.students = students;
 	}
+	
+	public void addStudent(Student student) {
+//		FIXME
+	}
+	
+	public void removeStudent(Student student) {
+//		FIXME
+	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;

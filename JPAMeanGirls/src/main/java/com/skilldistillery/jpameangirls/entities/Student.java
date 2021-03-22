@@ -125,6 +125,10 @@ public class Student {
 	public User getUser() {
 		return user;
 	}
+	public void setUser(User user) {
+		this.user = user;
+	}
+
 
 	public List<Clique> getCliques() {
 		return cliques;
@@ -133,10 +137,7 @@ public class Student {
 	public void setCliques(List<Clique> cliques) {
 		this.cliques = cliques;
 	}
-
-	public void setUser(User user) {
-		this.user = user;
-	}
+	
 	
 	public void addClique(Clique clique) {
 		if (cliques == null) {
@@ -230,6 +231,14 @@ public class Student {
 		this.badges = badges;
 	}
 
+	public void addBadge(Badge badge) {
+//		FIXME
+	}
+	
+	public void removeBadge(Badge badge) {
+//		FIXME
+	}
+	
 	public List<CommentVote> getCommentVotes() {
 		return commentVotes;
 	}
