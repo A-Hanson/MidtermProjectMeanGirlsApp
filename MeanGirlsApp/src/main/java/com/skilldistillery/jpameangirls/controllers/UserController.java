@@ -40,7 +40,7 @@ public class UserController {
 		
 		userDao.createUser(user);
 		mv.addObject("user", user);
-		mv.setViewName("chooseCharacter.jsp");
+		mv.setViewName("createStudent");
 		return mv;
 	}
 	
