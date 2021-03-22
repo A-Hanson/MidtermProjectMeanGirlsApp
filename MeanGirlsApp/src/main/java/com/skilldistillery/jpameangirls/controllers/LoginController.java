@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.skilldistillery.jpameangirls.dao.UserDAO;
 import com.skilldistillery.jpameangirls.entities.User;
@@ -19,11 +20,11 @@ public class LoginController {
 	
 	
 	@RequestMapping(path = {"login.do"})
-	  public ModelAndView login(HttpSession session) {
+	  public ModelAndView login(HttpSession session, RedirectAttributes redirect) {
 		ModelAndView mv = new ModelAndView();
 
-		if(session.getAttribute("loggedInUser") != null) {
-			mv.setViewName("redirect:index.do");
+		if(session.getAttribute("user") != null) {
+			mv.setViewName("redirect:dashboard.do");
 			return mv;		}
 		mv.addObject("user", new User());
 		mv.setViewName("login");
@@ -31,18 +32,19 @@ public class LoginController {
 	  }
 	
 	@RequestMapping(path = {"login.do"}, method=RequestMethod.POST)
-	public ModelAndView loginPost(User user, HttpSession session) {
+	public ModelAndView loginPost(User user, HttpSession session, RedirectAttributes redirect) {
 		
 		ModelAndView mv = new ModelAndView();
-		if(session.getAttribute("loggedInUser") != null) {
-			mv.setViewName("redirect:index.do");
+		if(session.getAttribute("user") != null) {
+			mv.setViewName("redirect:dashboard.do");
 			return mv;
 		}
 		
 		User u = userDao.getUserByUserNameAndPassword(user.getUsername(), user.getPassword());
 		
 		if(u != null) {
-			session.setAttribute("loggedInUser", u);
+		    
+			session.setAttribute("user", u);
 			mv.setViewName("redirect:dashboard.do");
 
 			return mv;
