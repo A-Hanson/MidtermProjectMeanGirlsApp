@@ -56,5 +56,21 @@ class CommentVoteTest {
 		assertEquals("Hi everyone! i cant help that im so popular",cv.getComment().getContent());
 	}
 
+	@Test
+	@DisplayName("Test CommentVote - Student mapping")
+	void test3() {
+		assertNotNull(cv);
+		assertEquals("Regina", cv.getStudent().getFirstName());
+		/*
+		 * mysql> select * from student join comment_vote on student.id = comment_vote.student_id where comment_vote.id = 1;
++----+---------+------------+-----------+--------+-------------+---------------------+---------------+------------------------------------------------------------------------+----+------+------------+------------+
+| id | user_id | first_name | last_name | gender | grade_level | created_date        | birthday_date | image_url                                                              | id | vote | student_id | comment_id |
++----+---------+------------+-----------+--------+-------------+---------------------+---------------+------------------------------------------------------------------------+----+------+------------+------------+
+|  1 |       2 | Regina     | George    | Female |          11 | 2020-03-19 00:00:00 | 1991-01-01    | https://smulook.com/wp-content/uploads/2020/09/regina-on-the-phone.jpg |  1 |    1 |          1 |          1 |
++----+---------+------------+-----------+--------+-------------+---------------------+---------------+------------------------------------------------------------------------+----+------+------------+------------+
+1 row in set (0.00 sec)
+
+		 */
+	}
 
 }
