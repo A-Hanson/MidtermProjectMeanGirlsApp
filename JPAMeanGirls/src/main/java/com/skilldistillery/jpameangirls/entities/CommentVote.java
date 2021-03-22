@@ -22,6 +22,21 @@ public class CommentVote {
 	@JoinColumn(name="comment_id")
 	private Comment comment;
 	
+	@ManyToOne
+	@JoinColumn(name="student_id")
+	private Student student;
+	
+	
+	// Methods: 
+	
+	public Student getStudent() {
+		return student;
+	}
+
+	public void setStudent(Student student) {
+		this.student = student;
+	}
+
 	public CommentVote(){}
 
 	public int getId() {
