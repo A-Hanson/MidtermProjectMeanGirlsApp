@@ -1,5 +1,6 @@
 package com.skilldistillery.jpameangirls.dao;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -28,6 +29,7 @@ public class StudentDAOImpl implements StudentDAO{
 	}
 	@Override
 	public Student create(Student student) {
+		student.setCreatedDate(LocalDateTime.now());
 		em.persist(student);
 		em.flush();
 		return student;
