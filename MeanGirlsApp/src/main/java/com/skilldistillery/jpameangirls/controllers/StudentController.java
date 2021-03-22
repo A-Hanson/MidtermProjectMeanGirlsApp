@@ -1,4 +1,4 @@
-package com.skilldistillery.jpameangirls.controller;
+package com.skilldistillery.jpameangirls.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
