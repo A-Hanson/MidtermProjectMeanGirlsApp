@@ -17,15 +17,15 @@ ${student.firstName} ${student.lastName}
 	<form action="logout.do" method="post"><input type="submit" value="Switch Student"></form>
 </div>
 <c:choose>
-	<!-- General User Login -->
+
 	<c:when test="${user.role=='user' }">
 	<h2>Logged in as USER</h2>
 	</c:when>
-	<!-- Admin Login -->
+
 	<c:when test="${user.role=='admin' }">
 	<h2>Logged in as ADMIN</h2>
 	</c:when>
-	<!-- Not Logged In -->
+
 	<c:otherwise>
 	<h2>NOT LOGGED IN</h2>
 	</c:otherwise>
