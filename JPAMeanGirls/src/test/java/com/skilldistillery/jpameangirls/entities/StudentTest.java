@@ -94,4 +94,18 @@ class StudentTest {
 		assertTrue(student.getCommentVotes().size() > 0);
 	}
 	
+	@Test
+	@DisplayName("Test Student BurnBookCommentsAboutMe Mapping")
+	void test8() {
+		assertNotNull(student.getBurnBookCommentsAboutMe());
+		assertTrue(student.getBurnBookCommentsAboutMe().size() > 0);
+	}
+	
+	@Test
+	@DisplayName("Test Student BurnBookCommentsAuthored Mapping")
+	void test9() {
+		assertNotNull(student.getBurnBookCommentsAuthored());
+		assertTrue(student.getBurnBookCommentsAuthored().size() > 0);
+	}
+	
 }

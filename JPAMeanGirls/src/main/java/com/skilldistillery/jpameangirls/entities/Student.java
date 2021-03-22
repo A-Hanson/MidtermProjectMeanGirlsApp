@@ -57,6 +57,12 @@ public class Student {
 	@OneToMany(mappedBy="student")
 	private List<CommentVote> commentVotes;
 	
+	@OneToMany(mappedBy="author")
+	private List<BurnBookComment> burnBookCommentsAuthored;
+	
+	@OneToMany(mappedBy="student")
+	private List<BurnBookComment> burnBookCommentsAboutMe;
+	
 	
 	// constructors
 	
@@ -68,6 +74,22 @@ public class Student {
 	
 	public List<Comment> getComment() {
 		return comment;
+	}
+
+	public List<BurnBookComment> getBurnBookCommentsAuthored() {
+		return burnBookCommentsAuthored;
+	}
+
+	public void setBurnBookCommentsAuthored(List<BurnBookComment> burnBookCommentsAuthored) {
+		this.burnBookCommentsAuthored = burnBookCommentsAuthored;
+	}
+
+	public List<BurnBookComment> getBurnBookCommentsAboutMe() {
+		return burnBookCommentsAboutMe;
+	}
+
+	public void setBurnBookCommentsAboutMe(List<BurnBookComment> burnBookCommentsAboutMe) {
+		this.burnBookCommentsAboutMe = burnBookCommentsAboutMe;
 	}
 
 	public void setComment(List<Comment> comment) {
