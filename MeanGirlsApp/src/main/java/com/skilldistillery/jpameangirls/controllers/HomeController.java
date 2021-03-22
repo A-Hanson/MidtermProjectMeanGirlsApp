@@ -9,12 +9,14 @@ import com.skilldistillery.jpameangirls.dao.UserDAO;
 
 @Controller
 public class HomeController {
+	
 	@Autowired
 	private UserDAO userDao;
 	
 	@RequestMapping(path= { "/", "home.do"})
-	public String home(Model model) {
-//		model.addAttribute("TEST", userDao.findById(1)); // DEBUG, DELETE LATER
+	public String home() {
 		return "index";
 	}
+	
+	
 }
