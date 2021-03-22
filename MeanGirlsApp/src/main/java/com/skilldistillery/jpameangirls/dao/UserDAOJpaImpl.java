@@ -19,44 +19,73 @@ public class UserDAOJpaImpl implements UserDAO {
 	
 	@Override
 	public User createUser(User user) {
-		// TODO Auto-generated method stub
-		return null;
+		em.persist(user);
+		em.flush();
+		return user;
 	}
 
 	@Override
 	public User findUserById(int userId) {
-		// TODO Auto-generated method stub
-		return null;
+		return em.find(User.class, userId);
 	}
 
 	@Override
 	public List<User> findAllUsers() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		String query ="SELECT u FROM User u";
+		return em.createQuery(query,User.class).getResultList();
 	}
 
 	@Override
 	public User findUserByUsername(String username) {
-		// TODO Auto-generated method stub
-		return null;
+		String query = "SELECT u FROM User u WHERE username LIKE :username";
+		return em.createQuery(query, User.class).setParameter("username", username).getResultList().get(0);
 	}
 
 	@Override
 	public User findUserByEmail(String email) {
-		// TODO Auto-generated method stub
-		return null;
+		String query = "SELECT u FROM User u WHERE email LIKE :email";
+		return em.createQuery(query, User.class).setParameter("email", email).getResultList().get(0);
 	}
 
 	@Override
 	public User updateUser(int id, User user) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		User managedUser = em.find(User.class, id);
+
+		managedUser.setEmail(user.getEmail());
+		managedUser.setPassword(user.getPassword());
+		managedUser.setUsername(user.getUsername());
+		managedUser.setFirstName(user.getFirstName());
+		managedUser.setLastName(user.getLastName());
+		if(user.getEnabled() == null) {	
+			managedUser.setEnabled(true);
+		} else {
+			managedUser.setEnabled(user.getEnabled());
+		}
+		if(user.getRole() == null) {
+			managedUser.setRole("user");
+		} else {
+			managedUser.setRole(user.getRole());
+		}
+		
+		managedUser.setBirthdayDate(user.getBirthdayDate());
+		managedUser.setGender(user.getGender());
+
+		return managedUser;
 	}
 
 	@Override
 	public boolean deleteUser(int id) {
-		// TODO Auto-generated method stub
-		return false;
+		User u = em.find(User.class, id);
+
+		if (u != null) {
+			em.remove(u);
+		}
+
+		boolean gameWasDeleted = !em.contains(u);
+
+		return gameWasDeleted;
 	}
 
 }
