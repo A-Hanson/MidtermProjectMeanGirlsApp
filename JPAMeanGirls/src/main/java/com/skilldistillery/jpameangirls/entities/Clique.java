@@ -1,5 +1,6 @@
 package com.skilldistillery.jpameangirls.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -43,6 +44,26 @@ public class Clique {
 	public Clique() {}
 
 //	Methods
+	
+	public void addStudent(Student student) {
+		if (students == null) {
+			students = new ArrayList<>();
+		}
+
+		if (!students.contains(student)) {
+			students.add(student);
+			student.addClique(this);
+		}
+	}
+
+	public void removeStudent(Student student) {
+		if (students != null && students.contains(student)) {
+			student.removeClique(this);
+			students.remove(student);
+		}
+	}
+	
+	
 	public int getId() {
 		return id;
 	}
