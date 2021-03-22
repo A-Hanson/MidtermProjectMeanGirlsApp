@@ -79,4 +79,10 @@ class BookCommentVoteTest {
 
 	 */
 	
+	@Test
+	@DisplayName("Test BCV to student mapping")
+	void test2() {
+		assertNotNull(bcv);
+		assertEquals("Regina", bcv.getStudent().getFirstName());
+	}
 }

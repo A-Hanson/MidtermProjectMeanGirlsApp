@@ -31,9 +31,10 @@ public class BookCommentVote {
 	@ManyToOne
 	@JoinColumn(name = "burn_book_comment_id")
 	private BurnBookComment burnBookCommentId;
-
-// TODO: mapping
-//		private Integer studentId;
+	
+	@ManyToOne
+	@JoinColumn(name="student_id")
+	private Student student;
 
 	public BookCommentVote() {
 	}
@@ -44,6 +45,15 @@ public class BookCommentVote {
 
 	public void setBurnBookCommentId(BurnBookComment burnBookCommentId) {
 		this.burnBookCommentId = burnBookCommentId;
+	}
+	
+	
+	public Student getStudent() {
+		return student;
+	}
+
+	public void setStudent(Student student) {
+		this.student = student;
 	}
 
 	public int getId() {
