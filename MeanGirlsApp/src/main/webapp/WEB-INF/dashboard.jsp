@@ -16,6 +16,7 @@ ${student.firstName} ${student.lastName}
 	<form action="logout.do" method="post"><input type="submit" value="Sign out"></form>
 	<form action="logout.do" method="post"><input type="submit" value="Switch Student"></form>
 </div>
+<c:out value="${loggedInUser }"/>
 <c:choose>
 
 	<c:when test="${user.role=='user' }">

@@ -38,7 +38,7 @@ public class UserDAOJpaImpl implements UserDAO {
 
 	@Override
 	public User findUserByUsername(String username) {
-		String query = "SELECT u FROM User u WHERE username LIKE :username";
+		String query = "SELECT u FROM User u WHERE u.username LIKE :username";
 		return em.createQuery(query, User.class).setParameter("username", username).getResultList().get(0);
 	}
 
@@ -83,9 +83,9 @@ public class UserDAOJpaImpl implements UserDAO {
 			em.remove(u);
 		}
 
-		boolean gameWasDeleted = !em.contains(u);
+		boolean userWasDeleted = !em.contains(u);
 
-		return gameWasDeleted;
+		return userWasDeleted;
 	}
 
 	@Override
@@ -105,16 +105,22 @@ public class UserDAOJpaImpl implements UserDAO {
 	    return u;
 	}
 
-//	@Override
-//	public boolean isValidUser(User u) {
-//		List<User> users = findAllUsers();
-//		if (findUserByUsername(u.getUsername()) == null) {
-//			return false;
-//		}
-//		if (users.get(u.getUsername()){
-//			return true;
-//		}
-//		return false;
-//	}
-
+	@Override
+	public boolean isValidUser(User u) {
+		List<User> users = findAllUsers();
+		
+		if (findUserByUsername(u.getUsername()) == null) {
+			return false;
+		}
+		
+		for (User user : users) {
+			
+			if (u.getPassword().equals(user.getPassword())){
+				return true;
+			}
+			
+		}
+		
+		return false;
+	}
 }
