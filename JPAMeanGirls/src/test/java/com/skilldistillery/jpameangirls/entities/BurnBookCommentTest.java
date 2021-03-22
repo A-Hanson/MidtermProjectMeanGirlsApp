@@ -48,12 +48,27 @@ class BurnBookCommentTest {
 		assertEquals("Regina George is super fetch", comment.getContent());
 		assertTrue(comment.getEnabled());
 		assertFalse(comment.getFlagged());
-		assertEquals(1, comment.getAuthorId());
 		assertEquals(2020, comment.getCreatedDate().getYear());
 		assertEquals(3, comment.getCreatedDate().getMonthValue());
 		assertEquals(19, comment.getCreatedDate().getDayOfMonth());
-		assertEquals(1, comment.getStudentId());
 		assertTrue(comment.getVote());
 	}
+	
+	@Test
+	@DisplayName("Test BurnBookComment and student mapping")
+	void test_2() {
+		assertNotNull(comment);
+		assertEquals("Regina", comment.getStudentId().getFirstName());
+		
+	}
+	
+	@Test
+	@DisplayName("Test BurnBookComment and student mapping (Author)")
+	void test_3() {
+		assertNotNull(comment);
+		assertEquals("Regina", comment.getAuthorId().getFirstName());
+		
+	}
+	
 
 }

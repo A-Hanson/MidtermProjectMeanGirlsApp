@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -24,16 +26,18 @@ public class BurnBookComment {
 	
 	private Boolean flagged;
 	
-	@Column(name="author_id")
-	private int authorId;
-	
 	@Column(name="created_date")
 	private LocalDateTime createdDate;
 	
-	@Column(name="student_id")
-	private int studentId;	
-	
 	private Boolean vote;
+	
+	@ManyToOne
+	@JoinColumn(name = "student_id")
+	private Student studentId;
+	
+	@ManyToOne
+	@JoinColumn(name = "author_id")
+	private Student authorId;
 	
 //	Constructor
 	public BurnBookComment() {}
@@ -71,14 +75,6 @@ public class BurnBookComment {
 		this.flagged = flagged;
 	}
 
-	public int getAuthorId() {
-		return authorId;
-	}
-
-	public void setAuthorId(int authorId) {
-		this.authorId = authorId;
-	}
-
 	public LocalDateTime getCreatedDate() {
 		return createdDate;
 	}
@@ -87,13 +83,6 @@ public class BurnBookComment {
 		this.createdDate = createdDate;
 	}
 
-	public int getStudentId() {
-		return studentId;
-	}
-
-	public void setStudentId(int studentId) {
-		this.studentId = studentId;
-	}
 
 	public Boolean getVote() {
 		return vote;
@@ -101,6 +90,23 @@ public class BurnBookComment {
 
 	public void setVote(Boolean vote) {
 		this.vote = vote;
+	}
+	
+
+	public Student getStudentId() {
+		return studentId;
+	}
+
+	public void setStudentId(Student studentId) {
+		this.studentId = studentId;
+	}
+
+	public Student getAuthorId() {
+		return authorId;
+	}
+
+	public void setAuthorId(Student authorId) {
+		this.authorId = authorId;
 	}
 
 	@Override
