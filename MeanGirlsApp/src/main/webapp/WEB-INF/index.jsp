@@ -9,7 +9,7 @@
 </head>
 <body>
 <h3 style="background-color: pink; color="purple">MEAN GIRLS</h3>
-
+<a href="register.do">Register</a>
 <a href="login.do">Log In</a>
  
 
