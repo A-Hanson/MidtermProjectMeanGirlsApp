@@ -60,10 +60,10 @@ public class Student {
 	@OneToMany(mappedBy="authorId")
 	private List<BurnBookComment> burnBookCommentsAuthored;
 	
-	@OneToMany(mappedBy="student")
+	@OneToMany(mappedBy="studentId")
 	private List<BurnBookComment> burnBookCommentsAboutMe;
 	
-	@OneToMany(mappedBy="studentId")
+	@OneToMany(mappedBy="student")
 	private List<BookCommentVote> burnCommentVotes;
 	
 	
