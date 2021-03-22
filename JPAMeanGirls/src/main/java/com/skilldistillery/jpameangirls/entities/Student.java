@@ -54,6 +54,9 @@ public class Student {
 	@OneToMany(mappedBy="student")
 	private List<Comment> comment;
 	
+	@OneToMany(mappedBy="student")
+	private List<CommentVote> commentVotes;
+	
 	
 	// constructors
 	
@@ -160,6 +163,14 @@ public class Student {
 
 	public void setBadges(List<Badge> badges) {
 		this.badges = badges;
+	}
+
+	public List<CommentVote> getCommentVotes() {
+		return commentVotes;
+	}
+
+	public void setCommentVotes(List<CommentVote> commentVotes) {
+		this.commentVotes = commentVotes;
 	}
 
 	@Override

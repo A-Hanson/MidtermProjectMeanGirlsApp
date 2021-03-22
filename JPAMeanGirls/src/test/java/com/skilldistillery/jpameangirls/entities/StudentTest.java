@@ -87,4 +87,11 @@ class StudentTest {
 		assertTrue(student.getComment().size() > 0);
 	}
 	
+	@Test
+	@DisplayName("Test Student CommentVote Mapping")
+	void test7() {
+		assertNotNull(student.getCommentVotes());
+		assertTrue(student.getCommentVotes().size() > 0);
+	}
+	
 }
