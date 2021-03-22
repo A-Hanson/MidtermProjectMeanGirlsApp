@@ -11,7 +11,6 @@
 	<h1>Mean Girl Registration Page</h1>
 	<br />
 	<h3>Please enter your information:</h3>
-	<br />
 
 	<form action="register.do" method="POST">
 		<table>
@@ -43,10 +42,10 @@
 			</tr>
 			<tr>
 				<td>Gender:</td>
-				<input type="text" name="gender" />
+				<td><input type="text" name="gender" /></td>
 			</tr>
 		</table>
 		<button type="submit" class="btn btn-primary">Submit</button>
 	</form>
-	</body>
+</body>
 </html>
