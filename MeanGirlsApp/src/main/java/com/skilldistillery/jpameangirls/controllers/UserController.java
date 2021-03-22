@@ -16,6 +16,11 @@ public class UserController {
 	private UserDAO userDao;
 
 //////// CREATE
+	@RequestMapping(path = "register.do", method = RequestMethod.GET)
+	public String goToRegistration() {
+		return "register";
+	}
+	
 	@RequestMapping(path = "register.do", method = RequestMethod.POST)
 	public ModelAndView register(String email, String password, String username, String firstName, String lastName, Integer birthdayDay, Integer birthdayMonth, Integer birthdayYear, String gender) { 
 		ModelAndView mv = new ModelAndView();
