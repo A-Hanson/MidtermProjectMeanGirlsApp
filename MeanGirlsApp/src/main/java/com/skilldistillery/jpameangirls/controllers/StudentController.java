@@ -32,4 +32,13 @@ public class StudentController {
 		mv.setViewName("createStudent");
 		return mv; // (ViewResolver in use)
 	}
+	
+	@RequestMapping(path={"submitNewStudent.do"}, method = RequestMethod.POST)
+	public ModelAndView submitNewStudent(Student newStudent) {
+		
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("student", newStudent);
+		mv.setViewName("dashboard");
+		return mv; // (ViewResolver in use)
+	}
 }
