@@ -57,10 +57,10 @@ public class Student {
 	@OneToMany(mappedBy="student")
 	private List<CommentVote> commentVotes;
 	
-	@OneToMany(mappedBy="author")
+	@OneToMany(mappedBy="authorId")
 	private List<BurnBookComment> burnBookCommentsAuthored;
 	
-	@OneToMany(mappedBy="student")
+	@OneToMany(mappedBy="studentId")
 	private List<BurnBookComment> burnBookCommentsAboutMe;
 	
 	
