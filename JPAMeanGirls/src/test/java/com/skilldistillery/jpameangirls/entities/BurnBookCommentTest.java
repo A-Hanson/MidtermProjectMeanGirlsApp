@@ -70,5 +70,14 @@ class BurnBookCommentTest {
 		
 	}
 	
+	@Test
+	@DisplayName("Test BurnBookComment and BookCommentVote")
+	void test_4() {
+		assertNotNull(comment);
+		assertNotNull(comment.getBookCommentVotes());
+		assertTrue(comment.getBookCommentVotes().size() > 0);
+		
+	}
+	
 
 }
