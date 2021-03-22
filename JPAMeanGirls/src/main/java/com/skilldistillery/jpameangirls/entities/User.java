@@ -47,7 +47,8 @@ public class User {
 	  private List<Student> students;
 	
 	// constructors
-	
+	  public User() {}
+	  
 	public List<Student> getStudents() {
 		return students;
 	}
@@ -56,7 +57,6 @@ public class User {
 		this.students = students;
 	}
 
-	public User() {}
 	
 	//getters and setters
 	
