@@ -22,16 +22,16 @@ public class StudentController {
 	@Autowired
 	private UserDAOJpaImpl userDao;
 	
-//	@RequestMapping(path= {"createStudent.do"}, method = RequestMethod.GET)
-//	public ModelAndView createStudent() {
-//		
-//		ModelAndView mv = new ModelAndView();
-////		Student student = new Student();
-////		student.setUser();
-////		mv.addObject("student", student);
-//		mv.setViewName("createStudent");
-//		return mv; // (ViewResolver in use)
-//	}
+	@RequestMapping(path= {"dashboard.do"}, method = RequestMethod.GET)
+	public ModelAndView loadDashboard() {
+		ModelAndView mv = new ModelAndView();
+//		Student student = new Student();
+//		mv.addObject("student", student);
+		mv.setViewName("dashboard");
+		return mv; // (ViewResolver in use)
+	}
+	
+	
 	
 	@RequestMapping(path={"submitNewStudent.do"}, method = RequestMethod.POST)
 	public ModelAndView submitNewStudent(Student newStudent, String birthday, String userIdString) {
