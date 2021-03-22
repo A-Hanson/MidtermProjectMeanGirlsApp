@@ -19,7 +19,7 @@ public class UserController {
 	@RequestMapping(path = "register.do", method = RequestMethod.POST)
 	public ModelAndView register(String email, String password, String username, String firstName, String lastName, Integer birthdayDay, Integer birthdayMonth, Integer birthdayYear, String gender) { 
 		ModelAndView mv = new ModelAndView();
-		// TODO: check for null input
+
 		User user = new User();
 		user.setEmail(email);
 		user.setPassword(password);
@@ -34,7 +34,7 @@ public class UserController {
 		
 		userDao.createUser(user);
 		mv.addObject("user", user);
-		mv.setViewName("registerConfirmation.jsp");
+		mv.setViewName("chooseCharacter.jsp");
 		return mv;
 	}
 	
