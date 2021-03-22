@@ -1,5 +1,6 @@
 package com.skilldistillery.jpameangirls.entities;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -41,7 +42,7 @@ public class Student {
 	private LocalDateTime createdDate;
 	
 	@Column(name="birthday_date")
-	private LocalDateTime birthdayDate;
+	private LocalDate birthdayDate;
 	
 	@Column(name="image_url")
 	private String imageUrl;
@@ -204,11 +205,11 @@ public class Student {
 		this.createdDate = createdDate;
 	}
 
-	public LocalDateTime getBirthdayDate() {
+	public LocalDate getBirthdayDate() {
 		return birthdayDate;
 	}
 
-	public void setBirthdayDate(LocalDateTime birthdayDate) {
+	public void setBirthdayDate(LocalDate birthdayDate) {
 		this.birthdayDate = birthdayDate;
 	}
 
