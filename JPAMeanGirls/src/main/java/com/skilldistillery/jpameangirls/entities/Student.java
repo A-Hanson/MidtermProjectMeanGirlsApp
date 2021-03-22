@@ -60,8 +60,11 @@ public class Student {
 	@OneToMany(mappedBy="authorId")
 	private List<BurnBookComment> burnBookCommentsAuthored;
 	
-	@OneToMany(mappedBy="studentId")
+	@OneToMany(mappedBy="student")
 	private List<BurnBookComment> burnBookCommentsAboutMe;
+	
+	@OneToMany(mappedBy="studentId")
+	private List<BookCommentVote> burnCommentVotes;
 	
 	
 	// constructors
@@ -193,6 +196,15 @@ public class Student {
 
 	public void setCommentVotes(List<CommentVote> commentVotes) {
 		this.commentVotes = commentVotes;
+	}
+	
+
+	public List<BookCommentVote> getBurnCommentVotes() {
+		return burnCommentVotes;
+	}
+
+	public void setBurnCommentVotes(List<BookCommentVote> burnCommentVotes) {
+		this.burnCommentVotes = burnCommentVotes;
 	}
 
 	@Override
