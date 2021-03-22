@@ -83,8 +83,8 @@ class StudentTest {
 	@Test
 	@DisplayName("Test Student Comment Mapping")
 	void test6() {
-		assertNotNull(student.getComment());
-		assertTrue(student.getComment().size() > 0);
+		assertNotNull(student.getComments());
+		assertTrue(student.getComments().size() > 0);
 	}
 	
 	@Test

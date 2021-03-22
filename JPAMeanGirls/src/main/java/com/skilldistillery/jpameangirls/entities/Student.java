@@ -53,7 +53,7 @@ public class Student {
 	private List<Clique> cliques;
 	
 	@OneToMany(mappedBy="student")
-	private List<Comment> comment;
+	private List<Comment> comments;
 	
 	@OneToMany(mappedBy="student")
 	private List<CommentVote> commentVotes;
@@ -76,9 +76,7 @@ public class Student {
 	
 	
 	
-	public List<Comment> getComment() {
-		return comment;
-	}
+
 
 	public List<BurnBookComment> getBurnBookCommentsAuthored() {
 		return burnBookCommentsAuthored;
@@ -96,8 +94,32 @@ public class Student {
 		this.burnBookCommentsAboutMe = burnBookCommentsAboutMe;
 	}
 
-	public void setComment(List<Comment> comment) {
-		this.comment = comment;
+	public List<Comment> getComments() {
+		return comments;
+	}
+	
+	public void setComment(List<Comment> comments) {
+		this.comments = comments;
+	}
+	
+	public void addComment(Comment comment) {
+		if (comments == null) {
+			comments = new ArrayList<>();
+		}
+		if (!comments.contains(comment)) {
+			comments.add(comment);
+			if (comment.getStudent() != null) {
+				comment.getStudent().getComments().remove(comment);
+			}
+			comment.setStudent(this);
+		}
+	}
+	
+	public void removeComment(Comment comment) {
+		comment.setStudent(null);
+		if (comments != null) {
+			comments.remove(comment);
+		}
 	}
 
 	public User getUser() {
