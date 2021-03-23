@@ -40,6 +40,8 @@ public class Clique {
 	@OneToMany(mappedBy = "clique")
 	private List<Comment> comments;
 	
+	private Boolean enabled;
+	
 //	Constructor
 	public Clique() {}
 
@@ -63,7 +65,14 @@ public class Clique {
 		}
 	}
 	
-	
+	public Boolean getEnabled() {
+		return enabled;
+	}
+
+	public void setEnabled(Boolean enabled) {
+		this.enabled = enabled;
+	}
+
 	public int getId() {
 		return id;
 	}
