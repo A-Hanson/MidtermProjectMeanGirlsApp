@@ -2,6 +2,7 @@ package com.skilldistillery.jpameangirls.dao;
 
 import java.util.List;
 
+import com.skilldistillery.jpameangirls.entities.Clique;
 import com.skilldistillery.jpameangirls.entities.Comment;
 import com.skilldistillery.jpameangirls.entities.Student;
 
@@ -11,6 +12,7 @@ public interface CommentDAO {
 	List<Comment> findCommentsByCliqueId(int cliqueId);
 	List<Comment> findAll();
 	Comment create(Comment comment);
+	Comment create(Comment comment, Student student, Clique clique);
 	Comment update(int id, Comment comment);
 	boolean deletePermanently(int id);
 	List<Comment> findCommentsInTheLast24HoursFromCliqueWithId(int id);
