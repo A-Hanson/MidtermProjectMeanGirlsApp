@@ -25,6 +25,8 @@ public class Badge {
 	@Column(name = "image_url")
 	private String imageUrl;
 	
+	private Boolean enabled;
+	
 	@ManyToMany
 	@JoinTable(name="student_badge",
 			joinColumns=@JoinColumn(name="badge_id"),
@@ -82,6 +84,13 @@ public class Badge {
 //		FIXME
 	}
 	
+	
+	public Boolean getEnabled() {
+		return enabled;
+	}
+	public void setEnabled(Boolean enabled) {
+		this.enabled = enabled;
+	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
