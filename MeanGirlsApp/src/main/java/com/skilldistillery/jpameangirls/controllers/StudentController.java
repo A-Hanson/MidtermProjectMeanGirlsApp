@@ -30,9 +30,13 @@ public class StudentController {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("dashboard");
 		if (session.getAttribute("user") != null) {
-			int userId = ((User) session.getAttribute("user")).getId();
-			List<Student> students = userDao.findAllStudentsForUser(userId);
-			session.setAttribute("userStudents", students);
+			User user = (User) session.getAttribute("user");
+			if (user.getRole().equals("user")) {
+				int userId = user.getId();
+				List<Student> students = userDao.findAllStudentsForUser(userId);
+				session.setAttribute("userStudents", students);
+				
+			}
 		}
 		return mv; // (ViewResolver in use)
 	}
