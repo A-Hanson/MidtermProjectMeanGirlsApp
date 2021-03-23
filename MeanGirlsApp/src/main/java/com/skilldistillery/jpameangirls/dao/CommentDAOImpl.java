@@ -34,10 +34,24 @@ public class CommentDAOImpl implements CommentDAO {
 
 	@Override
 	public Comment create(Comment comment) {
-		
+		comment.setCreatedDate(LocalDateTime.now());
 		em.persist(comment);
 		return comment;
 	}
+	
+	@Override
+	public Comment create(Comment comment, Student student, Clique clique) {
+		comment.setCreatedDate(LocalDateTime.now());
+		comment.setLastEdited(LocalDateTime.now());
+		comment.setEnabled(true);
+		comment.setFlagged(false);
+		comment.setStudent(student);
+		comment.setClique(clique);
+
+		em.persist(comment);
+		return comment;
+	}
+	
 
 	@Override
 	public Comment update(int id, Comment comment) {

@@ -44,10 +44,9 @@ public class CliqueController {
 		Integer integerId = Integer.parseInt(studentId);
 	
 		Student student = studentDao.findById(integerId);
-		comment.setStudent(student);
 		Clique cafeteria = cliqueDao.findById(1);
-		comment.setClique(cafeteria);
-		commentDao.create(comment);
+		
+		commentDao.create(comment, student, cafeteria);
 		redir.addFlashAttribute("cafeteriaComment", comment);
 		mv.setViewName("redirect:cafeteriaforum.do");
 		return mv;
