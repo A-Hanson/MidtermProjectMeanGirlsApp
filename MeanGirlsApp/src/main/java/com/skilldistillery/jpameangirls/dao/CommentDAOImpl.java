@@ -61,4 +61,10 @@ public class CommentDAOImpl implements CommentDAO {
 		em.remove(managedComment);
 		return !em.contains(managedComment);
 	}
+
+	@Override
+	public List<Comment> findCommentsByCliqueId(int cliqueId) {
+		
+		return em.createQuery("SELECT c FROM Comment c where c.clique.id = :id", Comment.class).setParameter("id", cliqueId).getResultList();
+	}
 }
