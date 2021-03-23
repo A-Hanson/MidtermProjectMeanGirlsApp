@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Mean Girls</title>
+<title>The Burn Book</title>
 <jsp:include page="head.jsp" />
 </head>
 <body>
