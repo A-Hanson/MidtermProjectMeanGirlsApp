@@ -12,15 +12,6 @@
 <body>
 	<jsp:include page="nav.jsp" />
 	<div class="container">
-		<div>
-			nav bar ${student.firstName} ${student.lastName}
-			<form action="logout.do" method="post">
-				<input type="submit" value="Sign out">
-			</form>
-			<form action="logout.do" method="post">
-				<input type="submit" value="Switch Student">
-			</form>
-		</div>
 		<c:out value="${loggedInUser }" />
 		<c:choose>
 
@@ -48,7 +39,7 @@
 					<div class="row">
 						<div class="col">${student.firstName } ${student.lastName }</div>
 						<div class="col">Birthday: ${student.birthdayDate}</div>
-						<div class="col">${student.imageUrl}</div>
+						<div class="col">${totalFetch}</div>
 					</div>
 					<div class="row">
 						<div class="col">${student.gender }</div>
