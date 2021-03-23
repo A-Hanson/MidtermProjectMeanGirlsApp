@@ -10,6 +10,7 @@ public interface CommentVoteDAO {
 
 //	CREATE
 	CommentVote create(CommentVote commentVote);
+	CommentVote create(Student student, Comment comment, Boolean vote);
 	
 //	UPDATE
 	CommentVote update(int id, CommentVote commentVote);
