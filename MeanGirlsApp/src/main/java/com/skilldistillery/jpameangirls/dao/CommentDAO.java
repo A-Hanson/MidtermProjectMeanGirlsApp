@@ -13,4 +13,5 @@ public interface CommentDAO {
 	Comment create(Comment comment);
 	Comment update(int id, Comment comment);
 	boolean deletePermanently(int id);
+	List<Comment> findCommentsInTheLast24HoursFromCliqueWithId(int id);
 }

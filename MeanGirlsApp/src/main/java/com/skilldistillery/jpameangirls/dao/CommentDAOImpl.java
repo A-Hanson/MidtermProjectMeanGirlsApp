@@ -1,5 +1,6 @@
 package com.skilldistillery.jpameangirls.dao;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -66,5 +67,15 @@ public class CommentDAOImpl implements CommentDAO {
 	public List<Comment> findCommentsByCliqueId(int cliqueId) {
 		
 		return em.createQuery("SELECT c FROM Comment c where c.clique.id = :id", Comment.class).setParameter("id", cliqueId).getResultList();
+	}
+
+	@Override
+	public List<Comment> findCommentsInTheLast24HoursFromCliqueWithId(int id) {
+		
+//		SELECT * FROM Comment c where c.clique_id = 1 and c.created_date >= '12/04/2011 12:00:00 AM';
+//		I used the above query as a guideline.
+		
+		LocalDateTime yesterday = LocalDateTime.now().plusHours(24);
+		return em.createQuery("SELECT c FROM Comment c where c.clique.id = :id and c.createdDate >= :yesterday", Comment.class).setParameter("id", id).setParameter("yesterday", yesterday).getResultList();
 	}
 }
