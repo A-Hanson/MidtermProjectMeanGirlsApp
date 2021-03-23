@@ -17,7 +17,7 @@
 			<%-- USER LOGGED IN --%>
 			<c:when test="${user.role=='user' }">
 
-				<h3 style:"color=red-darken-4;">DEBUG: This displays when USER
+				<h3 style="color:#b71c1c;">DEBUG: This displays when USER
 					is logged in</h3>
 
 			</c:when>
@@ -27,7 +27,7 @@
 			<%-- ADMIN LOGGED IN: --%>
 			<c:when test="${user.role=='admin' }">
 
-				<h3 style:"color=red-darken-4;">DEBUG: This displays when ADMIN
+				<h3 style="color:#b71c1c;">DEBUG: This displays when ADMIN
 					is logged in</h3>
 
 			</c:when>
@@ -37,7 +37,7 @@
 			<%-- NO ONE LOGGED IN: --%>
 			<c:otherwise>
 
-				<h3 style:"color=red-darken-4;">DEBUG: This displays when NO
+				<h3 style="color:#b71c1c;">DEBUG: This displays when NO
 					ONE is logged in</h3>
 
 			</c:otherwise>

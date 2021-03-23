@@ -18,11 +18,11 @@
 					<ul class="nav navbar-nav">
 						<li style="color:yellow;">DEBUG: USER LOGGED IN</li>
 						<li class="nav-item"><a class="nav-link active"
-							href="XXXXXXXXXXXXXXXXTODO">Dashboard</a></li>
+							href="dashboard.do">Dashboard</a></li>
 						<li class="nav-item"><a class="nav-link active"
-							href="XXXXXXXXXXXXXXXXTODO">Burn Book</a></li>
+							href="goToBurnBook.do">Burn Book</a></li>
 						<li class="nav-item"><a class="nav-link active"
-							href="XXXXXXXXXXXXXXXXTODO">Cafeteria</a></li>
+							href="goToCafeteria.do">Cafeteria</a></li>
 						<li class="nav-item"><a class="nav-link active"
 							href="logout.do">Log Out</a></li>
 					</ul>
@@ -37,7 +37,7 @@
 					<ul class="nav navbar-nav">
 						<li style="color:yellow;">DEBUG: ADMIN LOGGED IN</li>
 						<li class="nav-item"><a class="nav-link active"
-							href="XXXXXXXXXXXXXXXXTODO">Admin Dashboard</a></li>
+							href="dashboard.do">Admin Dashboard</a></li>
 						<li class="nav-item"><a class="nav-link active"
 							href="logout.do">Log Out</a></li>
 					</ul>
