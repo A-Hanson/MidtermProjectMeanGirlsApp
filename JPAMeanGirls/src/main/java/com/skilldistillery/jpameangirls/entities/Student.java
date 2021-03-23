@@ -47,6 +47,8 @@ public class Student {
 	@Column(name="image_url")
 	private String imageUrl;
 	
+	private Boolean enabled;
+	
 	@ManyToMany(mappedBy = "students")
 	private List<Badge> badges;
 	
@@ -222,8 +224,17 @@ public class Student {
 	}
 	
 	
+	
 	// other methods
 	
+	public Boolean getEnabled() {
+		return enabled;
+	}
+
+	public void setEnabled(Boolean enabled) {
+		this.enabled = enabled;
+	}
+
 	public List<Badge> getBadges() {
 		return badges;
 	}
