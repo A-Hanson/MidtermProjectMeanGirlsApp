@@ -149,5 +149,4 @@ public class Clique {
 		return true;
 	}
 	
-	
 }
