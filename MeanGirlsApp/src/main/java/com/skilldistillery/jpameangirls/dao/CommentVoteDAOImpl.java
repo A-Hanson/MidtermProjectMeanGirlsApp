@@ -14,7 +14,7 @@ import com.skilldistillery.jpameangirls.entities.Student;
 
 @Transactional
 @Service
-public class CommentVoteDAOImpl implements CommentVoteDAO{
+public class CommentVoteDAOImpl implements CommentVoteDAO {
 
 	@PersistenceContext
 	private EntityManager em;
@@ -23,6 +23,16 @@ public class CommentVoteDAOImpl implements CommentVoteDAO{
 	public CommentVote create(CommentVote commentVote) {
 		em.persist(commentVote);
 		return commentVote;
+	}
+
+	@Override
+	public CommentVote create(Student student, Comment comment, Boolean vote) {
+		CommentVote cv = new CommentVote();
+		cv.setStudent(student);
+		cv.setComment(comment);
+		cv.setVote(vote);
+		em.persist(cv);
+		return cv;
 	}
 
 	@Override
@@ -38,7 +48,7 @@ public class CommentVoteDAOImpl implements CommentVoteDAO{
 		em.remove(c);
 		return !em.contains(c);
 	}
-	
+
 	@Override
 	public int commentTotalScore(int commentId) {
 		return (commentUpVoteTotal(commentId) - commentDownVoteTotal(commentId));
@@ -47,16 +57,14 @@ public class CommentVoteDAOImpl implements CommentVoteDAO{
 	@Override
 	public int commentUpVoteTotal(int commentId) {
 		String query = "SELECT COUNT(cv) FROM CommentVote cv JOIN FETCH cv.comment WHERE (cv.comment.id=:cid AND cv.vote=TRUE";
-		long count = em.createQuery(query, Long.class)
-				.setParameter("cid", commentId).getSingleResult();
+		long count = em.createQuery(query, Long.class).setParameter("cid", commentId).getSingleResult();
 		return (int) count;
 	}
 
 	@Override
 	public int commentDownVoteTotal(int commentId) {
 		String query = "SELECT COUNT(cv) FROM CommentVote cv JOIN FETCH cv.comment WHERE (cv.comment.id=:cid AND cv.vote=FALSE";
-		long count = em.createQuery(query, Long.class)
-				.setParameter("cid", commentId).getSingleResult();
+		long count = em.createQuery(query, Long.class).setParameter("cid", commentId).getSingleResult();
 		return (int) count;
 	}
 
@@ -71,8 +79,7 @@ public class CommentVoteDAOImpl implements CommentVoteDAO{
 		String query = "SELECT COUNT(s.comments.commentvotes.id) FROM Student s "
 				+ "JOIN FETCH s.comments JOIN FETCH s.comments.commentvotes"
 				+ "WHERE (s.id=:sid AND s.comments.commentvotes.vote=TRUE)";
-		long count = em.createQuery(query, Long.class)
-				.setParameter("sid", studentId).getSingleResult();
+		long count = em.createQuery(query, Long.class).setParameter("sid", studentId).getSingleResult();
 		return (int) count;
 	}
 
@@ -81,31 +88,25 @@ public class CommentVoteDAOImpl implements CommentVoteDAO{
 		String query = "SELECT COUNT(s.comments.commentvotes.id) FROM Student s "
 				+ "JOIN FETCH s.comments JOIN FETCH s.comments.commentvotes"
 				+ "WHERE (s.id=:sid AND s.comments.commentvotes.vote=FALSE)";
-		long count = em.createQuery(query, Long.class)
-				.setParameter("sid", studentId).getSingleResult();
+		long count = em.createQuery(query, Long.class).setParameter("sid", studentId).getSingleResult();
 		return (int) count;
 	}
 
 	@Override
 	public List<Student> studentsWhoUpvoted(int commentId) {
 		String query = "SELECT c.commentVotes.student FROM Comment c "
-				+ "JOIN FETCH c.commentVotes JOIN FETCH c.commentVotes.student"
-				+ "JOIN FETCH c.commentVotes.vote"
+				+ "JOIN FETCH c.commentVotes JOIN FETCH c.commentVotes.student" + "JOIN FETCH c.commentVotes.vote"
 				+ "WHERE (c.id=:cid AND c.commentVotes.vote=TRUE";
-		List<Student> students = em.createQuery(query, Student.class)
-				.setParameter("cid", commentId).getResultList();
+		List<Student> students = em.createQuery(query, Student.class).setParameter("cid", commentId).getResultList();
 		return students;
 	}
 
 	@Override
 	public List<Comment> commentsStudentUpVoted(int studentId) {
-		String query = "SELECT cv.comment FROM CommentVote cv"
-				+ "JOIN FETCH cv.comment JOIN FETCH cv.student"
+		String query = "SELECT cv.comment FROM CommentVote cv" + "JOIN FETCH cv.comment JOIN FETCH cv.student"
 				+ "WHERE cv.student.id=:sid";
-		List<Comment> comments = em.createQuery(query, Comment.class)
-				.setParameter("sid", studentId).getResultList();
+		List<Comment> comments = em.createQuery(query, Comment.class).setParameter("sid", studentId).getResultList();
 		return comments;
 	}
-
 
 }

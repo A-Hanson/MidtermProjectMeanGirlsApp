@@ -19,14 +19,32 @@
 
 				<h3 style="color: #b71c1c;">DEBUG: This displays when USER is
 					logged in</h3>
-
-				<c:forEach var="comment" items="${cafeteriaComments}">	
-				${comment.content}
-				<br />
-				</c:forEach>
-
+				<div class="table">
+					<c:forEach var="comment" items="${cafeteriaComments}">
+						<div class="row">
+							<div class="col">${comment.content}</div>
+							<div class="col">
+								<form action="upVote.do" method="POST">
+									<button style="">That's So Fetch!!</button>
+									<input type="hidden" name="commentId" value="${comment.id}" />
+									<input type="hidden" name="studentId" value="${student.id}" />
+									<input type="hidden" name="vote" value="true" />
+								</form>
+							</div>
+							<div class="col">
+								<form action="downVote.do" method="POST">
+									<button style="">Not EVEN...</button>
+									<input type="hidden" name="commentId" value="${comment.id}" />
+									<input type="hidden" name="studentId" value="${student.id}" />
+									<input type="hidden" name="vote" value="false" />
+								</form>
+							</div>
+						</div>
+						<br />
+					</c:forEach>
+				</div>
 				<form action="addCafeteriaComment.do" method="POST">
-				<input type="hidden" name="studentId" value="${student.id}"/>
+					<input type="hidden" name="studentId" value="${student.id}" />
 					Comment: <input type="text" name="content" />
 					<button type="submit">Submit Comment</button>
 				</form>
