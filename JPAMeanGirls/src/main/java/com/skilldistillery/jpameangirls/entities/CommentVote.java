@@ -26,7 +26,6 @@ public class CommentVote {
 	@JoinColumn(name="student_id")
 	private Student student;
 	
-	
 	// Methods: 
 	
 	public Student getStudent() {
