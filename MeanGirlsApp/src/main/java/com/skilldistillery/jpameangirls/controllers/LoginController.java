@@ -1,9 +1,11 @@
 package com.skilldistillery.jpameangirls.controllers;
 
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -32,9 +34,10 @@ public class LoginController {
 	  }
 	
 	@RequestMapping(path = {"login.do"}, method=RequestMethod.POST)
-	public ModelAndView loginPost(User user, HttpSession session, RedirectAttributes redirect) {
+	public ModelAndView loginPost(@Valid User user, HttpSession session, RedirectAttributes redirect, Errors errors) {
 		
 		ModelAndView mv = new ModelAndView();
+		
 		if(session.getAttribute("user") != null) {
 			mv.setViewName("redirect:dashboard.do");
 			return mv;
@@ -43,13 +46,24 @@ public class LoginController {
 		User u = userDao.getUserByUserNameAndPassword(user.getUsername(), user.getPassword());
 		
 		if(u != null) {
-		    
+			
 			session.setAttribute("user", u);
 			mv.setViewName("redirect:dashboard.do");
 
 			return mv;
 		}
 		
+		      if(userDao.findUserByUsername(user.getUsername()) == null) {
+		    	  
+		    	  errors.rejectValue("username", "error.username", "username not found");
+		    	  
+		      }
+		
+			  boolean isValidUser = userDao.isValidUser(user);
+			  if(!isValidUser) {
+			    errors.rejectValue("password", "error.password", "Incorrect password");
+			  }
+			  
 		mv.setViewName("login");
 		return mv;
 	}
