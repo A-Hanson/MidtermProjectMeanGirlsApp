@@ -56,16 +56,17 @@
 						<div class="col">Enrolled on: ${student.createdDate}</div>
 					</div>
 					<div class="row container"> 
-						Cliques in
-						<c:forEach var="clique" items="${student.cliques}">
+					<div class="col">Cliques in</div>
+						
+						<c:forEach var="clique" items="${studentCliques}">
 						  <div class="row">
 							${clique.name}
 						  </div>
 						</c:forEach>
 					</div>
 					<div class="row container"> 
-						Badges
-						<c:forEach var="badge" items="${student.badges}">
+					<div class="col">Badges</div>
+						<c:forEach var="badge" items="${studentBadges}">
 						  <div class="row">
 							${badge.name}
 						  </div>
