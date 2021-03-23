@@ -56,7 +56,8 @@
 						<div class="col">Enrolled on: ${student.createdDate}</div>
 					</div>
 					<div class="row container"> 
-						Cliques in
+					<div class="col">Cliques in</div>
+						
 						<c:forEach var="clique" items="${student.cliques}">
 						  <div class="row">
 							${clique.name}
@@ -64,7 +65,7 @@
 						</c:forEach>
 					</div>
 					<div class="row container"> 
-						Badges
+					<div class="col">Badges</div>
 						<c:forEach var="badge" items="${student.badges}">
 						  <div class="row">
 							${badge.name}
