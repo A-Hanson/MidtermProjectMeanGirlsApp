@@ -15,7 +15,7 @@ public class LogoutController {
 		ModelAndView mv = new ModelAndView();
 
 		session.removeAttribute("user");
-		mv.setViewName("home.do");
+		mv.setViewName("index");
 	    return mv;
 	  }
 	
