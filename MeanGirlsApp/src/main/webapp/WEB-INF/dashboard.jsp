@@ -26,6 +26,52 @@
 
 			<c:when test="${user.role=='user' }">
 				<h2>Logged in as USER</h2>
+				<c:if test="${empty student }">
+				<div class="row">
+					<div class="col">
+						<h3>Who are you playing as today?</h3>
+					</div>
+				</div>
+				<c:forEach var="student" items="${user.students }">
+					<div class="row">
+						<div class="col">${student.firstName } ${student.lastName }</div>
+						<div class="col">${student.birthdayDate}</div>
+						<div class="col">${student.imageUrl}</div>
+						<div class="col"><form action="dashboard.do" method="GET">
+						<input type="text" hidden="true" name="studentId" value="${student.id}">
+						<input type="submit" value="Choose Student">
+						</form></div>
+					</div>
+				</c:forEach>
+				</c:if>
+				<c:if test="${not empty student}">
+					<div class="row">
+						<div class="col">${student.firstName } ${student.lastName }</div>
+						<div class="col">Birthday: ${student.birthdayDate}</div>
+						<div class="col">${student.imageUrl}</div>
+					</div>
+					<div class="row">
+						<div class="col">${student.gender }</div>
+						<div class="col">Grade: ${student.gradeLevel}</div>
+						<div class="col">Enrolled on: ${student.createdDate}</div>
+					</div>
+					<div class="row container"> 
+						Cliques in
+						<c:forEach var="clique" items="${student.cliques}">
+						  <div class="row">
+							${clique.name}
+						  </div>
+						</c:forEach>
+					</div>
+					<div class="row container"> 
+						Badges
+						<c:forEach var="badge" items="${student.badges}">
+						  <div class="row">
+							${badge.name}
+						  </div>
+						</c:forEach>
+					</div>
+				</c:if>
 			</c:when>
 
 			<c:when test="${user.role=='admin' }">
@@ -37,19 +83,6 @@
 			</c:otherwise>
 		</c:choose>
 
-		<%-- <div>
-	my cliques -
-	<c:forEach var="clique" items="${student.cliques}">
-		${clique.name}
-	</c:forEach>
-</div> --%>
-
-		<%-- <div>
-	my fetch -
-	<c:forEach var="clique" items="${student.cliques}">
-		${clique.name}
-	</c:forEach>
-</div> --%>
 	</div>
 	<jsp:include page="foot.jsp" />
 </body>
