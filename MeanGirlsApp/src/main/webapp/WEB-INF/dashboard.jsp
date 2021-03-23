@@ -12,64 +12,54 @@
 <body>
 	<jsp:include page="nav.jsp" />
 	<div class="container">
-		<div>
-			nav bar ${student.firstName} ${student.lastName}
-			<form action="logout.do" method="post">
-				<input type="submit" value="Sign out">
-			</form>
-			<form action="logout.do" method="post">
-				<input type="submit" value="Switch Student">
-			</form>
-		</div>
 		<c:out value="${loggedInUser }" />
 		<c:choose>
 
 			<c:when test="${user.role=='user' }">
 				<h2>Logged in as USER</h2>
 				<c:if test="${empty student }">
-				<div class="row">
-					<div class="col">
-						<h3>Who are you playing as today?</h3>
-					</div>
-				</div>
-				<c:forEach var="student" items="${userStudents }">
 					<div class="row">
-						<div class="col">${student.firstName } ${student.lastName }</div>
-						<div class="col">${student.birthdayDate}</div>
-						<div class="col">${student.imageUrl}</div>
-						<div class="col"><form action="dashboard.do" method="GET">
-						<input type="text" hidden="true" name="studentId" value="${student.id}">
-						<input type="submit" value="Choose Student">
-						</form></div>
+						<div class="col">
+							<h3>Who are you playing as today?</h3>
+						</div>
 					</div>
-				</c:forEach>
+					<c:forEach var="student" items="${userStudents }">
+						<div class="row">
+							<div class="col">${student.firstName }${student.lastName }</div>
+							<div class="col">${student.birthdayDate}</div>
+							<div class="col">${student.imageUrl}</div>
+							<div class="col">
+								<form action="dashboard.do" method="GET">
+									<input type="text" hidden="true" name="studentId"
+										value="${student.id}"> <input type="submit"
+										value="Choose Student">
+								</form>
+							</div>
+						</div>
+					</c:forEach>
 				</c:if>
 				<c:if test="${not empty student}">
 					<div class="row">
-						<div class="col">${student.firstName } ${student.lastName }</div>
+						<div class="col">${student.firstName }${student.lastName }</div>
 						<div class="col">Birthday: ${student.birthdayDate}</div>
-						<div class="col">${student.imageUrl}</div>
+						<div class="col">Total Fetch: ${totalFetch}</div>
 					</div>
 					<div class="row">
 						<div class="col">${student.gender }</div>
 						<div class="col">Grade: ${student.gradeLevel}</div>
 						<div class="col">Enrolled on: ${student.createdDate}</div>
 					</div>
-					<div class="row container"> 
-					<div class="col">Cliques in</div>
-						
+					<div class="row container">
+						<div class="col">Cliques in</div>
+
 						<c:forEach var="clique" items="${studentCliques}">
-						  <div class="row">
-							${clique.name}
-						  </div>
+							<div class="row">${clique.name}</div>
 						</c:forEach>
 					</div>
-					<div class="row container"> 
-					<div class="col">Badges</div>
+					<div class="row container">
+						<div class="col">Badges</div>
 						<c:forEach var="badge" items="${studentBadges}">
-						  <div class="row">
-							${badge.name}
-						  </div>
+							<div class="row">${badge.name}</div>
 						</c:forEach>
 					</div>
 				</c:if>
@@ -78,10 +68,10 @@
 			<c:when test="${user.role=='admin' }">
 				<h2>Logged in as ADMIN</h2>
 				<div class="container">
-				<h4>Flagged Comments</h4>
+					<h4>Flagged Comments</h4>
 				</div>
 				<div class="container">
-				<h4>All Comments</h4>
+					<h4>All Comments</h4>
 				</div>
 			</c:when>
 

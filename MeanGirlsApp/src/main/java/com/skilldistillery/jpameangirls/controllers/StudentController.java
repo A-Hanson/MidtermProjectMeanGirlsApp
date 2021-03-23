@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.skilldistillery.jpameangirls.dao.CommentVoteDAO;
 import com.skilldistillery.jpameangirls.dao.StudentDAO;
 import com.skilldistillery.jpameangirls.dao.UserDAOJpaImpl;
 import com.skilldistillery.jpameangirls.entities.Student;
@@ -21,11 +22,14 @@ public class StudentController {
 
 	@Autowired
 	private StudentDAO studentDao;
-	
+
 	@Autowired
 	private UserDAOJpaImpl userDao;
-	
-	@RequestMapping(path= {"dashboard.do"}, method = RequestMethod.GET)
+
+	@Autowired
+	private CommentVoteDAO cvDao;
+
+	@RequestMapping(path = { "dashboard.do" }, method = RequestMethod.GET)
 	public ModelAndView loadDashboard(HttpSession session) {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("dashboard");
@@ -35,13 +39,13 @@ public class StudentController {
 				int userId = user.getId();
 				List<Student> students = userDao.findAllStudentsForUser(userId);
 				session.setAttribute("userStudents", students);
-				
+
 			}
 		}
 		return mv; // (ViewResolver in use)
 	}
-	
-	@RequestMapping(path= {"dashboard.do"}, params="studentId", method = RequestMethod.GET)
+
+	@RequestMapping(path = { "dashboard.do" }, params = "studentId", method = RequestMethod.GET)
 	public ModelAndView loadDashboardWithStudent(HttpSession session, String studentId) {
 		ModelAndView mv = new ModelAndView();
 		int id = Integer.parseInt(studentId);
@@ -49,14 +53,13 @@ public class StudentController {
 		session.setAttribute("student", student);
 		session.setAttribute("studentCliques", studentDao.findAllCliquesForAStudent(id));
 		session.setAttribute("studentBadges", studentDao.findAllBadgesForAStudent(id));
+		mv.addObject("totalFetch", cvDao.studentTotalScore(id));
 		mv.addObject("student", student);
 		mv.setViewName("dashboard");
 		return mv; // (ViewResolver in use)
 	}
-	
-	
-	
-	@RequestMapping(path={"submitNewStudent.do"}, method = RequestMethod.POST)
+
+	@RequestMapping(path = { "submitNewStudent.do" }, method = RequestMethod.POST)
 	public ModelAndView submitNewStudent(Student newStudent, String birthday, String userIdString) {
 		int userId = Integer.parseInt(userIdString);
 		User user = userDao.findUserById(userId);
