@@ -76,18 +76,16 @@ public class CommentVoteDAOImpl implements CommentVoteDAO {
 	@Override
 	public int studentUpVoteTotal(int studentId) {
 //		SELECT COUNT(*) FROM student JOIN comment ON student.id = comment.student_id JOIN comment_vote ON comment.id = comment_vote.comment_id WHERE student.id=1 AND comment_vote.vote=1;
-		String query = "SELECT COUNT(s.comments.commentvotes.id) FROM Student s "
-				+ "JOIN FETCH s.comments JOIN FETCH s.comments.commentvotes"
-				+ "WHERE (s.id=:sid AND s.comments.commentvotes.vote=TRUE)";
+		String query = "SELECT COUNT(cv.id) FROM Student s " + "JOIN s.comments c JOIN c.commentVotes cv "
+				+ "WHERE s.id=:sid AND cv.vote=TRUE";
 		long count = em.createQuery(query, Long.class).setParameter("sid", studentId).getSingleResult();
 		return (int) count;
 	}
 
 	@Override
 	public int studentDownVoteTotal(int studentId) {
-		String query = "SELECT COUNT(s.comments.commentvotes.id) FROM Student s "
-				+ "JOIN FETCH s.comments JOIN FETCH s.comments.commentvotes"
-				+ "WHERE (s.id=:sid AND s.comments.commentvotes.vote=FALSE)";
+		String query = "SELECT COUNT(cv.id) FROM Student s " + "JOIN s.comments c JOIN c.commentVotes cv "
+				+ "WHERE s.id=:sid AND cv.vote=FALSE";
 		long count = em.createQuery(query, Long.class).setParameter("sid", studentId).getSingleResult();
 		return (int) count;
 	}
