@@ -17,8 +17,19 @@
 			<%-- USER LOGGED IN --%>
 			<c:when test="${user.role=='user' }">
 
-				<h3 style="color:#b71c1c;">DEBUG: This displays when USER
-					is logged in</h3>
+				<h3 style="color: #b71c1c;">DEBUG: This displays when USER is
+					logged in</h3>
+
+				<c:forEach var="comment" items="${cafeteriaComments}">	
+				${comment.content}
+				<br />
+				</c:forEach>
+
+				<form action="addCafeteriaComment.do" method="POST">
+				<input type="hidden" name="studentId" value="${student.id}"/>
+					Comment: <input type="text" name="content" />
+					<button type="submit">Submit Comment</button>
+				</form>
 
 			</c:when>
 			<%--------------------%>
@@ -27,8 +38,8 @@
 			<%-- ADMIN LOGGED IN: --%>
 			<c:when test="${user.role=='admin' }">
 
-				<h3 style="color:#b71c1c;">DEBUG: This displays when ADMIN
-					is logged in</h3>
+				<h3 style="color: #b71c1c;">DEBUG: This displays when ADMIN is
+					logged in</h3>
 
 			</c:when>
 			<%----------------------%>
@@ -37,8 +48,8 @@
 			<%-- NO ONE LOGGED IN: --%>
 			<c:otherwise>
 
-				<h3 style="color:#b71c1c;">DEBUG: This displays when NO
-					ONE is logged in</h3>
+				<h3 style="color: #b71c1c;">DEBUG: This displays when NO ONE is
+					logged in</h3>
 
 			</c:otherwise>
 			<%-----------------------%>
