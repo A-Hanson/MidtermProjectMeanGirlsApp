@@ -58,7 +58,7 @@
 					<div class="row container"> 
 					<div class="col">Cliques in</div>
 						
-						<c:forEach var="clique" items="${student.cliques}">
+						<c:forEach var="clique" items="${studentCliques}">
 						  <div class="row">
 							${clique.name}
 						  </div>
@@ -66,7 +66,7 @@
 					</div>
 					<div class="row container"> 
 					<div class="col">Badges</div>
-						<c:forEach var="badge" items="${student.badges}">
+						<c:forEach var="badge" items="${studentBadges}">
 						  <div class="row">
 							${badge.name}
 						  </div>
