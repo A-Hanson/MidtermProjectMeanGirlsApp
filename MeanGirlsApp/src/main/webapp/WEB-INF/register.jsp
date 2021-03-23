@@ -4,10 +4,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<jsp:include page="head.jsp" />
 <title>Register, Girl!!</title>
 </head>
 <body>
-
+	<jsp:include page="nav.jsp" />
 	<h1>Mean Girl Registration Page</h1>
 	<br />
 	<h3>Please enter your information:</h3>
@@ -47,5 +48,6 @@
 		</table>
 		<button type="submit" class="btn btn-primary">Submit</button>
 	</form>
+	<jsp:include page="foot.jsp" />
 </body>
 </html>

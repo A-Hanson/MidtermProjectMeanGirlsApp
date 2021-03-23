@@ -1,8 +1,13 @@
 @charset "UTF-8";
 
 body {
-	color: white;
 	padding-top: 67px;
+	font-family: Helvetica Neue, Helvetica, Arial, -apple-system,
+		BlinkMacSystemFont, sans-serif;
+}
+
+#front-page {
+	color: white;
 	font-family: Helvetica Neue, Helvetica, Arial, -apple-system,
 		BlinkMacSystemFont, sans-serif;
 	padding-top: 56px;
@@ -37,9 +42,8 @@ nav {
 }
 
 .left-bar {
-	background-color: #ee4498;	
+	background-color: #ee4498;
 }
-
 
 #index-photo {
 	transition: opacity .15s ease-in;
@@ -53,10 +57,9 @@ nav {
 	max-width: 100%;
 }
 
-#index-background { 
+#index-background {
 	background-image: url("/resources/images/mean-girls-4-posing.jpg");
 	background-repeat: no-repeat;
 	background-position: left top;
 	height: 100vh;
-	
 }
