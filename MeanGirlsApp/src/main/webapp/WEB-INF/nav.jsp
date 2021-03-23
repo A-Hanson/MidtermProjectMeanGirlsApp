@@ -2,7 +2,7 @@
 
 <nav class="navbar navbar-expand-md navbar-dark fixed-top">
 	<div class="container">
-		<a class="navbar-brand" href="#">MEAN GIRLS</a>
+		<a class="navbar-brand" href="home.do">MEAN GIRLS</a>
 
 		<button type="button" class="navbar-toggler" data-toggle="collapse"
 			data-target="navbar">
