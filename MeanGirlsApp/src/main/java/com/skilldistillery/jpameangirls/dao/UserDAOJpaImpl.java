@@ -8,6 +8,7 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
 
+import com.skilldistillery.jpameangirls.entities.Student;
 import com.skilldistillery.jpameangirls.entities.User;
 
 @Service
@@ -54,6 +55,15 @@ public class UserDAOJpaImpl implements UserDAO {
 	public User findUserByEmail(String email) {
 		String query = "SELECT u FROM User u WHERE email = :email";
 		return em.createQuery(query, User.class).setParameter("email", email).getResultList().get(0);
+	}
+	
+
+	@Override
+	public List<Student> findAllStudentsForUser(int userId) {
+		String query = "SELECT u FROM User u JOIN FETCH u.students WHERE u.id=:uId";
+		User user = em.createQuery(query, User.class).setParameter("uId", userId).getResultList().get(0);
+		List<Student> students = user.getStudents();
+		return students;
 	}
 
 	@Override
@@ -128,4 +138,5 @@ public class UserDAOJpaImpl implements UserDAO {
 		
 		return false;
 	}
+
 }

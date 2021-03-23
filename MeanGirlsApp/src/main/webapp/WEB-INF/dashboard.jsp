@@ -32,7 +32,7 @@
 						<h3>Who are you playing as today?</h3>
 					</div>
 				</div>
-				<c:forEach var="student" items="${user.students }">
+				<c:forEach var="student" items="${userStudents }">
 					<div class="row">
 						<div class="col">${student.firstName } ${student.lastName }</div>
 						<div class="col">${student.birthdayDate}</div>
@@ -76,6 +76,12 @@
 
 			<c:when test="${user.role=='admin' }">
 				<h2>Logged in as ADMIN</h2>
+				<div class="container">
+				<h4>Flagged Comments</h4>
+				</div>
+				<div class="container">
+				<h4>All Comments</h4>
+				</div>
 			</c:when>
 
 			<c:otherwise>
