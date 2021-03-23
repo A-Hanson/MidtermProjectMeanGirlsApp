@@ -43,20 +43,20 @@ public class StudentDAOImpl implements StudentDAO{
 	}
 	
 	@Override
-	public List<Clique> findAllCliquesForAStudent(Student student) {
+	public List<Clique> findAllCliquesForAStudent(int studentId) {
 		String query = "SELECT s.cliques FROM Student s WHERE s.id=:sId";
 		List<Object> results = em.createQuery(query, Object.class)
-				.setParameter("sId", student.getId())
+				.setParameter("sId", studentId)
 				.getResultList();
 		List<Clique> cliques = new ArrayList<>();
 		results.stream().forEach(x -> cliques.add((Clique) x));
 		return cliques;
 	}
 	@Override
-	public List<Badge> findAllBadgesForAStudent(Student student) {
-		String query = "";
+	public List<Badge> findAllBadgesForAStudent(int studentId) {
+		String query = "SELECT s.badges FROM Student s WHERE s.id=:sId";
 		List<Object> results = em.createQuery(query, Object.class)
-				.setParameter("sId", student.getId())
+				.setParameter("sId", studentId)
 				.getResultList();
 		List<Badge> badges = new ArrayList<>();
 		results.stream().forEach(x -> badges.add((Badge) x));

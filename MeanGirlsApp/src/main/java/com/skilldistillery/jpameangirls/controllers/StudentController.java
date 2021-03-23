@@ -43,8 +43,8 @@ public class StudentController {
 		int id = Integer.parseInt(studentId);
 		Student student = studentDao.findById(id);
 		session.setAttribute("student", student);
-		session.setAttribute("studentCliques", studentDao.findAllCliquesForAStudent(student));
-		session.setAttribute("studentBadges", studentDao.findAllBadgesForAStudent(student));
+		session.setAttribute("studentCliques", studentDao.findAllCliquesForAStudent(id));
+		session.setAttribute("studentBadges", studentDao.findAllBadgesForAStudent(id));
 		mv.addObject("student", student);
 		mv.setViewName("dashboard");
 		return mv; // (ViewResolver in use)

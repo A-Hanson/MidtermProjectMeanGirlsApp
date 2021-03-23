@@ -13,8 +13,8 @@ public interface StudentDAO {
 	Student findById(int studentId);
 	
 	List<Student> findAll();
-	List<Clique> findAllCliquesForAStudent(Student student);
-	List<Badge> findAllBadgesForAStudent(Student student);
+	List<Clique> findAllCliquesForAStudent(int studentId);
+	List<Badge> findAllBadgesForAStudent(int studentId);
 	
 //	UPDATE
 	Student update(int id, Student student);
