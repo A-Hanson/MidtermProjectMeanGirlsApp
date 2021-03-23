@@ -38,13 +38,21 @@ public class UserDAOJpaImpl implements UserDAO {
 
 	@Override
 	public User findUserByUsername(String username) {
-		String query = "SELECT u FROM User u WHERE u.username LIKE :username";
-		return em.createQuery(query, User.class).setParameter("username", username).getResultList().get(0);
+		List<User> users = findAllUsers();
+		User u = null;
+		
+		for (User user : users) {
+			if(user.getUsername().equals(username)) {
+				u = user;
+			}
+		}
+		
+		return u;
 	}
 
 	@Override
 	public User findUserByEmail(String email) {
-		String query = "SELECT u FROM User u WHERE email LIKE :email";
+		String query = "SELECT u FROM User u WHERE email = :email";
 		return em.createQuery(query, User.class).setParameter("email", email).getResultList().get(0);
 	}
 
@@ -109,13 +117,10 @@ public class UserDAOJpaImpl implements UserDAO {
 	public boolean isValidUser(User u) {
 		List<User> users = findAllUsers();
 		
-		if (findUserByUsername(u.getUsername()) == null) {
-			return false;
-		}
 		
 		for (User user : users) {
 			
-			if (u.getPassword().equals(user.getPassword())){
+			if (user.getPassword().equals(u.getPassword())){
 				return true;
 			}
 			
