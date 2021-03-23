@@ -24,7 +24,7 @@
 						<li class="nav-item"><a class="nav-link active"
 							href="XXXXXXXXXXXXXXXXTODO">Cafeteria</a></li>
 						<li class="nav-item"><a class="nav-link active"
-							href="XXXXXXXXXXXXXXXXTODO">Log Out</a></li>
+							href="logout.do">Log Out</a></li>
 					</ul>
 				</div>
 			</c:when>
@@ -39,7 +39,7 @@
 						<li class="nav-item"><a class="nav-link active"
 							href="XXXXXXXXXXXXXXXXTODO">Admin Dashboard</a></li>
 						<li class="nav-item"><a class="nav-link active"
-							href="XXXXXXXXXXXXXXXXTODO">Log Out</a></li>
+							href="logout.do">Log Out</a></li>
 					</ul>
 				</div>
 			</c:when>

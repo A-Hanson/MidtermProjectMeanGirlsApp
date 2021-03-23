@@ -1,8 +1,10 @@
 package com.skilldistillery.jpameangirls.entities;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -41,12 +43,66 @@ public class Comment {
 	
 	@OneToMany(mappedBy="comment")
 	private List<CommentVote> commentVotes;
+	
+	@ManyToOne(cascade={CascadeType.ALL})
+	@JoinColumn(name = "replying_to")
+	private Comment replyingTo;
+	
+	@OneToMany(mappedBy="replyingTo")
+	private List<Comment> replies;
 
 //	Constructor
 	public Comment() {
 	}
 
 //	Methods
+	
+	/*
+	 *  Note: I don't think there will ever be a case where 
+	 *  	a comment R would be a reply to comment A, 
+	 *  	and then later switch to being a reply of Comment B. 
+	 *  	I didn't write for this scenario. 
+	 */
+	public void addReply(Comment comment) {
+		
+		if(replies == null) {
+			replies = new ArrayList<>();
+		}
+		
+		if(!replies.contains(comment)) {
+			replies.add(comment);
+			comment.setReplyingTo(this);
+		}
+	}
+	
+	public void removeReply(Comment reply) {
+		
+		if(replies == null) {
+			replies = new ArrayList<>();
+		}
+		
+		if(replies.contains(reply)) {
+			replies.remove(reply);
+			reply.replyingTo = null;
+		}
+	}
+	
+	public Comment getReplyingTo() {
+		return replyingTo;
+	}
+
+	public void setReplyingTo(Comment replyingTo) {
+		this.replyingTo = replyingTo;
+	}
+
+	public List<Comment> getReplies() {
+		return replies;
+	}
+
+	public void setReplies(List<Comment> replies) {
+		this.replies = replies;
+	}
+
 	public int getId() {
 		return id;
 	}

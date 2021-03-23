@@ -91,5 +91,14 @@ class CommentTest {
 	
 		
 	}
+	
+	@Test
+	@DisplayName("Test Comment to replies mapping")
+	void test5() {
+//		note: this will fail until we add a reply to the sql file.
+		assertNotNull(comment);
+		assertNotNull(comment.getReplies());
+		assertTrue(comment.getReplies().size() > 0);
+	}
 
 }
