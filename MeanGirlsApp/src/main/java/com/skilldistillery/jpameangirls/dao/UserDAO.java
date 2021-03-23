@@ -25,4 +25,6 @@ public interface UserDAO {
 	
 	public User getUserByUserNameAndPassword(String username, String password);
 	public boolean isValidUser(User u) ;
+	public boolean isEmailUnique(String email);
+	public boolean isUsernameUnique(String username);
 }

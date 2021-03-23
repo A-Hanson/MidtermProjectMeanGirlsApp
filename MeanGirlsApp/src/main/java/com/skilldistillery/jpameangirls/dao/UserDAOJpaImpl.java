@@ -138,5 +138,31 @@ public class UserDAOJpaImpl implements UserDAO {
 		
 		return false;
 	}
+	
+	@Override
+	public boolean isEmailUnique(String email) {
+		
+		String query= "SELECT User from User WHERE email = :email";
+		User user = em.createQuery(query, User.class).setParameter("email", email).getResultList().get(0);
+		
+		if(user == null) {
+			return true;
+		}
+		
+	  return false;
+	}
+
+	@Override
+	public boolean isUsernameUnique(String username) {
+		String query= "SELECT User from User WHERE username = :username";
+		User user = em.createQuery(query, User.class).setParameter("username", username).getResultList().get(0);
+		
+		if(user == null) {
+			return true;
+		}
+		
+		
+		return false;
+	}
 
 }
