@@ -51,11 +51,48 @@ CREATE TABLE IF NOT EXISTS `student` (
   `created_date` DATETIME NULL,
   `birthday_date` DATE NULL,
   `image_url` VARCHAR(10000) NULL,
+  `enabled` TINYINT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_character_user_idx` (`user_id` ASC),
   CONSTRAINT `fk_character_user`
     FOREIGN KEY (`user_id`)
     REFERENCES `user` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `character_property_details`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `character_property_details` ;
+
+CREATE TABLE IF NOT EXISTS `character_property_details` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(45) NOT NULL,
+  `description` VARCHAR(100) NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `character_properties`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `character_properties` ;
+
+CREATE TABLE IF NOT EXISTS `character_properties` (
+  `character_id` INT NOT NULL,
+  `character_property_details_id` INT NOT NULL,
+  INDEX `fk_character_properties_character1_idx` (`character_id` ASC),
+  INDEX `fk_character_properties_character_property_details1_idx` (`character_property_details_id` ASC),
+  CONSTRAINT `fk_character_properties_character1`
+    FOREIGN KEY (`character_id`)
+    REFERENCES `student` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_character_properties_character_property_details1`
+    FOREIGN KEY (`character_property_details_id`)
+    REFERENCES `character_property_details` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -72,6 +109,7 @@ CREATE TABLE IF NOT EXISTS `clique` (
   `min_fetch_level` INT NULL,
   `image_url` VARCHAR(10000) NULL,
   `description` VARCHAR(100) NULL,
+  `enabled` TINYINT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -146,6 +184,7 @@ CREATE TABLE IF NOT EXISTS `badge` (
   `name` VARCHAR(45) NOT NULL,
   `description` VARCHAR(1000) NULL,
   `image_url` VARCHAR(1000) NULL,
+  `enabled` TINYINT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -168,6 +207,55 @@ CREATE TABLE IF NOT EXISTS `student_badge` (
   CONSTRAINT `fk_character_badge_badge1`
     FOREIGN KEY (`badge_id`)
     REFERENCES `badge` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `burn_book_page`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `burn_book_page` ;
+
+CREATE TABLE IF NOT EXISTS `burn_book_page` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `c_id` INT NOT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_burn_book_page_character1_idx` (`c_id` ASC),
+  CONSTRAINT `fk_burn_book_page_character1`
+    FOREIGN KEY (`c_id`)
+    REFERENCES `student` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `cafeteria_comment`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `cafeteria_comment` ;
+
+CREATE TABLE IF NOT EXISTS `cafeteria_comment` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `student_id` INT NOT NULL,
+  `content` TEXT(1000) NULL,
+  `created_date` DATETIME NULL,
+  `last_edited` DATETIME NULL,
+  `fetch_score` INT NULL,
+  `visible` TINYINT NULL,
+  `replying_to` INT NULL,
+  `flagged` TINYINT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_cafeteria_comment_character1_idx` (`student_id` ASC),
+  INDEX `fk_cafeteria_comment_cafeteria_comment1_idx` (`replying_to` ASC),
+  CONSTRAINT `fk_cafeteria_comment_character1`
+    FOREIGN KEY (`student_id`)
+    REFERENCES `student` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_cafeteria_comment_cafeteria_comment1`
+    FOREIGN KEY (`replying_to`)
+    REFERENCES `cafeteria_comment` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -281,7 +369,8 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `meangirlsdb`;
-INSERT INTO `student` (`id`, `user_id`, `first_name`, `last_name`, `gender`, `grade_level`, `created_date`, `birthday_date`, `image_url`) VALUES (1, 2, 'Regina', 'George', 'Female', 11, '2020-03-19 00:00:00', '1991-01-01', 'https://smulook.com/wp-content/uploads/2020/09/regina-on-the-phone.jpg');
+INSERT INTO `student` (`id`, `user_id`, `first_name`, `last_name`, `gender`, `grade_level`, `created_date`, `birthday_date`, `image_url`, `enabled`) VALUES (1, 2, 'Regina', 'George', 'Female', 11, '2020-03-19 00:00:00', '1991-01-01', 'https://smulook.com/wp-content/uploads/2020/09/regina-on-the-phone.jpg', 1);
+INSERT INTO `student` (`id`, `user_id`, `first_name`, `last_name`, `gender`, `grade_level`, `created_date`, `birthday_date`, `image_url`, `enabled`) VALUES (2, 2, 'Cady', 'Lohan', 'Female', 11, '2020-03-23 00:00:00', '1990-04-04', NULL, 1);
 
 COMMIT;
 
@@ -291,7 +380,8 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `meangirlsdb`;
-INSERT INTO `clique` (`id`, `name`, `min_fetch_level`, `image_url`, `description`) VALUES (1, 'Cafeteria', -500, NULL, 'Place to eat and talk');
+INSERT INTO `clique` (`id`, `name`, `min_fetch_level`, `image_url`, `description`, `enabled`) VALUES (1, 'Cafeteria', -500, NULL, 'Place to eat and talk', 1);
+INSERT INTO `clique` (`id`, `name`, `min_fetch_level`, `image_url`, `description`, `enabled`) VALUES (2, 'The Plastics', 10, NULL, 'The Plastics are the most popular girls of North Shore High School!', 1);
 
 COMMIT;
 
@@ -302,6 +392,7 @@ COMMIT;
 START TRANSACTION;
 USE `meangirlsdb`;
 INSERT INTO `comment` (`id`, `content`, `student_id`, `created_date`, `last_edited`, `enabled`, `replying_to`, `flagged`, `clique_id`) VALUES (1, 'Hi everyone! i cant help that im so popular', 1, '2020-03-19 00:00:00', '2020-03-19 00:00:00', 1, NULL, 0, 1);
+INSERT INTO `comment` (`id`, `content`, `student_id`, `created_date`, `last_edited`, `enabled`, `replying_to`, `flagged`, `clique_id`) VALUES (2, 'We are so fetch!', 2, '2020-03-23 00:00:00', '2020-03-23 00:00:00', 1, 1, 0, 1);
 
 COMMIT;
 
@@ -321,7 +412,7 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `meangirlsdb`;
-INSERT INTO `badge` (`id`, `name`, `description`, `image_url`) VALUES (1, 'First Day', 'First day at North Shore High School', 'https://smulook.com/wp-content/uploads/2020/09/regina-on-the-phone.jpg');
+INSERT INTO `badge` (`id`, `name`, `description`, `image_url`, `enabled`) VALUES (1, 'First Day', 'First day at North Shore High School', 'https://smulook.com/wp-content/uploads/2020/09/regina-on-the-phone.jpg', NULL);
 
 COMMIT;
 
@@ -352,6 +443,7 @@ COMMIT;
 START TRANSACTION;
 USE `meangirlsdb`;
 INSERT INTO `comment_vote` (`id`, `vote`, `student_id`, `comment_id`) VALUES (1, 1, 1, 1);
+INSERT INTO `comment_vote` (`id`, `vote`, `student_id`, `comment_id`) VALUES (2, 1, 2, 1);
 
 COMMIT;
 
