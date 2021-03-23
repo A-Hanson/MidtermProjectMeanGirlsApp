@@ -2,7 +2,7 @@ package com.skilldistillery.jpameangirls.dao;
 
 import java.util.List;
 
-
+import com.skilldistillery.jpameangirls.entities.Student;
 import com.skilldistillery.jpameangirls.entities.User;
 
 public interface UserDAO {
@@ -15,6 +15,7 @@ public interface UserDAO {
 	public List<User> findAllUsers();
 	public User findUserByUsername(String username);
 	public User findUserByEmail(String email);
+	public List<Student> findAllStudentsForUser(int userId);
 	
 //////// UPDATE
 	public User updateUser(int id, User user);

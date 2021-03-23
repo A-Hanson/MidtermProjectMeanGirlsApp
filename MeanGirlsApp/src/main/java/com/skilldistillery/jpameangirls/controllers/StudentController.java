@@ -1,6 +1,7 @@
 package com.skilldistillery.jpameangirls.controllers;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
@@ -25,9 +26,14 @@ public class StudentController {
 	private UserDAOJpaImpl userDao;
 	
 	@RequestMapping(path= {"dashboard.do"}, method = RequestMethod.GET)
-	public ModelAndView loadDashboard() {
+	public ModelAndView loadDashboard(HttpSession session) {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("dashboard");
+		if (session.getAttribute("user") != null) {
+			int userId = ((User) session.getAttribute("user")).getId();
+			List<Student> students = userDao.findAllStudentsForUser(userId);
+			session.setAttribute("userStudents", students);
+		}
 		return mv; // (ViewResolver in use)
 	}
 	
