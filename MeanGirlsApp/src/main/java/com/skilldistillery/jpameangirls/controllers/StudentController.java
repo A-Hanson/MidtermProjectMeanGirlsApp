@@ -2,6 +2,8 @@ package com.skilldistillery.jpameangirls.controllers;
 
 import java.time.LocalDate;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,8 +27,17 @@ public class StudentController {
 	@RequestMapping(path= {"dashboard.do"}, method = RequestMethod.GET)
 	public ModelAndView loadDashboard() {
 		ModelAndView mv = new ModelAndView();
-//		Student student = new Student();
-//		mv.addObject("student", student);
+		mv.setViewName("dashboard");
+		return mv; // (ViewResolver in use)
+	}
+	
+	@RequestMapping(path= {"dashboard.do"}, params="studentId", method = RequestMethod.GET)
+	public ModelAndView loadDashboardWithStudent(HttpSession session, String studentId) {
+		ModelAndView mv = new ModelAndView();
+		int id = Integer.parseInt(studentId);
+		Student student = studentDao.findById(id);
+		session.setAttribute("student", student);
+		mv.addObject("student", student);
 		mv.setViewName("dashboard");
 		return mv; // (ViewResolver in use)
 	}

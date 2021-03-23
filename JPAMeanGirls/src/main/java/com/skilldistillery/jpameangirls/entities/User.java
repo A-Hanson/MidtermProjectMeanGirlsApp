@@ -14,44 +14,43 @@ import javax.persistence.OneToMany;
 public class User {
 
 	// state data
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
+
 	private String email;
-	
-	
+
 	private String password;
-	
-	
+
 	private String username;
 
-	@Column(name="first_name")
+	@Column(name = "first_name")
 	private String firstName;
-	
-	
-	@Column(name="last_name")
+
+	@Column(name = "last_name")
 	private String lastName;
-	
+
 	private Boolean enabled;
-	
+
 	private String role;
-	
-	@Column(name="birthday_date")
+
+	@Column(name = "birthday_date")
 	private LocalDateTime birthdayDate;
-	
-	@Column(name="created_date")
+
+	@Column(name = "created_date")
 	private LocalDateTime createdDate;
 
 	private String gender;
-	
-	  @OneToMany(mappedBy="user")
-	  private List<Student> students;
-	
+
+	@OneToMany(mappedBy = "user")
+	private List<Student> students;
+
 	// constructors
-	  public User() {}
-	  
+	public User() {
+	}
+
+	// getters and setters
 	public List<Student> getStudents() {
 		return students;
 	}
@@ -60,9 +59,6 @@ public class User {
 		this.students = students;
 	}
 
-	
-	//getters and setters
-	
 	public int getId() {
 		return id;
 	}
@@ -150,7 +146,7 @@ public class User {
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
-	
+
 	// other methods
 
 	@Override
@@ -179,6 +175,5 @@ public class User {
 	public String toString() {
 		return "User [id=" + id + ", email=" + email + "]";
 	}
-	
-	
+
 }
