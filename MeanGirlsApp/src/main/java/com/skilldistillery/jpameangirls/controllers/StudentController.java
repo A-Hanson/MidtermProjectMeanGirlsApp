@@ -60,7 +60,7 @@ public class StudentController {
 	}
 
 	@RequestMapping(path = { "submitNewStudent.do" }, method = RequestMethod.POST)
-	public ModelAndView submitNewStudent(Student newStudent, String birthday, String userIdString) {
+	public ModelAndView submitNewStudent(HttpSession session, Student newStudent, String birthday, String userIdString) {
 		int userId = Integer.parseInt(userIdString);
 		User user = userDao.findUserById(userId);
 		newStudent.setUser(user);
@@ -70,6 +70,7 @@ public class StudentController {
 		newStudent.setBirthdayDate(birthdayDate);
 		studentDao.create(newStudent);
 		ModelAndView mv = new ModelAndView();
+		session.setAttribute("student", newStudent);
 		mv.addObject("student", newStudent);
 		mv.setViewName("dashboard");
 		return mv; // (ViewResolver in use)
