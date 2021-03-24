@@ -12,7 +12,6 @@ import com.skilldistillery.jpameangirls.dao.CliqueDAO;
 import com.skilldistillery.jpameangirls.dao.CommentDAO;
 import com.skilldistillery.jpameangirls.dao.CommentVoteDAO;
 import com.skilldistillery.jpameangirls.dao.StudentDAO;
-import com.skilldistillery.jpameangirls.dao.UserDAO;
 import com.skilldistillery.jpameangirls.entities.Clique;
 import com.skilldistillery.jpameangirls.entities.Comment;
 import com.skilldistillery.jpameangirls.entities.Student;

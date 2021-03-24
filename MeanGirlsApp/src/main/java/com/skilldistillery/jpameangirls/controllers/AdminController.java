@@ -23,7 +23,7 @@ public class AdminController {
 	@RequestMapping(path = "getUser.do")
 	public ModelAndView getAllUsers() {
 		ModelAndView mv = new ModelAndView();
-		mv.addObject("games", userDao.findAllUsers());
+		mv.addObject("users", userDao.findAllUsers());
 		mv.setViewName("allUsers");
 		return mv;
 	}
@@ -42,11 +42,10 @@ public class AdminController {
 		ModelAndView mv = new ModelAndView();
         mv.addObject("username", username);
 		mv.addObject("user", userDao.findUserByUsername(username));
-		mv.setViewName("allGames");
+		mv.setViewName("singleUser");
 
 		return mv;
 	}
 		
-
 	
 }
