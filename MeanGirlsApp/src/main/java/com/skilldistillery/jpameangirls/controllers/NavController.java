@@ -1,5 +1,7 @@
 package com.skilldistillery.jpameangirls.controllers;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,7 +33,7 @@ public class NavController {
 	}
 
 	@RequestMapping(path = "goToBurnBook.do")
-	public ModelAndView goToBurnBook() {
+	public ModelAndView goToBurnBook(HttpSession session) {
 		
 		ModelAndView mv = new ModelAndView();
 		
