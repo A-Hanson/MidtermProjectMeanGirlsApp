@@ -21,6 +21,8 @@
    <!-- Now I can access safely to "myAttribute" -->
 </C:if>
 		 --%>	
+		 TEST: fn - ${student.firstName }, ln- ${student.lastName }
+		 ${comment.createdDate }
 
 				<h3 style="color: #b71c1c;">DEBUG: This displays when USER is
 					logged in</h3>
@@ -30,7 +32,7 @@
 							<div class="col-6">${comment.content}</div>
 							<div class="col-2">
 								<form action="upVote.do" method="POST">
-									<button style="">That's So Fetch!!</button>
+									<button>That's So Fetch!!</button>
 									<input type="hidden" name="commentId" value="${comment.id}" />
 									<input type="hidden" name="studentId" value="${student.id}" />
 									<input type="hidden" name="vote" value="true" />
