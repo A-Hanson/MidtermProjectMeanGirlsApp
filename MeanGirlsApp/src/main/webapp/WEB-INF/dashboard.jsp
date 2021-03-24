@@ -16,34 +16,47 @@
 		<c:choose>
 
 			<c:when test="${user.role=='user' }">
-				<h2>Logged in as USER</h2>
+				<!-- h5 style="color: #b71c1c;">DEBUG: This displays when USER is
+					logged in</h5-->
 				<c:if test="${empty student }">
 					<div class="row">
 						<div class="col">
-							<h3>Who are you playing as today?</h3>
+							<h5>Please choose a character:</h5>
 						</div>
 					</div>
+					<hr />
 					<c:forEach var="student" items="${userStudents }">
-						<div class="row">
-							<div class="col">${student.firstName }${student.lastName }</div>
-							<div class="col">${student.birthdayDate}</div>
-							<c:if test="${ not empty student.imageUrl}">
-							<div class="col">  <img width="100px" height="100px"  src="${student.imageUrl}"></div></c:if>
+						<div class="row align-items-center">
+							<div class="col d-flex justify-content-center">
+								<c:if test="${ not empty student.imageUrl}">
+									<img style="max-width: 100px" class="img-thumbnail"
+										src="${student.imageUrl}" />
+								</c:if>
+							</div>
 							<div class="col">
+								Name: ${student.firstName }&nbsp;${student.lastName } <br />
+								Birthday: ${student.birthdayDate}
+							</div>
+							<div class="col">
+								Total Fetch:
+								<h5 style="color: #b71c1c;">xx</h5>
+							</div>
+							<div class="col d-flex justify-content-center">
 								<form action="dashboard.do" method="GET">
 									<input type="text" hidden="true" name="studentId"
-										value="${student.id}"> <input type="submit"
-										value="Choose Student">
+										value="${student.id}">
+									<button type="submit" class="btn-primary">Choose
+										Student</button>
 								</form>
 							</div>
 						</div>
+						<hr />
 					</c:forEach>
 				</c:if>
 				<c:if test="${not empty student}">
-				<form action="changeStudent.do" method="GET">
-									 <input type="submit"
-										value="Change Student">
-								</form>
+					<form action="changeStudent.do" method="GET">
+						<input type="submit" value="Change Student">
+					</form>
 					<div class="row">
 						<div class="col">${student.firstName }${student.lastName }</div>
 						<div class="col">Birthday: ${student.birthdayDate}</div>
@@ -81,7 +94,7 @@
 			</c:when>
 
 			<c:otherwise>
-				<h2>NOT LOGGED IN</h2>
+				<h2>Please log in to see your dashboard!</h2>
 			</c:otherwise>
 		</c:choose>
 

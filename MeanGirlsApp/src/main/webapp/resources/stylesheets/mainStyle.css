@@ -63,3 +63,8 @@ nav {
 	background-position: left top;
 	height: 100vh;
 }
+
+.btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
+	background-color: #ee4498 !important;
+	border-color: #ee4498 !important;
+}
