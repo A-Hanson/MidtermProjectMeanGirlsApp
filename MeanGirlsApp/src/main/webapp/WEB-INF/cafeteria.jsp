@@ -27,7 +27,7 @@
 				<div class="table">
 					<c:forEach var="comment" items="${cafeteriaComments}">
 						<div class="row">
-							<div class="col-7">${comment.content}</div>
+							<div class="col-6">${comment.content}</div>
 							<div class="col-2">
 								<form action="upVote.do" method="POST">
 									<button style="">That's So Fetch!!</button>
