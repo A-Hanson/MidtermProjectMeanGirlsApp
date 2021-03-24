@@ -83,7 +83,7 @@
 						<div class="col-6 align-items-left">
 							<h2 style="color: darkmagenta;">${student.firstName }&nbsp;${student.lastName }</h2>
 							<h5 style="color: darkmagenta;">Total Fetch:</h5>
-							<em style="color: #b71c1c;">xx</em>
+							<em style="color: #b71c1c;">${totalFetch }</em>
 
 						</div>
 						<div class="col-4 align-items-left">
