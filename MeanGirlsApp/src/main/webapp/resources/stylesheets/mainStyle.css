@@ -6,6 +6,7 @@ body {
 		BlinkMacSystemFont, sans-serif;
 }
 
+
 #front-page {
 	color: white;
 	font-family: Helvetica Neue, Helvetica, Arial, -apple-system,
@@ -68,8 +69,4 @@ nav {
 	{
 	background-color: #ee4498 !important;
 	border-color: #ee4498 !important;
-}
-
-#updateCommentTextBox {
-	
 }
