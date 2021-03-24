@@ -61,14 +61,13 @@ public class CommentController {
 	}
 
 	@RequestMapping(path = "vote.do", method = RequestMethod.POST)
-	public ModelAndView upVote(String studentId, String commentId, String cliqueId, Boolean vote, RedirectAttributes redir) {
+	public ModelAndView vote(String studentId, String commentId, String cliqueId, Boolean vote, RedirectAttributes redir) {
 		ModelAndView mv = new ModelAndView();
 		int sId = Integer.parseInt(studentId);
 		Student student = studentDao.findById(sId);
 		int cId = Integer.parseInt(commentId);
 		Comment comment = commentDao.findById(cId);
 		cvDao.create(student, comment, vote);
-		System.out.println("=================" + cliqueId + "=================");
 		int clId = Integer.parseInt(cliqueId);
 		switch (clId) {
 			case 1:
@@ -83,19 +82,6 @@ public class CommentController {
 		return mv;
 	}
 
-//	@RequestMapping(path = "downVote.do", method = RequestMethod.POST)
-//	public ModelAndView downVote(String studentId, String commentId, String cliqueId, Boolean vote, RedirectAttributes redir) {
-//		ModelAndView mv = new ModelAndView();
-//		int intSId = Integer.parseInt(studentId);
-//		Student student = studentDao.findById(intSId);
-//		int intCId = Integer.parseInt(commentId);
-//		Comment comment = commentDao.findById(intCId);
-//		cvDao.create(student, comment, vote);
-//		
-//		
-//		mv.setViewName("redirect:cafeteriaforum.do");
-//		return mv;
-//	}
 	
 	@RequestMapping(path="deleteComment.do", method = RequestMethod.POST)
 	public String deleteCafeteriaComment(String commentId, String cliqueId, RedirectAttributes redir, Model model) {
