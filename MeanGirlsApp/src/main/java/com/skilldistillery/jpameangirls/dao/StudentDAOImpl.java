@@ -25,6 +25,10 @@ public class StudentDAOImpl implements StudentDAO{
 	@Override
 	public Student create(Student student) {
 		student.setCreatedDate(LocalDateTime.now());
+		Badge newStudentBadge = em.find(Badge.class, 1);
+		Clique cafeteria = em.find(Clique.class, 1);
+		student.addBadge(newStudentBadge);
+		student.addClique(cafeteria);
 		em.persist(student);
 		em.flush();
 		return student;
