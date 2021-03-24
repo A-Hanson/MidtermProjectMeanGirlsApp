@@ -6,7 +6,6 @@ body {
 		BlinkMacSystemFont, sans-serif;
 }
 
-
 #front-page {
 	color: white;
 	font-family: Helvetica Neue, Helvetica, Arial, -apple-system,
@@ -32,10 +31,26 @@ nav {
 	border-bottom-color: white;
 }
 
+aside {
+	margin-right: 2rem;
+	margin-left: 2rem;
+	text-align: center;
+}
+
 .navbar-brand {
 	font-weight: 500;
 	color: white;
 }
+
+a:link, a:visited {
+	color: yellow;
+	text-decoration:none;
+}
+
+a:hover, a:active {
+	color: white;
+	text-decoration:none;
+} 
 
 .nav-item {
 	color: white;
