@@ -68,6 +68,7 @@ public class CommentController {
 		int cId = Integer.parseInt(commentId);
 		Comment comment = commentDao.findById(cId);
 		cvDao.create(student, comment, vote);
+		System.out.println("=================" + cliqueId + "=================");
 		int clId = Integer.parseInt(cliqueId);
 		switch (clId) {
 			case 1:
@@ -75,6 +76,7 @@ public class CommentController {
 				break;
 			case 2:
 				mv.setViewName("redirect:plasticsforum.do");
+				redir.addFlashAttribute("studentId", studentId);
 				break;
 				
 		}
@@ -99,7 +101,7 @@ public class CommentController {
 	public String deleteCafeteriaComment(String commentId, String cliqueId, RedirectAttributes redir, Model model) {
 		int cId = Integer.parseInt(commentId);
 		commentDao.softDelete(cId);
-		String page = "";
+		String page = "redirect:cafeteriaforum.do";
 		int clId = Integer.parseInt(cliqueId);
 		switch (clId) {
 			case 1:
@@ -127,7 +129,7 @@ public class CommentController {
 	public String updateCafteriaComment(String id, String cliqueId, Comment comment, RedirectAttributes redir) {
 		int commentId = Integer.parseInt(id);
 		commentDao.update(commentId, comment);
-		String page = "";
+		String page = "redirect:cafeteriaforum.do";
 		int clId = Integer.parseInt(cliqueId);
 		switch (clId) {
 			case 1:
