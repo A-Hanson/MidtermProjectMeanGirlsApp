@@ -52,6 +52,8 @@
 						<li style="color:yellow;">DEBUG: ADMIN LOGGED IN</li>
 						<li class="nav-item"><a class="nav-link active"
 							href="dashboard.do">Admin Dashboard</a></li>
+							<li class="nav-item"><a class="nav-link active"
+							href="goToCafeteria.do">Cafeteria</a></li>
 						<li class="nav-item"><a class="nav-link active"
 							href="logout.do">Log Out</a></li>
 					</ul>
