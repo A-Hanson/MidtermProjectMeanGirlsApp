@@ -13,7 +13,7 @@
 
 			<%-- USER LOGGED IN: --%>
 
-			<c:when test="${user.role=='user' }">
+			<c:when test="${user.role=='user' and not empty student }">
 				<div class="collapse navbar-collapse" id="navbar">
 					<ul class="nav navbar-nav">
 						<li style="color:yellow;">DEBUG: USER LOGGED IN</li>
@@ -23,6 +23,20 @@
 							href="goToBurnBook.do">Burn Book</a></li>
 						<li class="nav-item"><a class="nav-link active"
 							href="goToCafeteria.do">Cafeteria</a></li>
+						<li class="nav-item"><a class="nav-link active"
+							href="logout.do">Log Out</a></li>
+					</ul>
+				</div>
+			</c:when>
+			
+			
+			
+			<%-- USER LOGGED IN & STUDENT EMPTY: --%>
+
+			<c:when test="${(user.role=='user') and  (empty student)}">
+				<div class="collapse navbar-collapse" id="navbar">
+					<ul class="nav navbar-nav">
+						<li style="color:yellow;">DEBUG: USER LOGGED IN</li>
 						<li class="nav-item"><a class="nav-link active"
 							href="logout.do">Log Out</a></li>
 					</ul>

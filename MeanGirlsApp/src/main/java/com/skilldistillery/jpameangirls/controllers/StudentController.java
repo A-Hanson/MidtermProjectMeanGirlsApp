@@ -75,4 +75,22 @@ public class StudentController {
 		mv.setViewName("dashboard");
 		return mv; // (ViewResolver in use)
 	}
+	
+	@RequestMapping(path = { "changeStudent.do" }, method = RequestMethod.GET)
+	public ModelAndView changeStudent(HttpSession session) {
+		ModelAndView mv = new ModelAndView();
+	    Student student = null;
+		mv.addObject("student", student);
+//		session.setAttribute("student", student);
+		mv.setViewName("dashboard");
+		if (session.getAttribute("user") != null) {
+			User user = (User) session.getAttribute("user");
+			if (user.getRole().equals("user")) {
+				student = null;
+				session.setAttribute("student", student);
+			}
+		}
+		return mv; // (ViewResolver in use)
+	}
+	
 }
