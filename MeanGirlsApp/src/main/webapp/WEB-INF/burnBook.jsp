@@ -16,6 +16,8 @@
 		<c:choose>
 			<%-- USER LOGGED IN --%>
 			<c:when test="${user.role=='user' }">
+			
+			TEST -- ${addBurnCommentStudentID}
 
 				<h3 style="color: #b71c1c;">DEBUG: This displays when USER is
 					logged in</h3>
@@ -33,6 +35,16 @@
 										${comment.content}
 									</div> 
 								</c:forEach> 
+								<form action="addBurnComment.do" method="POST">
+									<input type="text" hidden="true" name="userIdString" value="${student.id}">
+									<input type="submit" value="Add Burn Entry">
+								</form>
+								
+								
+								<c:if test="${addBurnCommentStudentID == student.id}">
+								Add comment here
+								</c:if>
+			
 							</div>
 						</div>
 

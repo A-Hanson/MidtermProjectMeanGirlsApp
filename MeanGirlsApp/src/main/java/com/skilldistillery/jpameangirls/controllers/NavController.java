@@ -36,6 +36,7 @@ public class NavController {
 		ModelAndView mv = new ModelAndView();
 		
 		mv.addObject("students", sDAO.findAll());
+		mv.addObject("addBurnCommentStudentID", -1);
 		
 		mv.setViewName("burnBook");
 		return mv;
