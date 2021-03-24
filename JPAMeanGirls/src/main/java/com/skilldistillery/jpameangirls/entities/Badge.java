@@ -1,5 +1,6 @@
 package com.skilldistillery.jpameangirls.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -77,11 +78,20 @@ public class Badge {
 	}
 	
 	public void addStudent(Student student) {
-//		FIXME
+		if (students == null) {
+			students = new ArrayList<>();
+		}
+		if (! students.contains(student)) {
+			students.add(student);
+			student.addBadge(this);
+		}
 	}
 	
 	public void removeStudent(Student student) {
-//		FIXME
+		if (students != null && students.contains(student)) {
+			students.remove(student);
+			student.removeBadge(this);
+		}
 	}
 	
 	
