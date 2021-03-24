@@ -18,6 +18,9 @@
 
 				<h3 style="color:#b71c1c;">DEBUG: This displays when USER
 					is logged in</h3>
+				<c:if test="${studentFetch < clique.minimumFetchLevel }">
+				<div class="tenor-gif-embed" data-postid="12328861" data-share-method="host" data-width="100%" data-aspect-ratio="1.7777777777777777"><a href="https://tenor.com/view/back-to-school-you-cant-sit-with-us-first-day-of-school-high-school-gif-12328861">Back To School You Cant Sit With Us GIF</a> from <a href="https://tenor.com/search/backtoschool-gifs">Backtoschool GIFs</a></div><script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+				</c:if>	
 
 			</c:when>
 			<%--------------------%>
