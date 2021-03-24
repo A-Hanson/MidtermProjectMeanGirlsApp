@@ -46,6 +46,14 @@
 							</div>
 							<c:if test="${comment.student.id == student.id}">
 								<div class="col-1">
+									<form action="updateComment.do" method="GET">
+										<button style="">Update</button>
+										<input type="hidden" name="commentId" value="${comment.id}" />
+									</form>
+								</div>
+							</c:if>
+							<c:if test="${comment.student.id == student.id}">
+								<div class="col-1">
 									<form action="deleteComment.do" method="POST">
 										<button style="">Delete</button>
 										<input type="hidden" name="commentId" value="${comment.id}" />
