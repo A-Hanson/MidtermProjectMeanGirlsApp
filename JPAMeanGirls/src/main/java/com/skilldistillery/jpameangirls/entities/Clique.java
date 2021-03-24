@@ -32,8 +32,8 @@ public class Clique {
 	
 	@ManyToMany
 	@JoinTable(name="student_clique",
-	    joinColumns=@JoinColumn(name="student_id"),
-	    inverseJoinColumns=@JoinColumn(name="clique_id")
+	    joinColumns=@JoinColumn(name="clique_id"),
+	    inverseJoinColumns=@JoinColumn(name="student_id")
 	  )
 	private List<Student> students;
 	
