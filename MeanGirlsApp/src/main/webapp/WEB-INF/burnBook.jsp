@@ -35,9 +35,8 @@
 
 									<div class="card">${comment.content}</div>
 								</c:forEach>
-								<form action="addBurnComment.do" method="POST">
-								
 								${studentBurnPage.id}
+								<form action="addBurnComment.do" method="GET">
 									<input type="text" hidden="true" name="userIdString"
 										value="${studentBurnPage.id}"> <input type="submit"
 										value="Add Burn Entry">
@@ -45,14 +44,14 @@
 								</form>
 
 
-								<c:if test="${addBurnCommentStudentID == student.id}">
+								<c:if test="${addBurnCommentStudentID == studentBurnPage.id}">
 									<div>
-									working
-									<%-- 	<form action="SubmitBurnComment.do" method="POST">
-											<input type="text" hidden="true" name="userIdString" value="${student.id}"> 
-											<input type="text" hidden="true" name="userIdString" value="${.id}"> 
+										<form action="SubmitBurnComment.do" method="POST">
+											<input type="text" hidden="true" name="postingStudentIdString" value="${student.id}"> 
+											<input type="text" hidden="true" name="subjectStudentIdString" value="${studentBurnPage.id}"> 
+											<input type="text" name="content" value="test"> 
 											<input type="submit" value="Post">
-										</form> --%>
+										</form>
 									</div>
 								</c:if>
 
@@ -60,7 +59,7 @@
 						</div>
 
 					</c:forEach>
-				</div>
+				</div> 
 
 			</c:when>
 			<%--------------------%>

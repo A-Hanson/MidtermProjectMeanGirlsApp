@@ -45,8 +45,6 @@ public class StudentDAOImpl implements StudentDAO{
 	@Override
 	public List<Student> findAll() {
 		
-//		return em.createQuery("select c from Comment c", Comment.class).getResultList();
-		
 		String query="SELECT s FROM Student s";
 		return em.createQuery(query, Student.class).getResultList();
 	}
