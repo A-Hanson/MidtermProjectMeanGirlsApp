@@ -72,7 +72,6 @@ public class UserDAOJpaImpl implements UserDAO {
 		User managedUser = em.find(User.class, id);
 
 		managedUser.setEmail(user.getEmail());
-		managedUser.setPassword(user.getPassword());
 		managedUser.setUsername(user.getUsername());
 		managedUser.setFirstName(user.getFirstName());
 		managedUser.setLastName(user.getLastName());
@@ -87,7 +86,6 @@ public class UserDAOJpaImpl implements UserDAO {
 			managedUser.setRole(user.getRole());
 		}
 		
-		managedUser.setBirthdayDate(user.getBirthdayDate());
 		managedUser.setGender(user.getGender());
 
 		return managedUser;
