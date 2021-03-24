@@ -25,7 +25,8 @@ public class CliqueController {
 
 	@RequestMapping(path = "cafeteriaforum.do")
 	public String index(Model model) {
-
+		Clique cafeteria = cliqueDao.findById(1);
+		model.addAttribute("clique", cafeteria);
 		model.addAttribute("cafeteriaComments", commentDao.findCommentsInTheLast24HoursFromCliqueWithId(1));
 		return "cafeteria"; // if using a ViewResolver.
 	}

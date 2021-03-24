@@ -6,8 +6,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
 <title>Plastics</title>
+<jsp:include page="head.jsp" />
 </head>
 <body>
 <jsp:include page="nav.jsp" />
@@ -18,10 +18,66 @@
 
 				<h3 style="color:#b71c1c;">DEBUG: This displays when USER
 					is logged in</h3>
-				<c:if test="${studentFetch < clique.minimumFetchLevel }">
-				<div class="tenor-gif-embed" data-postid="12328861" data-share-method="host" data-width="100%" data-aspect-ratio="1.7777777777777777"><a href="https://tenor.com/view/back-to-school-you-cant-sit-with-us-first-day-of-school-high-school-gif-12328861">Back To School You Cant Sit With Us GIF</a> from <a href="https://tenor.com/search/backtoschool-gifs">Backtoschool GIFs</a></div><script type="text/javascript" async src="https://tenor.com/embed.js"></script>
-				</c:if>	
+				<c:choose>
+					<c:when test="${studentFetch < clique.minimumFetchLevel }">
+					<h4>Sorry, fetch level isn't high enough to visit this clique</h4>
+					<div class="container tenor-gif-embed" data-postid="12328861" data-share-method="host" data-width="100%" data-aspect-ratio="1.7777777777777777"><a href="https://tenor.com/view/back-to-school-you-cant-sit-with-us-first-day-of-school-high-school-gif-12328861">Back To School You Cant Sit With Us GIF</a> from <a href="https://tenor.com/search/backtoschool-gifs">Backtoschool GIFs</a></div><script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+					</c:when>	
+					<c:when test="${studentFetch >= clique.minimumFetchLevel }">
+					<div class="table">
+					<c:forEach var="comment" items="${plasticsComments}">
+						<div class="row">
+							<div class="col-6">${comment.content}</div>
+							<div class="col-2">
+								<form action="vote.do" method="POST">
+									<button>That's So Fetch!!</button>
+									<input type="hidden" name="commentId" value="${comment.id}" />
+									<input type="hidden" name="studentId" value="${student.id}" />
+									<input type="hidden" name="cliqueId" value="${clique.id}" />
+									<input type="hidden" name="vote" value="true" />
+								</form>
+							</div>
+							<div class="col-2">
+								<form action="vote.do" method="POST">
+									<button style="">Not EVEN...</button>
+									<input type="hidden" name="commentId" value="${comment.id}" />
+									<input type="hidden" name="studentId" value="${student.id}" />
+									<input type="hidden" name="cliqueId" value="${clique.id}" />
+									<input type="hidden" name="vote" value="false" />
+								</form>
+							</div>
+							<c:if test="${comment.student.id == student.id}">
+								<div class="col-1">
+									<form action="updateComment.do" method="GET">
+										<button style="">Update</button>
+										<input type="hidden" name="commentId" value="${comment.id}" />
+										<input type="hidden" name="cliqueId" value="${clique.id}" />
+									</form>
+								</div>
+							</c:if>
+							<c:if test="${comment.student.id == student.id}">
+								<div class="col-1">
+									<form action="deleteComment.do" method="POST">
+										<button style="">Delete</button>
+										<input type="hidden" name="commentId" value="${comment.id}" />
+										<input type="hidden" name="cliqueId" value="${clique.id}" />
+									</form>
+								</div>
+							</c:if>
+						</div>
+						<br />
+					</c:forEach>
+				</div>
+				<form action="addPlasticsComment.do" method="POST">
+					<input type="hidden" name="studentId" value="${student.id}" />
+					<input type="hidden" name="cliqueId" value="${clique.id}" />
+					Comment: <input type="text" name="content" />
+					<button type="submit">Submit Comment</button>
+				</form>
+					
+					</c:when>
 
+				</c:choose>	
 			</c:when>
 			<%--------------------%>
 
@@ -48,6 +104,5 @@
 		</c:choose>
 	</div>
 	<jsp:include page="foot.jsp" />
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
 </body>
 </html>

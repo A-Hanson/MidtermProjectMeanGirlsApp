@@ -23,6 +23,7 @@
 					<div class="row">
 						<div class="col-6">
 							<input type="hidden" name="id" value="${comment.id}" required />
+							<input type="hidden" name="cliqueId" value="${comment.clique.id}" />
 
 							<h4>
 								<label for="update comment">Edit your comment:</label>

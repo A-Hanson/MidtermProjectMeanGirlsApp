@@ -35,18 +35,20 @@
 							</div>
 							<div class="col-6">${comment.content}</div>
 							<div class="col">
-								<form action="upVote.do" method="POST">
+								<form action="vote.do" method="POST">
 									<button class="btn btn-primary">That's So Fetch!!</button>
 									<input type="hidden" name="commentId" value="${comment.id}" />
 									<input type="hidden" name="studentId" value="${student.id}" />
+									<input type="hidden" name="cliqueId" value="${clique.id}" />
 									<input type="hidden" name="vote" value="true" />
 								</form>
 							</div>
 							<div class="col">
-								<form action="downVote.do" method="POST">
+								<form action="vote.do" method="POST">
 									<button class="btn btn-primary">Not EVEN...</button>
 									<input type="hidden" name="commentId" value="${comment.id}" />
 									<input type="hidden" name="studentId" value="${student.id}" />
+									<input type="hidden" name="cliqueId" value="${clique.id}" />
 									<input type="hidden" name="vote" value="false" />
 								</form>
 							</div>
