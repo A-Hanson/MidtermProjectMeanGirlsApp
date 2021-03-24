@@ -75,7 +75,7 @@
 				</form>
 
 
-				<form action="plasticsform.do">
+				<form action="plasticsform.do" method="GET">
 					<input type="hidden" name="studentId" value="${student.id}" />
 					<button class=".btn-primary" type="submit">Visit the
 						Plastics</button>
