@@ -27,7 +27,8 @@
 						<div class="row">
 							<div class="col">${student.firstName }${student.lastName }</div>
 							<div class="col">${student.birthdayDate}</div>
-							<div class="col">${student.imageUrl}</div>
+							<c:if test="${ not empty student.imageUrl}">
+							<div class="col">  <img width="100px" height="100px"  src="${student.imageUrl}"></div></c:if>
 							<div class="col">
 								<form action="dashboard.do" method="GET">
 									<input type="text" hidden="true" name="studentId"
@@ -39,6 +40,10 @@
 					</c:forEach>
 				</c:if>
 				<c:if test="${not empty student}">
+				<form action="changeStudent.do" method="GET">
+									 <input type="submit"
+										value="Change Student">
+								</form>
 					<div class="row">
 						<div class="col">${student.firstName }${student.lastName }</div>
 						<div class="col">Birthday: ${student.birthdayDate}</div>
