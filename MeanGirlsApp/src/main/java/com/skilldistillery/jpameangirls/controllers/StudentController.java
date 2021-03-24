@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.skilldistillery.jpameangirls.dao.CommentVoteDAO;
 import com.skilldistillery.jpameangirls.dao.StudentDAO;
@@ -64,7 +65,6 @@ public class StudentController {
 		int userId = Integer.parseInt(userIdString);
 		User user = userDao.findUserById(userId);
 		newStudent.setUser(user);
-		System.out.println("**************************************************************");
 		System.out.println(birthday);
 		LocalDate birthdayDate = LocalDate.parse(birthday);
 		newStudent.setBirthdayDate(birthdayDate);

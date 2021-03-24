@@ -25,7 +25,7 @@ public class NavController {
 	@RequestMapping(path = "goToCafeteria.do")
 	public ModelAndView goToCafeteria() {
 		ModelAndView mv = new ModelAndView();
-		mv.addObject("cafeteriaComments", commentDao.findCommentsByCliqueId(1));
+		mv.addObject("cafeteriaComments", commentDao.findCommentsInTheLast24HoursFromCliqueWithId(1));
 		mv.setViewName("cafeteria");
 		return mv;
 	}

@@ -28,8 +28,8 @@ public class CommentDAOImpl implements CommentDAO {
 
 	@Override
 	public List<Comment> findAll() {
-		
-		return em.createQuery("select c from Comment c", Comment.class).getResultList();
+		String query = "select c from Comment c ORDER BY c.createdDate DESC";
+		return em.createQuery(query, Comment.class).getResultList();
 	}
 
 	@Override
@@ -82,8 +82,8 @@ public class CommentDAOImpl implements CommentDAO {
 
 	@Override
 	public List<Comment> findCommentsByCliqueId(int cliqueId) {
-		
-		return em.createQuery("SELECT c FROM Comment c JOIN c.clique cl WHERE cl.id = :id AND c.enabled=TRUE", Comment.class).setParameter("id", cliqueId).getResultList();
+		String query = "SELECT c FROM Comment c JOIN c.clique cl WHERE cl.id = :id AND c.enabled=TRUE ORDER BY c.createdDate DESC";
+		return em.createQuery(query, Comment.class).setParameter("id", cliqueId).getResultList();
 	}
 
 	@Override
@@ -92,8 +92,8 @@ public class CommentDAOImpl implements CommentDAO {
 //		SELECT * FROM Comment c where c.clique_id = 1 and c.created_date >= '12/04/2011 12:00:00 AM';
 //		I used the above query as a guideline.
 		
-		LocalDateTime yesterday = LocalDateTime.now().plusHours(24);
-		String query = "SELECT c FROM Comment c JOIN c.clique cl WHERE cl.id = :id AND c.enabled=TRUE AND c.createdDate >= :yesterday";
+		LocalDateTime yesterday = LocalDateTime.now().minusHours(24);
+		String query = "SELECT c FROM Comment c JOIN c.clique cl WHERE cl.id = :id AND c.enabled=TRUE AND c.createdDate >= :yesterday ORDER BY c.createdDate DESC";
 		return em.createQuery(query, Comment.class).setParameter("id", id).setParameter("yesterday", yesterday).getResultList();
 	}
 }
