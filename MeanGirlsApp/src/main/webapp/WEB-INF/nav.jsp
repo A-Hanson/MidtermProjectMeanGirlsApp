@@ -47,11 +47,14 @@
 			<%-- ADMIN LOGGED IN: --%>
 
 			<c:when test="${user.role=='admin' }">
-				<div class="collapse navbar-collapse" id="navbar">
+				<div class="collapse navbar-collapse" id="navbar" >
 					<ul class="nav navbar-nav">
-						<li style="color:yellow;">DEBUG: ADMIN LOGGED IN</li>
 						<li class="nav-item"><a class="nav-link active"
 							href="dashboard.do">Admin Dashboard</a></li>
+						<li class="nav-item"><a class="nav-link active"
+							href="manageUsers.do">Manage Users</a></li>
+						<li class="nav-item"><a class="nav-link active"
+							href="manageComments.do">Manage Comments</a></li>
 							<li class="nav-item"><a class="nav-link active"
 							href="goToCafeteria.do">Cafeteria</a></li>
 						<li class="nav-item"><a class="nav-link active"

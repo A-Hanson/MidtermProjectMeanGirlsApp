@@ -58,7 +58,8 @@
 						<form action="makeNewStudent.do" method="GET">
 							<input type="text" hidden="true" name="userIdString"
 								value="${user.id}">
-							<button type="submit" class="btn-primary">Enroll New Student</button>
+							<button type="submit" class="btn-primary">Enroll New
+								Student</button>
 						</form>
 					</div>
 				</c:if>
@@ -125,10 +126,14 @@
 				<div class="container">
 					<h4>Flagged Comments</h4>
 				</div>
-				<div class="container">
-					<h4>
-						<a href="allComments.do">All Comments</a>
-					</h4>
+				<div>
+					<form action="manageUsers.do" method="GET">
+						<input type="submit" value="MANAGE USERS" />
+					</form>
+					<form action="manageComments.do" method="GET">
+						<input type="submit" value="MANAGE COMMENTS" />
+					</form>
+					
 				</div>
 			</c:when>
 

@@ -7,10 +7,15 @@
 <head>
 <meta charset="UTF-8">
 <title>Users</title>
+<jsp:include page="head.jsp" />
+
 </head>
 <body>
 
+<jsp:include page="nav.jsp" />
 
+<div >
+<c:out value="${loggedInUser }" />
 	
 	<c:choose>
 
@@ -23,7 +28,7 @@
 	
 	<h3>Users</h3>
 	<table >
-		<thead class="table-dark">
+		<thead>
 			<tr>
 				<th>ID</th>
 				<th>Name</th>
@@ -45,6 +50,7 @@
 	</table>
 	</c:otherwise>
 	</c:choose>
-	
+	</div>
+	<jsp:include page="foot.jsp" />
 </body>
 </html>

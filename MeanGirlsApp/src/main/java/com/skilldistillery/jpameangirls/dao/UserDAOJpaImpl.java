@@ -33,7 +33,7 @@ public class UserDAOJpaImpl implements UserDAO {
 	@Override
 	public List<User> findAllUsers() {
 		
-		String query ="SELECT u FROM User u";
+		String query ="SELECT u FROM User u WHERE u.enabled = TRUE";
 		return em.createQuery(query,User.class).getResultList();
 	}
 
@@ -89,6 +89,13 @@ public class UserDAOJpaImpl implements UserDAO {
 		managedUser.setGender(user.getGender());
 
 		return managedUser;
+	}
+	
+	@Override
+	public User softDelete(int id) {
+		User u = em.find(User.class, id);
+		u.setEnabled(false);
+		return u;
 	}
 
 	@Override
