@@ -244,11 +244,20 @@ public class Student {
 	}
 
 	public void addBadge(Badge badge) {
-//		FIXME
+		if (badges == null) {
+			badges = new ArrayList<Badge>();
+		}
+		if (! badges.contains(badge)) {
+			badges.add(badge);
+			badge.addStudent(this);
+		}
 	}
 	
 	public void removeBadge(Badge badge) {
-//		FIXME
+		if (badges != null & badges.contains(badge)) {
+			badges.remove(badge);
+			badge.removeStudent(this);
+		}
 	}
 	
 	public List<CommentVote> getCommentVotes() {
