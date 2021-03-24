@@ -76,7 +76,7 @@
 					<h4>Flagged Comments</h4>
 				</div>
 				<div class="container">
-					<h4>All Comments</h4>
+					<h4><a href="allComments.do">All Comments</a></h4>
 				</div>
 			</c:when>
 
