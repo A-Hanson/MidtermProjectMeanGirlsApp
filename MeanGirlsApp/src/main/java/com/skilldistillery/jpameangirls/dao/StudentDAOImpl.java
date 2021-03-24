@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import com.skilldistillery.jpameangirls.entities.Badge;
 import com.skilldistillery.jpameangirls.entities.Clique;
+import com.skilldistillery.jpameangirls.entities.Comment;
 import com.skilldistillery.jpameangirls.entities.Student;
 
 @Transactional
@@ -40,8 +41,12 @@ public class StudentDAOImpl implements StudentDAO{
 	public Student findById(int studentId) {
 		return em.find(Student.class, studentId);
 	}
+	
 	@Override
 	public List<Student> findAll() {
+		
+//		return em.createQuery("select c from Comment c", Comment.class).getResultList();
+		
 		String query="SELECT s FROM Student s";
 		return em.createQuery(query, Student.class).getResultList();
 	}

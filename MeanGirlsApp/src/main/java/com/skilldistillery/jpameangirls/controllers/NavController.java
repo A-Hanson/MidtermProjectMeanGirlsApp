@@ -6,12 +6,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.skilldistillery.jpameangirls.dao.CommentDAO;
+import com.skilldistillery.jpameangirls.dao.StudentDAO;
 
 @Controller
 public class NavController {
 
 	@Autowired
 	private CommentDAO commentDao;
+	
+	@Autowired
+	private StudentDAO sDAO;
 
 	@RequestMapping(path = "goToRegisterPage.do")
 	public String goToRegisterPage() {
@@ -27,8 +31,14 @@ public class NavController {
 	}
 
 	@RequestMapping(path = "goToBurnBook.do")
-	public String goToBurnBook() {
-		return "burnBook";
+	public ModelAndView goToBurnBook() {
+		
+		ModelAndView mv = new ModelAndView();
+		
+		mv.addObject("students", sDAO.findAll());
+		
+		mv.setViewName("burnBook");
+		return mv;
 	}
 
 }
