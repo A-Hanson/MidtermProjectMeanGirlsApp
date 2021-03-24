@@ -16,6 +16,11 @@
 		<c:choose>
 			<%-- USER LOGGED IN --%>
 			<c:when test="${user.role=='user' }">
+				
+<%-- 				<c:if test="${not null myObject.myAttribute}">
+   <!-- Now I can access safely to "myAttribute" -->
+</C:if>
+		 --%>	
 
 				<h3 style="color: #b71c1c;">DEBUG: This displays when USER is
 					logged in</h3>

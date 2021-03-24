@@ -20,6 +20,11 @@
 				<h3 style="color:#b71c1c;">DEBUG: This displays when USER
 					is logged in</h3>
 
+				<c:forEach var="student" items="${students}">
+					
+					${student.firstName}
+				</c:forEach>
+				
 			</c:when>
 			<%--------------------%>
 
