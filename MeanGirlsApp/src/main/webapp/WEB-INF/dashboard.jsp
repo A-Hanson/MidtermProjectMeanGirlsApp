@@ -18,6 +18,8 @@
 			<c:when test="${user.role=='user' }">
 				<!-- h5 style="color: #b71c1c;">DEBUG: This displays when USER is
 					logged in</h5-->
+
+				<%--IF USER HAS NOT YET SELECTED A STUDENT: --%>
 				<c:if test="${empty student }">
 					<div class="row">
 						<div class="col">
@@ -53,32 +55,60 @@
 						<hr />
 					</c:forEach>
 				</c:if>
-				<c:if test="${not empty student}">
-					<form action="changeStudent.do" method="GET">
-						<input type="submit" value="Change Student">
-					</form>
-					<div class="row">
-						<div class="col">${student.firstName }${student.lastName }</div>
-						<div class="col">Birthday: ${student.birthdayDate}</div>
-						<div class="col">Total Fetch: ${totalFetch}</div>
-					</div>
-					<div class="row">
-						<div class="col">${student.gender }</div>
-						<div class="col">Grade: ${student.gradeLevel}</div>
-						<div class="col">Enrolled on: ${student.createdDate}</div>
-					</div>
-					<div class="row container">
-						<div class="col">Cliques in</div>
 
-						<c:forEach var="clique" items="${studentCliques}">
-							<div class="row">${clique.name}</div>
-						</c:forEach>
+
+
+				<%-- ONCE USER HAS SELECTED A STUDENT: --%>
+				<c:if test="${not empty student}">
+					<div class="row align-items-left">
+						<div class="col">
+							<h2>Playing as:</h2>
+							<h3>&nbsp;</h3>
+						</div>
 					</div>
-					<div class="row container">
-						<div class="col">Badges</div>
-						<c:forEach var="badge" items="${studentBadges}">
-							<div class="row">${badge.name}</div>
-						</c:forEach>
+					<div class="row align-items-left">
+						<div class="col-2 align-items-left">
+							<c:if test="${ not empty student.imageUrl}">
+								<img style="max-width: 100px" class="img-thumbnail"
+									src="${student.imageUrl}" />
+							</c:if>
+						</div>
+						<div class="col-6 align-items-left">
+							<h2 style="color: darkmagenta;">${student.firstName }&nbsp;${student.lastName }</h2>
+							<h5 style="color: darkmagenta;">Total Fetch:</h5>
+							<em style="color: #b71c1c;">xx</em>
+
+						</div>
+						<div class="col-4 align-items-left">
+							<h5>About:</h5>
+							Birthday: ${student.birthdayDate} <br /> Gender:
+							${student.gender } <br />Grade: ${student.gradeLevel} <br />Enrolled
+							on: ${student.createdDate}
+						</div>
+					</div>
+					<hr />
+					<div class="row align-items-left">
+						<div class="col-8 align-items-left">
+							<h5>Clique Membership:</h5>
+							<c:forEach var="clique" items="${studentCliques}">
+								${clique.name}<br />
+							</c:forEach>
+						</div>
+						<div class="col-4 align-items-left">
+							<h5>Badges:</h5>
+							<c:forEach var="badge" items="${studentBadges}">
+								${badge.name}<br />
+							</c:forEach>
+						</div>
+					</div>
+					<hr />
+					<div class="row">
+						<div class="col align-items-center">
+							<form action="changeStudent.do" method="GET">
+								<button type="submit" class="btn-primary">Change
+									Student</button>
+							</form>
+						</div>
 					</div>
 				</c:if>
 			</c:when>
@@ -89,7 +119,9 @@
 					<h4>Flagged Comments</h4>
 				</div>
 				<div class="container">
-					<h4><a href="allComments.do">All Comments</a></h4>
+					<h4>
+						<a href="allComments.do">All Comments</a>
+					</h4>
 				</div>
 			</c:when>
 
