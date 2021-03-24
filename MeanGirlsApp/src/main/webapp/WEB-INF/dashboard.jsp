@@ -54,6 +54,13 @@
 						</div>
 						<hr />
 					</c:forEach>
+					<div class="col d-flex justify-content-center">
+						<form action="makeNewStudent.do" method="GET">
+							<input type="text" hidden="true" name="userIdString"
+								value="${user.id}">
+							<button type="submit" class="btn-primary">Enroll New Student</button>
+						</form>
+					</div>
 				</c:if>
 
 
