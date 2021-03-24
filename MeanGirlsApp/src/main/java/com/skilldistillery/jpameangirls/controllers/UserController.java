@@ -1,6 +1,9 @@
 package com.skilldistillery.jpameangirls.controllers;
 
 import java.time.LocalDateTime;
+
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,7 +25,7 @@ public class UserController {
 	}
 	
 	@RequestMapping(path = "register.do", method = RequestMethod.POST)
-	public ModelAndView register(String email, String password, String username, String firstName, String lastName, Integer birthdayDay, Integer birthdayMonth, Integer birthdayYear, String gender ) { 
+	public ModelAndView register(HttpSession session, String email, String password, String username, String firstName, String lastName, Integer birthdayDay, Integer birthdayMonth, Integer birthdayYear, String gender ) { 
 		ModelAndView mv = new ModelAndView();
 
 //		if(errors.hasErrors()) {
@@ -58,6 +61,7 @@ public class UserController {
 		
 		
 		userDao.createUser(user);
+		session.setAttribute("user", user);
 		mv.addObject("user", user);
 		mv.setViewName("createStudent");
 		return mv;
