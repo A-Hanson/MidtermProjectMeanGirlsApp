@@ -61,11 +61,19 @@ public class CommentDAOImpl implements CommentDAO {
 		c.setContent(comment.getContent());
 		c.setStudent(comment.getStudent());
 		c.setCreatedDate(comment.getCreatedDate());
-		c.setLastEdited(comment.getLastEdited());
+		c.setLastEdited(LocalDateTime.now());
 		c.setEnabled(comment.getEnabled());
 		c.setFlagged(comment.getFlagged());
 		c.setClique(comment.getClique());
 		
+		return c;
+	}
+	
+	@Override
+	public Comment softDelete(int id) {
+		Comment c = em.find(Comment.class, id);
+		c.setEnabled(false);
+		c.setLastEdited(LocalDateTime.now());
 		return c;
 	}
 
@@ -80,7 +88,7 @@ public class CommentDAOImpl implements CommentDAO {
 	@Override
 	public List<Comment> findCommentsByCliqueId(int cliqueId) {
 		
-		return em.createQuery("SELECT c FROM Comment c where c.clique.id = :id", Comment.class).setParameter("id", cliqueId).getResultList();
+		return em.createQuery("SELECT c FROM Comment c JOIN c.clique cl WHERE cl.id = :id AND c.enabled=TRUE", Comment.class).setParameter("id", cliqueId).getResultList();
 	}
 
 	@Override
@@ -90,6 +98,7 @@ public class CommentDAOImpl implements CommentDAO {
 //		I used the above query as a guideline.
 		
 		LocalDateTime yesterday = LocalDateTime.now().plusHours(24);
-		return em.createQuery("SELECT c FROM Comment c where c.clique.id = :id and c.createdDate >= :yesterday", Comment.class).setParameter("id", id).setParameter("yesterday", yesterday).getResultList();
+		String query = "SELECT c FROM Comment c JOIN c.clique cl WHERE cl.id = :id AND c.enabled=TRUE AND c.createdDate >= :yesterday";
+		return em.createQuery(query, Comment.class).setParameter("id", id).setParameter("yesterday", yesterday).getResultList();
 	}
 }
