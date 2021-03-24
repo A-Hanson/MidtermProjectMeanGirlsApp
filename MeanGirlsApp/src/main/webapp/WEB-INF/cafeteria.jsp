@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%--<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%> --%>
 
 <!DOCTYPE html>
 <html>
@@ -16,19 +17,20 @@
 		<c:choose>
 			<%-- USER LOGGED IN --%>
 			<c:when test="${user.role=='user' }">
-				
-<%-- 				<c:if test="${not null myObject.myAttribute}">
+
+				<%-- 				<c:if test="${not null myObject.myAttribute}">
    <!-- Now I can access safely to "myAttribute" -->
 </C:if>
 		 --%>	
 		 TEST: fn - ${student.firstName }, ln- ${student.lastName }
-		 ${comment.createdDate }
-
 				<h3 style="color: #b71c1c;">DEBUG: This displays when USER is
 					logged in</h3>
 				<div class="table">
 					<c:forEach var="comment" items="${cafeteriaComments}">
 						<div class="row">
+							<!--<fmt:parseDate value="${comment.createdDate }"
+								var="parsedCreatedDate" pattern="dd/MM/yy hh:mm" /> -->
+							Time Created: ${comment.createdDate}
 							<div class="col-6">${comment.content}</div>
 							<div class="col-2">
 								<form action="upVote.do" method="POST">
@@ -72,6 +74,13 @@
 					<button type="submit">Submit Comment</button>
 				</form>
 
+
+				<form action="plasticsform.do">
+					<input type="hidden" name="studentId" value="${student.id}" />
+					<button class=".btn-primary" type="submit">Visit the
+						Plastics</button>
+				</form>
+
 			</c:when>
 			<%--------------------%>
 
@@ -81,17 +90,17 @@
 
 				<h3 style="color: #b71c1c;">DEBUG: This displays when ADMIN is
 					logged in</h3>
-					
-					<div class="table">
+
+				<div class="table">
 					<c:forEach var="comment" items="${cafeteriaComments}">
 						<div class="row">
 							<div class="col-7">${comment.content}</div>
-								<div class="col-1">
-									<form action="deleteComment.do" method="POST">
-										<button style="">Delete</button>
-										<input type="hidden" name="commentId" value="${comment.id}" />
-									</form>
-								</div>
+							<div class="col-1">
+								<form action="deleteComment.do" method="POST">
+									<button style="">Delete</button>
+									<input type="hidden" name="commentId" value="${comment.id}" />
+								</form>
+							</div>
 						</div>
 						<br />
 					</c:forEach>
