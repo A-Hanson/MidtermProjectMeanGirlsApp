@@ -56,17 +56,18 @@ public class CommentVoteDAOImpl implements CommentVoteDAO {
 
 	@Override
 	public int commentUpVoteTotal(int commentId) {
-		String query = "SELECT COUNT(cv) FROM CommentVote cv JOIN FETCH cv.comment WHERE (cv.comment.id=:cid AND cv.vote=TRUE";
+		String query = "SELECT COUNT(cv) FROM CommentVote cv JOIN JOIN cv.comment c WHERE (c.id=:cid AND cv.vote=TRUE";
 		long count = em.createQuery(query, Long.class).setParameter("cid", commentId).getSingleResult();
 		return (int) count;
 	}
 
 	@Override
 	public int commentDownVoteTotal(int commentId) {
-		String query = "SELECT COUNT(cv) FROM CommentVote cv JOIN FETCH cv.comment WHERE (cv.comment.id=:cid AND cv.vote=FALSE";
+		String query = "SELECT COUNT(cv) FROM CommentVote cv JOIN cv.comment c WHERE (c.id=:cid AND cv.vote=FALSE";
 		long count = em.createQuery(query, Long.class).setParameter("cid", commentId).getSingleResult();
 		return (int) count;
 	}
+
 
 	@Override
 	public int studentTotalScore(int studentId) {
@@ -92,17 +93,17 @@ public class CommentVoteDAOImpl implements CommentVoteDAO {
 
 	@Override
 	public List<Student> studentsWhoUpvoted(int commentId) {
-		String query = "SELECT c.commentVotes.student FROM Comment c "
-				+ "JOIN FETCH c.commentVotes JOIN FETCH c.commentVotes.student" + "JOIN FETCH c.commentVotes.vote"
-				+ "WHERE (c.id=:cid AND c.commentVotes.vote=TRUE";
+		String query = "SELECT s FROM Comment c "
+				+ "JOIN c.commentVotes cv JOIN c.commentVotes.student s" + "JOIN c.commentVotes.vote v"
+				+ "WHERE (c.id=:cid AND v=TRUE";
 		List<Student> students = em.createQuery(query, Student.class).setParameter("cid", commentId).getResultList();
 		return students;
 	}
 
 	@Override
 	public List<Comment> commentsStudentUpVoted(int studentId) {
-		String query = "SELECT cv.comment FROM CommentVote cv" + "JOIN FETCH cv.comment JOIN FETCH cv.student"
-				+ "WHERE cv.student.id=:sid";
+		String query = "SELECT c FROM CommentVote cv" + "JOIN cv.comment c JOIN cv.student s"
+				+ "WHERE s.id=:sid";
 		List<Comment> comments = em.createQuery(query, Comment.class).setParameter("sid", studentId).getResultList();
 		return comments;
 	}
