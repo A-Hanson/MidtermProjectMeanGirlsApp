@@ -59,12 +59,7 @@ public class CommentDAOImpl implements CommentDAO {
 		Comment c = em.find(Comment.class, id);
 		
 		c.setContent(comment.getContent());
-		c.setStudent(comment.getStudent());
-		c.setCreatedDate(comment.getCreatedDate());
 		c.setLastEdited(LocalDateTime.now());
-		c.setEnabled(comment.getEnabled());
-		c.setFlagged(comment.getFlagged());
-		c.setClique(comment.getClique());
 		
 		return c;
 	}
