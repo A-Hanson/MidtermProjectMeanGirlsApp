@@ -42,12 +42,11 @@
 					<td><input type="text" name="lastName" value="${user.lastName}"/></td>
 				</tr>
 				<tr>
-					<td>Birthday:</td>
-					<td><input type="date" name="birthday" value="${user.birthdayDate}"></td>
+					<td>Gender:</td>
+					<td><input type="text" name="gender" value="${user.gender}"/></td>
 				</tr>
 				<tr>
-					<td>Gender:</td>
-					<td><input type="text" name="gender" ${user.gender}/></td>
+					<td><input type="hidden" name="role" value="${user.role}"/></td>
 				</tr>
 			</table>
 			<button type="submit" class="btn btn-primary">Submit</button>
