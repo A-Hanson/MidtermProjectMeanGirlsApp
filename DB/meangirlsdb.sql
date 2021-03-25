@@ -343,7 +343,7 @@ CREATE TABLE IF NOT EXISTS `book_comment_vote` (
 ENGINE = InnoDB;
 
 SET SQL_MODE = '';
-DROP USER IF EXISTS meangirlsuser@localhost;
+-- DROP USER IF EXISTS meangirlsuser@localhost;
 SET SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
 CREATE USER 'meangirlsuser'@'localhost' IDENTIFIED BY 'meangirlsuser';
 
@@ -412,7 +412,10 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `meangirlsdb`;
-INSERT INTO `badge` (`id`, `name`, `description`, `image_url`, `enabled`) VALUES (1, 'First Day', 'First day at North Shore High School', 'https://smulook.com/wp-content/uploads/2020/09/regina-on-the-phone.jpg', NULL);
+INSERT INTO `badge` (`id`, `name`, `description`, `image_url`, `enabled`) VALUES (1, 'First Day', 'First day at North Shore High School', 'resources/images/firstDay.jpeg', NULL);
+INSERT INTO `badge` (`id`, `name`, `description`, `image_url`, `enabled`) VALUES (2, 'First Comment', 'Have a conversation in the cafeteria', 'resources/images/firstCafeteriaComment.png', NULL);
+INSERT INTO `badge` (`id`, `name`, `description`, `image_url`, `enabled`) VALUES (3, 'Social Climber', 'Finally cool enough to sit with the plastics', 'resources/images/plasticsClique.gif', NULL);
+INSERT INTO `badge` (`id`, `name`, `description`, `image_url`, `enabled`) VALUES (4, 'Gossip Queen', 'First Burn Book Comment', 'resources/images/gossip.jpeg', NULL);
 
 COMMIT;
 
@@ -456,4 +459,3 @@ USE `meangirlsdb`;
 INSERT INTO `book_comment_vote` (`id`, `vote`, `burn_book_comment_id`, `student_id`) VALUES (1, 1, 1, 1);
 
 COMMIT;
-
