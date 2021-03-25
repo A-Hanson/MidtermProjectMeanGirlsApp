@@ -65,5 +65,10 @@ public class BurnBookCommentDAOImpl implements BurnBookCommentDAO {
 		em.remove(managedComment);
 		return managedComment;
 	}
-
+	
+	@Override
+	public List<BurnBookComment> getAllFlagged() {
+		
+		return em.createQuery("select c from BurnBookComment c where c.flagged = true", BurnBookComment.class).getResultList();
+	}
 }
