@@ -34,36 +34,30 @@
 								${comment.student.firstName }&nbsp;${comment.student.lastName }
 							</div>
 							<div class="col-6">${comment.content}</div>
-							<div class="col">
+							<div class="col d-flex justify-content-center">
 								<form action="vote.do" method="POST">
-									<button class="btn btn-primary">That's So Fetch!!</button>
+									<button class="btn btn-primary m-1">So FETCH!!!</button>
 									<input type="hidden" name="commentId" value="${comment.id}" />
 									<input type="hidden" name="studentId" value="${student.id}" />
-									<input type="hidden" name="cliqueId" value="${clique.id}" />
-									<input type="hidden" name="vote" value="true" />
+									<input type="hidden" name="cliqueId" value="${clique.id}" /> <input
+										type="hidden" name="vote" value="true" />
 								</form>
-							</div>
-							<div class="col">
 								<form action="vote.do" method="POST">
-									<button class="btn btn-primary">Not EVEN...</button>
+									<button class="btn btn-primary m-1">Not EVEN...</button>
 									<input type="hidden" name="commentId" value="${comment.id}" />
 									<input type="hidden" name="studentId" value="${student.id}" />
-									<input type="hidden" name="cliqueId" value="${clique.id}" />
-									<input type="hidden" name="vote" value="false" />
+									<input type="hidden" name="cliqueId" value="${clique.id}" /> <input
+										type="hidden" name="vote" value="false" />
 								</form>
 							</div>
 							<c:if test="${comment.student.id == student.id}">
-								<div class="col">
+								<div class="col d-flex justify-content-center">
 									<form action="updateComment.do" method="GET">
-										<button class="btn btn-secondary">Update</button>
+										<button class="btn btn-secondary m-1">Edit</button>
 										<input type="hidden" name="commentId" value="${comment.id}" />
 									</form>
-								</div>
-							</c:if>
-							<c:if test="${comment.student.id == student.id}">
-								<div class="col">
 									<form action="deleteComment.do" method="POST">
-										<button class="btn btn-secondary">Delete</button>
+										<button class="btn btn-secondary m-1">Delete</button>
 										<input type="hidden" name="commentId" value="${comment.id}" />
 									</form>
 								</div>
@@ -72,18 +66,18 @@
 						<hr />
 					</c:forEach>
 					<form action="addCafeteriaComment.do" method="POST">
-						<div class="row">
+						<div class="form-group m-1">
 							<input type="hidden" name="studentId" value="${student.id}" />
-							Post a Comment:
-						</div>
-						<div class="row">
-							<div class="col-6">
-								<textarea rows="8" cols="20" class="form-control" name="content"
-									placeholder="content" required>${comment.content }</textarea>
+							<h4>Post a Comment:</h4>
+							<div class="row mt-2 mb-2">
+								<div class="col-6">
+									<textarea rows="8" cols="20" class="form-control"
+										name="content" placeholder="content" required>${comment.content }</textarea>
+								</div>
 							</div>
+							<button class="btn btn-primary" type="submit">Submit
+								Comment</button>
 						</div>
-						<button class="btn btn-primary" type="submit">Submit
-							Comment</button>
 					</form>
 
 
