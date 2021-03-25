@@ -22,7 +22,7 @@
    <!-- Now I can access safely to "myAttribute" -->
 </C:if>
 		 --%>
-				<h2 style="">Bulletin Board</h2>
+
 				<hr />
 				<div class="table">
 					<c:forEach var="comment" items="${cafeteriaComments}">
@@ -50,20 +50,13 @@
 									<input type="hidden" name="cliqueId" value="${clique.id}" /> <input
 										type="hidden" name="vote" value="false" />
 								</form>
-								
-								<%-- <form action="reply.do" method="GET">
-									<button class="btn btn-primary m-1">Not EVEN...</button>
-									<input type="hidden" name="commentId" value="${comment.id}" />
-									<input type="hidden" name="studentId" value="${student.id}" />
-									<input type="hidden" name="cliqueId" value="${clique.id}" /> <input
-										type="hidden" name="reply" value="reply" />
-								</form> --%>
-								<form action="reportComment.do" method="POST">
-									<input type="text" hidden="true" name="commentId" value="${comment.id}"> 
-									<input type="submit" value="report">
-								</form>
 							
 							</div>
+							
+							<form action="reportComment.do" method="POST">
+									<input type="text" hidden="true" name="commentId" value="${comment.id}"> 
+									<button class="btn btn-secondary m-1">report</button>
+							</form>
 							
 							<c:if test="${comment.student.id == student.id}">
 								<div class="col d-flex justify-content-center">
