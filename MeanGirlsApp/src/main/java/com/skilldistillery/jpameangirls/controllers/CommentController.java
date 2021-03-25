@@ -75,8 +75,8 @@ public class CommentController {
 				mv.setViewName("redirect:cafeteriaforum.do");
 				break;
 			case 2:
-				mv.setViewName("redirect:plasticsforum.do");
 				redir.addFlashAttribute("studentId", studentId);
+				mv.setViewName("redirect:plasticsform.do");
 				break;
 				
 		}
@@ -113,23 +113,22 @@ public class CommentController {
 	
 	
 	@RequestMapping(path="updateComment.do", method = RequestMethod.POST)
-	public String updateCafteriaComment(String id, String cliqueId, Comment comment, RedirectAttributes redir) {
+	public ModelAndView updateCafteriaComment(String id, String cliqueId, Comment comment, RedirectAttributes redir) {
+		ModelAndView mv = new ModelAndView();
 		int commentId = Integer.parseInt(id);
-		comment = commentDao.update(commentId, comment);
-		String studentId = String.valueOf(comment.getStudent().getId());
-		String page = "redirect:cafeteriaforum.do";
+		commentDao.update(commentId, comment);
 		int clId = Integer.parseInt(cliqueId);
 		switch (clId) {
 			case 1:
-				page = "redirect:cafeteriaforum.do";
+				mv.setViewName("redirect:cafeteriaforum.do");
 				break;
 			case 2:
-				redir.addFlashAttribute("student", studentId);
-				page = "redirect:plasticsforum.do";
+				mv.setViewName("redirect:plasticsform.do");
 				break;
 		}
-		return page;
+		return mv;
 	}
 	
+
 	
 }
