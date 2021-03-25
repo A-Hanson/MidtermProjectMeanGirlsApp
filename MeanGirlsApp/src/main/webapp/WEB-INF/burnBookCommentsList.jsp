@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Users</title>
+<title>Burn Book Comments</title>
 <jsp:include page="head.jsp" />
 
 </head>
@@ -22,33 +22,36 @@
 
 				<c:choose>
 
-					<c:when test="${empty users}">
-						<h3>No users were found.</h3>
+					<c:when test="${empty burnBookComments}">
+						<h3>No comments were found.</h3>
 					</c:when>
 
 					<c:otherwise>
 
 
-						<h3>Users</h3>
+						<h3>Burn Book Comments</h3>
 						<table>
 							<thead>
 								<tr>
 									<th>ID</th>
-									<th>Name</th>
+									<th>Content</th>
 								</tr>
 
 							</thead>
 
 							<tbody>
 
-							</tbody>
-							<c:forEach var="users" items="${users}">
+							<c:forEach var="com" items="${burnBookComments}">
 
 								<tr>
-									<td>${users.id}</td>
-									<td><a href="getUser.do?id=${users.id}">${users.firstName}
-											${users.lastName}</a></td>
+									<td>${com.id}</td>
+									<td>${com.content}</td>
+									<td><form action="deleteCommentBook.do" method="POST">
+										<button style="">Delete</button>
+										<input type="hidden" name="id" value="${com.id}" />
+									</form></td>
 								</tr>
+						
 							</c:forEach>
 							</tbody>
 						</table>

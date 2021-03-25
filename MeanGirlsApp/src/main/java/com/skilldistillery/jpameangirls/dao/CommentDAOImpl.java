@@ -9,6 +9,7 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
 
+import com.skilldistillery.jpameangirls.entities.BurnBookComment;
 import com.skilldistillery.jpameangirls.entities.Clique;
 import com.skilldistillery.jpameangirls.entities.Comment;
 import com.skilldistillery.jpameangirls.entities.Student;
@@ -28,7 +29,7 @@ public class CommentDAOImpl implements CommentDAO {
 
 	@Override
 	public List<Comment> findAll() {
-		String query = "select c from Comment c ORDER BY c.createdDate DESC";
+		String query = "select c from Comment c WHERE enabled = TRUE ORDER BY c.createdDate DESC";
 		return em.createQuery(query, Comment.class).getResultList();
 	}
 
@@ -85,6 +86,12 @@ public class CommentDAOImpl implements CommentDAO {
 		String query = "SELECT c FROM Comment c JOIN c.clique cl WHERE cl.id = :id AND c.enabled=TRUE ORDER BY c.createdDate DESC";
 		return em.createQuery(query, Comment.class).setParameter("id", cliqueId).getResultList();
 	}
+	
+	@Override
+	public List<Comment> findCommentsByUsername(String username) {
+		String query = "SELECT c FROM Comment c JOIN c.student cs WHERE cs.user.username = :username AND c.enabled=TRUE ORDER BY c.createdDate DESC";
+		return em.createQuery(query, Comment.class).setParameter("username", username).getResultList();
+	}
 
 	@Override
 	public List<Comment> findCommentsInTheLast24HoursFromCliqueWithId(int id) {
@@ -95,5 +102,17 @@ public class CommentDAOImpl implements CommentDAO {
 		LocalDateTime yesterday = LocalDateTime.now().minusHours(24);
 		String query = "SELECT c FROM Comment c JOIN c.clique cl WHERE cl.id = :id AND c.enabled=TRUE AND c.createdDate >= :yesterday ORDER BY c.createdDate DESC";
 		return em.createQuery(query, Comment.class).setParameter("id", id).setParameter("yesterday", yesterday).getResultList();
+	}
+
+	@Override
+	public List<Comment> findAllEnabled() {
+		// untested
+		return em.createQuery("select c from Comment c where c.enabled = true", Comment.class).getResultList();
+	}
+
+	@Override
+	public List<Comment> findAllEnabledAndFlagged() {
+		// untested
+		return em.createQuery("select c from Comment c where c.enabled = true and c.flagged = true", Comment.class).getResultList();
 	}
 }

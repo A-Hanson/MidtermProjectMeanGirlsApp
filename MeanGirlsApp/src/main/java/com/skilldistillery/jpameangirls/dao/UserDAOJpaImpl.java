@@ -9,6 +9,7 @@ import javax.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import com.skilldistillery.jpameangirls.entities.Badge;
+import com.skilldistillery.jpameangirls.entities.Clique;
 import com.skilldistillery.jpameangirls.entities.Student;
 import com.skilldistillery.jpameangirls.entities.User;
 
@@ -176,16 +177,22 @@ public class UserDAOJpaImpl implements UserDAO {
 
 		User u = em.find(User.class, id);
 		
-		for (Student student : u.getStudents()) {
-			for (Badge badge : student.getBadges()) {
-				student.getBadges().remove(badge);
-			}
-		}	
-		
-			u.getStudents().remove(0);
-            
-			
-			
+		for (Student s : u.getStudents()) {
+			em.remove(s);
+			for (Badge badge : s.getBadges()) {
+				badge.getStudents().remove(s);
+			}	
+		}
+		for (Student s : u.getStudents()) {
+			em.remove(s);
+			for (Clique c : s.getCliques()) {
+				c.getStudents().remove(s);
+			}	
+		}
+		for (Student s : u.getStudents()) {
+			em.remove(s);
+				
+		}
 		
 		if (u != null) {
 			em.remove(u);

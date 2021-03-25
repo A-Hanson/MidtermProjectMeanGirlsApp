@@ -9,8 +9,6 @@ import javax.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import com.skilldistillery.jpameangirls.entities.BurnBookComment;
-import com.skilldistillery.jpameangirls.entities.Clique;
-import com.skilldistillery.jpameangirls.entities.Comment;
 
 @Transactional
 @Service
@@ -28,7 +26,7 @@ public class BurnBookCommentDAOImpl implements BurnBookCommentDAO {
 	@Override
 	public List<BurnBookComment> getAll() {
 		
-		return em.createQuery("select c from BurnBookComment c", BurnBookComment.class).getResultList();
+		return em.createQuery("select c from BurnBookComment c WHERE enabled = TRUE", BurnBookComment.class).getResultList();
 	}
 
 	@Override
@@ -57,6 +55,13 @@ public class BurnBookCommentDAOImpl implements BurnBookCommentDAO {
 		em.remove(comment);
 		return comment;
 	}
+	
+	@Override
+	public BurnBookComment softDelete(int id) {
+		BurnBookComment c = em.find(BurnBookComment.class, id);
+		c.setEnabled(false);
+		return c;
+	}
 
 	@Override
 	public BurnBookComment deleteByIdPermanently(Integer id) {
@@ -65,5 +70,22 @@ public class BurnBookCommentDAOImpl implements BurnBookCommentDAO {
 		em.remove(managedComment);
 		return managedComment;
 	}
+	
+	@Override
+	public List<BurnBookComment> getAllFlagged() {
+		
+		return em.createQuery("select c from BurnBookComment c where c.flagged = true", BurnBookComment.class).getResultList();
+	}
 
+	@Override
+	public List<BurnBookComment> getAllEnabled() {
+		
+		return em.createQuery("select c from BurnBookComment c where c.enabled = true", BurnBookComment.class).getResultList();
+	}
+
+	@Override
+	public List<BurnBookComment> getAllEnabledAndFlagged() {
+		// TODO Auto-generated method stub
+		return em.createQuery("select c from BurnBookComment c where c.flagged = true and c.enabled = true", BurnBookComment.class).getResultList();
+	}
 }

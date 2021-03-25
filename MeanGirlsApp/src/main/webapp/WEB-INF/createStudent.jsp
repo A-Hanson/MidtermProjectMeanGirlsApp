@@ -50,26 +50,59 @@
 
 				</div>
 				<div class="col-6">
-					<h3>Profile Pic:</h3>
-					<div class="form-check">
-						<input class="form-check-input" type="radio" name="imageUrl"
-							value="resources/images/cady.jpg" checked> <label
-							class="form-check-label" for="exampleRadios1"> <img
-							style="max-width: 100px" class="img-thumbnail"
-							src="resources/images/cady.jpg" />
-						</label>
+					<div class="row">
+						<h3>Profile Pic:</h3>
 					</div>
-					<div class="form-check">
-						<input class="form-check-input" type="radio" name="exampleRadios"
-							id="exampleRadios2" value="option2"> <label
-							class="form-check-label" for="exampleRadios2"> Second
-							default radio </label>
+					<div class="row">
+						<div class="form-check">
+							<input class="form-check-input" type="radio" name="imageUrl"
+								value="resources/images/cady.jpg" checked> <label
+								class="form-check-label" for="imageUrl"> <img
+								style="max-width: 100px" class="img-thumbnail"
+								src="resources/images/cady.jpg" />
+							</label>
+						</div>
+						<div class="form-check">
+							<input class="form-check-input" type="radio" name="imageUrl"
+								value="resources/images/regina.jpg"> <label
+								class="form-check-label" for="imageUrl"> <img
+								style="max-width: 100px" class="img-thumbnail"
+								src="resources/images/regina.jpg" />
+							</label>
+						</div>
+						<div class="form-check">
+							<input class="form-check-input" type="radio" name="imageUrl"
+								value="resources/images/gretchen-wieners.jpg"> <label
+								class="form-check-label" for="imageUrl"> <img
+								style="max-width: 100px" class="img-thumbnail"
+								src="resources/images/gretchen-wieners.jpg" />
+							</label>
+						</div>
+						<div class="form-check">
+							<input class="form-check-input" type="radio" name="imageUrl"
+								value="resources/images/karen-smith.jpg"> <label
+								class="form-check-label" for="imageUrl"> <img
+								style="max-width: 100px" class="img-thumbnail"
+								src="resources/images/karen-smith.jpg" />
+							</label>
+						</div>
+						<div class="form-check">
+							<input class="form-check-input" type="radio" name="imageUrl"
+								value="resources/images/janis-ian.jpg"> <label
+								class="form-check-label" for="imageUrl"> <img
+								style="max-width: 100px" class="img-thumbnail"
+								src="resources/images/janis-ian.jpg" />
+							</label>
+						</div>
+						<div class="form-check">
+							<input class="form-check-input" type="radio" name="imageUrl"
+								value="resources/images/the-dude.jpg"> <label
+								class="form-check-label" for="imageUrl"> <img
+								style="max-width: 100px" class="img-thumbnail"
+								src="resources/images/the-dude.jpg" />
+							</label>
+						</div>
 					</div>
-					<div class="form-group">
-						<label for="imageUrl">Image Url:</label> <input type="text"
-							class="form-control" name="imageUrl">
-					</div>
-
 				</div>
 			</div>
 		</form>

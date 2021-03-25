@@ -5,10 +5,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<title>Comments</title>
 <jsp:include page="head.jsp" />
-<title>Users</title>
 </head>
 <body>
+
 	<jsp:include page="nav.jsp" />
 
 	<div class="container">
@@ -16,50 +17,38 @@
 
 		<c:choose>
 			<c:when test="${user.role=='admin' }">
-				<h1>MANAGE USERS</h1>
+				<h1>MANAGE COMMENTS</h1>
 
 				<div>
 					<div>
-						Look up user by Id #
-						<form action="getUser.do" method="GET">
+						Look up comments by clique Id #
+						<form action="getCliqueComments.do" method="GET">
 							<input type="number" name="id" value="" id="id" required /> <br>
 							<input type="submit" value="Search" />
 						</form>
 					</div>
 					<br> <br> <br>
 					<div>
-						Look up user by username
-						<form action="getUser.do" method="GET">
+						Look up comments by username
+						<form action="getCommentByUser.do" method="GET">
 							<input type="text" name="username" value="" /> <br> <input
 								type="submit" value="Search" />
 						</form>
 					</div>
 					<br> <br> <br>
 					<div>
-						List All Users
-						<form action="getUser.do" method="GET">
+						List All Comments
+						<form action="getComment.do" method="GET">
 							<input type="submit" value="Search" />
 						</form>
 					</div>
 					<br> <br> <br>
 					<div>
-						<span>Update an User</span>
-						<form action="updateUser.do" method="GET">
-							<label for="number">User ID #: </label> <input type="number"
-								min="1" max="2000" name="id" value="" size="4" id="number"
-								required /> <br> <input type="submit" value="Update" />
+						List Burn Book Comments
+						<form action="getBurnComments.do" method="GET">
+							<input type="submit" value="Search" />
 						</form>
 					</div>
-					
-					<!-- <div>
-						<span>Delete an User PERMANENTLY</span>
-						<form action="deletePermanently.do" method="GET">
-							<label for="number">User ID #: </label> <input type="number"
-								min="1" max="2000" name="id" value="" size="4" id="number"
-								required /> <br> <input type="submit" value="Update" />
-						</form>
-					</div> -->
-					
 					<br> <br> <br>
 				</div>
 			</c:when>
@@ -70,5 +59,7 @@
 		</c:choose>
 	</div>
 	<jsp:include page="foot.jsp" />
+
+
 </body>
 </html>
