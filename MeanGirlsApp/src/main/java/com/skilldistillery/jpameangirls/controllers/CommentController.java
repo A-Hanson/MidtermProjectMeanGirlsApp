@@ -56,8 +56,8 @@ public class CommentController {
 		Clique plastics = cliqueDao.findById(2);
 		
 		commentDao.create(comment, student, plastics);
-		redir.addFlashAttribute("plasticsComment", comment);
-		redir.addFlashAttribute("student", student);
+//		redir.addFlashAttribute("plasticsComment", comment);
+//		redir.addFlashAttribute("student", student);
 		mv.setViewName("redirect:plasticsforum.do");
 		return mv;
 	}
@@ -145,10 +145,13 @@ public class CommentController {
 	}
 	
 	
-//	@RequestMapping(path = "reply.do", method = RequestMethod.POST)
-//	public ModelAndView reply(String commentId, String studentId, String cliqueId) {
-//		
-//		return mv;
-//	}
+	@RequestMapping(path = "reply.do", method = RequestMethod.POST)
+	public ModelAndView reply(String commentId, String studentId, String cliqueId) {
+		
+		ModelAndView mv = new ModelAndView();
+		
+		
+		return mv;
+	}
 
 }
