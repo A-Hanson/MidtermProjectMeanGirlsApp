@@ -73,4 +73,18 @@ public class AdminController {
 		return "redirect:getUser.do";
 	}
 	
+	@RequestMapping(path = "deletePermanently.do", params = "id", method = RequestMethod.GET)
+	public ModelAndView deleteUserPermanently(int id) {
+
+		User user = null;
+		user = userDao.findUserById(id);
+		userDao.deleteUserPermanently(id);
+
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("allUsers");
+		mv.addObject("deletedUser", user);
+
+		return mv;
+	}
+	
 }
