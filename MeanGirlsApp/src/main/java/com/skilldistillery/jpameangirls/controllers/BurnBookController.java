@@ -12,7 +12,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.skilldistillery.jpameangirls.dao.BurnBookCommentDAO;
 import com.skilldistillery.jpameangirls.dao.StudentDAO;
 import com.skilldistillery.jpameangirls.entities.BurnBookComment;
-import com.skilldistillery.jpameangirls.entities.Comment;
 
 @Controller
 public class BurnBookController {

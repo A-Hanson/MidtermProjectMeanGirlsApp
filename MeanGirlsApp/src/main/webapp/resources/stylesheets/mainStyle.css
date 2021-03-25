@@ -89,3 +89,7 @@ a:hover, a:active {
 #admin-navbar {
 		background-color: darkmagenta !important;
 }
+
+#burnbook{
+	background-image: url("resources/images/burnbookcover.jpg");
+}

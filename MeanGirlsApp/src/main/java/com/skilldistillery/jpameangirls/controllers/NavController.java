@@ -49,9 +49,19 @@ public class NavController {
 		mv.setViewName("cafeteria");
 		return mv;
 	}
-
+	
+	
 	@RequestMapping(path = "goToBurnBook.do")
 	public ModelAndView goToBurnBook(HttpSession session) {
+		
+		ModelAndView mv = new ModelAndView();
+		
+		mv.setViewName("burnbookcover");
+		return mv;
+	}
+
+	@RequestMapping(path = "openburnbook.do")
+	public ModelAndView openBurnBook(HttpSession session) {
 		
 		ModelAndView mv = new ModelAndView();
 		
@@ -61,5 +71,7 @@ public class NavController {
 		mv.setViewName("burnBook");
 		return mv;
 	}
+	
+	
 
 }
