@@ -12,6 +12,7 @@ import com.skilldistillery.jpameangirls.dao.CliqueDAO;
 import com.skilldistillery.jpameangirls.dao.CommentDAO;
 import com.skilldistillery.jpameangirls.dao.CommentVoteDAO;
 import com.skilldistillery.jpameangirls.dao.StudentDAO;
+import com.skilldistillery.jpameangirls.entities.BurnBookComment;
 import com.skilldistillery.jpameangirls.entities.Clique;
 import com.skilldistillery.jpameangirls.entities.Comment;
 import com.skilldistillery.jpameangirls.entities.Student;
@@ -129,6 +130,25 @@ public class CommentController {
 		return mv;
 	}
 	
-
 	
+	@RequestMapping(path="reportComment.do", method = RequestMethod.POST)
+	public String reportComment(String commentId) {
+
+		
+		Comment c = commentDao.findById(Integer.parseInt(commentId));
+		
+		c.setFlagged(true);
+		
+		commentDao.update(c.getId(), c);
+		
+		return "redirect:goToCafeteria.do";
+	}
+	
+	
+//	@RequestMapping(path = "reply.do", method = RequestMethod.POST)
+//	public ModelAndView reply(String commentId, String studentId, String cliqueId) {
+//		
+//		return mv;
+//	}
+
 }
