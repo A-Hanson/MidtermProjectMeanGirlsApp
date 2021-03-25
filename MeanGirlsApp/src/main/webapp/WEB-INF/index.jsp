@@ -12,9 +12,14 @@
 		<div class="row min-height:100vh">
 			<div class="col-8" id="index-background">
 				<br />
-				<h3>MEAN GIRLS</h3>
-				<h4>Welcome to North Shore High!</h4>
-
+				<div class="col">
+				<div class="row justify-content-center">
+				<div class="col align-self-center bg-transparent text-light">
+				<h3 class="display-4">MEAN GIRLS <br>
+				<small>Welcome to North Shore High!</small></h3>
+				</div>
+				</div>
+				</div>
 			</div>
 			<div class="col-4 rt-sidebar min-height:100vh">
 				<aside>
