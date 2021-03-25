@@ -122,38 +122,26 @@
 			<%-- LOGGED IN AS ADMIN --%>
 			<c:when test="${user.role=='admin' }">
 				<div class="container">
-					<div class="row align-items-left">
-						<div class="col">
-							<h3>Admin Dashboard</h3>
-							<hr />
-						</div>
-					</div>
-					<div class="row align-items-left">
-						<div class="col align-items-left">
-							<h4>Name: ${user.firstName }&nbsp;${user.lastName }</h4>
-							<h5>Username: ${user.username}</h5>
-							<hr />
-						</div>
-					</div>
-					<div class="row align-items-left">
-						<div class="col align-items-left">
-							<h5>
-								<a class="nav-link active" href="manageUsers.do">Manage
-									Users</a>
-							</h5>
-							<h5>
-								<a class="nav-link active" href="manageComments.do">Manage
-									Comments</a>
-							</h5>
-							<h5>
-								<a class="nav-link active" href="goToCafeteria.do">Go to
-									Cafeteria</a>
-							</h5>
-							<h5>
-								<a class="nav-link active" href="logout.do">Log Out</a>
-							</h5>
-						</div>
-					</div>
+					<h3>Admin Dashboard</h3>
+					<hr />
+					<h4>Name: ${user.firstName }&nbsp;${user.lastName }</h4>
+					<h5>Username: ${user.username}</h5>
+					<hr />
+					<h5>
+						<a class="nav-link active justify-content-left"
+							href="manageUsers.do">Manage Users</a>
+					</h5>
+					<h5>
+						<a class="nav-link active" href="manageComments.do">Manage
+							Comments</a>
+					</h5>
+					<h5>
+						<a class="nav-link active" href="goToCafeteria.do">Go to
+							Cafeteria</a>
+					</h5>
+					<h5>
+						<a class="nav-link active" href="logout.do">Log Out</a>
+					</h5>
 				</div>
 			</c:when>
 
