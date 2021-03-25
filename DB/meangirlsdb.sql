@@ -343,7 +343,7 @@ CREATE TABLE IF NOT EXISTS `book_comment_vote` (
 ENGINE = InnoDB;
 
 SET SQL_MODE = '';
--- DROP USER IF EXISTS meangirlsuser@localhost;
+DROP USER IF EXISTS meangirlsuser@localhost;
 SET SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
 CREATE USER 'meangirlsuser'@'localhost' IDENTIFIED BY 'meangirlsuser';
 
@@ -370,7 +370,7 @@ COMMIT;
 START TRANSACTION;
 USE `meangirlsdb`;
 INSERT INTO `student` (`id`, `user_id`, `first_name`, `last_name`, `gender`, `grade_level`, `created_date`, `birthday_date`, `image_url`, `enabled`) VALUES (1, 2, 'Regina', 'George', 'Female', 11, '2020-03-19 00:00:00', '1991-01-01', 'https://smulook.com/wp-content/uploads/2020/09/regina-on-the-phone.jpg', 1);
-INSERT INTO `student` (`id`, `user_id`, `first_name`, `last_name`, `gender`, `grade_level`, `created_date`, `birthday_date`, `image_url`, `enabled`) VALUES (2, 2, 'Cady', 'Lohan', 'Female', 11, '2020-03-23 00:00:00', '1990-04-04', NULL, 1);
+INSERT INTO `student` (`id`, `user_id`, `first_name`, `last_name`, `gender`, `grade_level`, `created_date`, `birthday_date`, `image_url`, `enabled`) VALUES (2, 2, 'Cady', 'Lohan', 'Female', 11, '2020-03-23 00:00:00', '1990-04-04', 'resources/images/cady.jpg', 1);
 
 COMMIT;
 
@@ -459,3 +459,4 @@ USE `meangirlsdb`;
 INSERT INTO `book_comment_vote` (`id`, `vote`, `burn_book_comment_id`, `student_id`) VALUES (1, 1, 1, 1);
 
 COMMIT;
+
