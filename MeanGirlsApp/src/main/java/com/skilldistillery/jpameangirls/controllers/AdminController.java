@@ -130,10 +130,10 @@ public class AdminController {
 	}
 	
 	@RequestMapping(path="deleteCommentBook.do", method = RequestMethod.POST)
-	public String deleteBookComment(String commentId, RedirectAttributes redir) {
+	public String deleteBookComment(int id, RedirectAttributes redir) {
 		
-		int cId = Integer.parseInt(commentId);
-		commentDao.softDelete(cId);
+		burnCommentDao.softDelete(id);
+		
 		return "redirect:getBurnComments.do";
 	}
 	

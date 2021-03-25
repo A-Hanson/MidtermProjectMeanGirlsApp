@@ -48,7 +48,7 @@
 									<td>${com.content}</td>
 									<td><form action="deleteCommentBook.do" method="POST">
 										<button style="">Delete</button>
-										<input type="hidden" name="commentId" value="${com.id}" />
+										<input type="hidden" name="id" value="${com.id}" />
 									</form></td>
 								</tr>
 						
