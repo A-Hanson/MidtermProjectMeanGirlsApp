@@ -1,22 +1,22 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<nav class="navbar navbar-expand-md navbar-dark fixed-top">
-	<div class="container">
-		<a class="navbar-brand" href="home.do">MEAN GIRLS</a>
+<c:choose>
 
-		<button type="button" class="navbar-toggler" data-toggle="collapse"
-			data-target="navbar">
-			<span class="navbar-toggler-icon"></span>
-		</button>
+	<%-- USER LOGGED IN: --%>
 
-		<c:choose>
+	<c:when test="${user.role=='user' and not empty student }">
+		<nav class="navbar navbar-expand-md navbar-dark fixed-top">
+			<div class="container">
+				<a class="navbar-brand" href="home.do">MEAN GIRLS</a>
 
-			<%-- USER LOGGED IN: --%>
+				<button type="button" class="navbar-toggler" data-toggle="collapse"
+					data-target="navbar">
+					<span class="navbar-toggler-icon"></span>
+				</button>
 
-			<c:when test="${user.role=='user' and not empty student }">
 				<div class="collapse navbar-collapse" id="navbar">
 					<ul class="nav navbar-nav">
-						<li style="color:yellow;">DEBUG: USER LOGGED IN</li>
+						<li style="color: yellow;">DEBUG: USER LOGGED IN</li>
 						<li class="nav-item"><a class="nav-link active"
 							href="dashboard.do">Dashboard</a></li>
 						<li class="nav-item"><a class="nav-link active"
@@ -27,27 +27,51 @@
 							href="logout.do">Log Out</a></li>
 					</ul>
 				</div>
-			</c:when>
-			
-			
-			
-			<%-- USER LOGGED IN & STUDENT EMPTY: --%>
+			</div>
+		</nav>
+	</c:when>
 
-			<c:when test="${(user.role=='user') and  (empty student)}">
+
+
+	<%-- USER LOGGED IN & STUDENT EMPTY: --%>
+	<c:when test="${(user.role=='user') and  (empty student)}">
+
+		<nav class="navbar navbar-expand-md navbar-dark fixed-top">
+			<div class="container">
+				<a class="navbar-brand" href="home.do">MEAN GIRLS</a>
+
+				<button type="button" class="navbar-toggler" data-toggle="collapse"
+					data-target="navbar">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+
 				<div class="collapse navbar-collapse" id="navbar">
 					<ul class="nav navbar-nav">
-						<li style="color:yellow;">DEBUG: USER LOGGED IN</li>
+						<li style="color: yellow;">DEBUG: USER LOGGED IN</li>
 						<li class="nav-item"><a class="nav-link active"
 							href="logout.do">Log Out</a></li>
 					</ul>
 				</div>
-			</c:when>
+			</div>
+		</nav>
+	</c:when>
 
 
-			<%-- ADMIN LOGGED IN: --%>
+	<%-- ADMIN LOGGED IN: --%>
 
-			<c:when test="${user.role=='admin' }">
-				<div class="collapse navbar-collapse" id="navbar" >
+	<c:when test="${user.role=='admin' }">
+
+		<nav class="navbar navbar-expand-md navbar-dark fixed-top"
+			id="admin-navbar">
+			<div class="container">
+				<a class="navbar-brand" href="home.do">MEAN GIRLS</a>
+
+				<button type="button" class="navbar-toggler" data-toggle="collapse"
+					data-target="navbar">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+
+				<div class="collapse navbar-collapse">
 					<ul class="nav navbar-nav">
 						<li class="nav-item"><a class="nav-link active"
 							href="dashboard.do">Admin Dashboard</a></li>
@@ -55,28 +79,34 @@
 							href="manageUsers.do">Manage Users</a></li>
 						<li class="nav-item"><a class="nav-link active"
 							href="manageComments.do">Manage Comments</a></li>
-							<li class="nav-item"><a class="nav-link active"
+						<li class="nav-item"><a class="nav-link active"
 							href="goToCafeteria.do">Cafeteria</a></li>
 						<li class="nav-item"><a class="nav-link active"
 							href="logout.do">Log Out</a></li>
 					</ul>
 				</div>
-			</c:when>
+			</div>
+		</nav>
+	</c:when>
 
 
-			<%-- NO ONE LOGGED IN: --%>
+	<%-- NO ONE LOGGED IN: --%>
 
-			<c:otherwise>
+	<c:otherwise>
+		<nav class="navbar navbar-expand-md navbar-dark fixed-top">
+			<div class="container">
+				<a class="navbar-brand" href="home.do">MEAN GIRLS</a>
+
 				<div class="collapse navbar-collapse" id="navbar">
 					<ul class="nav navbar-nav">
-						<li style="color:yellow;">DEBUG: NO ONE LOGGED IN</li>
+						<li style="color: yellow;">DEBUG: NO ONE LOGGED IN</li>
 						<li class="nav-item"><a class="nav-link active"
 							href="login.do">Log In</a></li>
 						<li class="nav-item"><a class="nav-link active"
 							href="register.do">Register</a></li>
 					</ul>
 				</div>
-			</c:otherwise>
-		</c:choose>
-	</div>
-</nav>
+			</div>
+		</nav>
+	</c:otherwise>
+</c:choose>
