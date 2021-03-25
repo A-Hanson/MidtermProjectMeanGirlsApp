@@ -86,6 +86,12 @@ public class CommentDAOImpl implements CommentDAO {
 		String query = "SELECT c FROM Comment c JOIN c.clique cl WHERE cl.id = :id AND c.enabled=TRUE ORDER BY c.createdDate DESC";
 		return em.createQuery(query, Comment.class).setParameter("id", cliqueId).getResultList();
 	}
+	
+	@Override
+	public List<Comment> findCommentsByUsername(String username) {
+		String query = "SELECT c FROM Comment c JOIN c.student cs WHERE cs.user.username = :username AND c.enabled=TRUE ORDER BY c.createdDate DESC";
+		return em.createQuery(query, Comment.class).setParameter("username", username).getResultList();
+	}
 
 	@Override
 	public List<Comment> findCommentsInTheLast24HoursFromCliqueWithId(int id) {
