@@ -74,7 +74,7 @@ a:hover, a:active {
 }
 
 #index-background {
-	background-image: url("/resources/images/mean-girls-4-posing.jpg");
+	background-image: url("resources/images/mean-girls-4-posing.jpg");
 	background-repeat: no-repeat;
 	background-position: left top;
 	height: 100vh;
