@@ -178,5 +178,20 @@ public class AdminController {
 		return "redirect:getCommentByUser.do";
 	}
 	
+	@RequestMapping(path = "getFlaggedComments.do")
+	public ModelAndView getFlaggedComments() {
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("comments", burnCommentDao.getAllEnabledAndFlagged());
+		mv.setViewName("flaggedCommentsList");
+		return mv;
+	}
+	
+	@RequestMapping(path="deleteFlaggedComments.do", method = RequestMethod.POST)
+	public String deleteFlagged(String commentId, RedirectAttributes redir) {
+		
+		int cId = Integer.parseInt(commentId);
+		burnCommentDao.softDelete(cId);
+		return "redirect:getFlaggedComments.do";
+	}
 }
 

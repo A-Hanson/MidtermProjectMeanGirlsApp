@@ -32,12 +32,13 @@
 								<h5 class="card-title">${studentBurnPage.firstName}</h5>
 								<c:forEach var="comment"
 									items="${studentBurnPage.burnBookCommentsAboutMe}">
-
+                                  <c:if test="${comment.enabled}">
 									<div class="card">${comment.content}</div>
 									<form action="reportBurnComment.do" method="POST">
 										<input type="text" hidden="true" name="commentId" value="${comment.id}"> 
 										<input type="submit" value="report">
 									</form>
+									</c:if>
 								</c:forEach>
 								${studentBurnPage.id}
 								<form action="addBurnComment.do" method="GET">
