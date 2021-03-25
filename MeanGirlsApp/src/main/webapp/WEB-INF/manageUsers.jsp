@@ -50,6 +50,16 @@
 								required /> <br> <input type="submit" value="Update" />
 						</form>
 					</div>
+					
+					<div>
+						<span>Delete an User PERMANENTLY</span>
+						<form action="deletePermanently.do" method="GET">
+							<label for="number">User ID #: </label> <input type="number"
+								min="1" max="2000" name="id" value="" size="4" id="number"
+								required /> <br> <input type="submit" value="Update" />
+						</form>
+					</div>
+					
 					<br> <br> <br>
 				</div>
 			</c:when>

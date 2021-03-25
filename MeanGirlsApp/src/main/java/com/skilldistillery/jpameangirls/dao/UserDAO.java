@@ -24,6 +24,7 @@ public interface UserDAO {
 //////// DELETE
 	public boolean deleteUser(int id);
 	public User softDelete(int id);
+	public Boolean deleteUserPermanently(int id);
 	
 	public User getUserByUserNameAndPassword(String username, String password);
 	public boolean isValidUser(User u) ;

@@ -1,6 +1,7 @@
 package com.skilldistillery.jpameangirls.entities;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -145,6 +146,27 @@ public class User {
 
 	public void setGender(String gender) {
 		this.gender = gender;
+	}
+	
+public void addStudent(Student student) {
+		
+		if(students==null) students = new ArrayList<>();
+		
+		if(!students.contains(student)) {
+			students.add(student);
+			if(student.getUser() != null) {
+				student.getUser().getStudents().remove(student);
+			}
+			student.setUser(this);;
+		}
+		
+	}
+	
+	public void removeStudent(Student student) {
+		student.setUser(null);
+		if(students != null) {
+			students.remove(student);
+		}
 	}
 
 	// other methods
