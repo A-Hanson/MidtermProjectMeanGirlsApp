@@ -85,3 +85,7 @@ a:hover, a:active {
 	background-color: #ee4498 !important;
 	border-color: #ee4498 !important;
 }
+
+#admin-navbar {
+		background-color: darkmagenta !important;
+}
