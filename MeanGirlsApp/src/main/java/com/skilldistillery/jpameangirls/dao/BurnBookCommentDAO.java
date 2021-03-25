@@ -8,8 +8,10 @@ public interface BurnBookCommentDAO {
 	
 	BurnBookComment findById(int id);
 	List<BurnBookComment> getAll();
+	List<BurnBookComment> getAllFlagged();
 	BurnBookComment create(BurnBookComment comment);
 	BurnBookComment update(BurnBookComment comment);
 	BurnBookComment deletePermanently(BurnBookComment comment);
 	BurnBookComment deleteByIdPermanently(Integer id);
+	
 }
