@@ -10,7 +10,7 @@
 				<a class="navbar-brand" href="home.do">MEAN GIRLS</a>
 
 				<button type="button" class="navbar-toggler" data-toggle="collapse"
-					data-target="navbar">
+					data-target="#navbar">
 					<span class="navbar-toggler-icon"></span>
 				</button>
 
@@ -41,13 +41,13 @@
 				<a class="navbar-brand" href="home.do">MEAN GIRLS</a>
 
 				<button type="button" class="navbar-toggler" data-toggle="collapse"
-					data-target="navbar">
+					data-target="#navbar">
 					<span class="navbar-toggler-icon"></span>
 				</button>
 
 				<div class="collapse navbar-collapse" id="navbar">
 					<ul class="nav navbar-nav">
-						<li style="color: yellow;">DEBUG: USER LOGGED IN</li>
+						<!--  <li style="color: yellow;">DEBUG: USER LOGGED IN</li>  -->
 						<li class="nav-item"><a class="nav-link active"
 							href="logout.do">Log Out</a></li>
 					</ul>
@@ -61,17 +61,17 @@
 
 	<c:when test="${user.role=='admin' }">
 
-		<nav class="navbar navbar-expand-md navbar-dark fixed-top"
+		<nav class="navbar navbar-expand-lg navbar-dark fixed-top"
 			id="admin-navbar">
 			<div class="container">
 				<a class="navbar-brand" href="home.do">MEAN GIRLS</a>
 
 				<button type="button" class="navbar-toggler" data-toggle="collapse"
-					data-target="navbar">
+					data-target="#admin-navbar-toggle">
 					<span class="navbar-toggler-icon"></span>
 				</button>
 
-				<div class="collapse navbar-collapse">
+				<div id="admin-navbar-toggle" class="collapse navbar-collapse">
 					<ul class="nav navbar-nav">
 						<li class="nav-item"><a class="nav-link active"
 							href="dashboard.do">Admin Dashboard</a></li>
@@ -97,9 +97,13 @@
 			<div class="container">
 				<a class="navbar-brand" href="home.do">MEAN GIRLS</a>
 
+				<button type="button" class="navbar-toggler" data-toggle="collapse"
+					data-target="#navbar">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+
 				<div class="collapse navbar-collapse" id="navbar">
 					<ul class="nav navbar-nav">
-						<li style="color: yellow;">DEBUG: NO ONE LOGGED IN</li>
 						<li class="nav-item"><a class="nav-link active"
 							href="login.do">Log In</a></li>
 						<li class="nav-item"><a class="nav-link active"
