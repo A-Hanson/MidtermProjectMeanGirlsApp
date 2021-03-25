@@ -34,6 +34,10 @@
 									items="${studentBurnPage.burnBookCommentsAboutMe}">
 
 									<div class="card">${comment.content}</div>
+									<form action="reportBurnComment.do" method="POST">
+										<input type="text" hidden="true" name="commentId" value="${comment.id}"> 
+										<input type="submit" value="report">
+									</form>
 								</c:forEach>
 								${studentBurnPage.id}
 								<form action="addBurnComment.do" method="GET">
@@ -54,6 +58,8 @@
 										</form>
 									</div>
 								</c:if>
+								
+								
 
 							</div>
 						</div>

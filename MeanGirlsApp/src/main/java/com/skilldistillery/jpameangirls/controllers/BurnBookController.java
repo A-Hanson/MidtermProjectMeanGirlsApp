@@ -53,47 +53,16 @@ public class BurnBookController {
 		return "redirect:goToBurnBook.do";
 	}
 	
-//	@RequestMapping(path="updateComment.do", method = RequestMethod.POST)
-//	public String updateCafteriaComment(String id, Comment comment, RedirectAttributes redir) {
-//		int commentId = Integer.parseInt(id);
-//		commentDao.update(commentId, comment);
-//		return "redirect:cafeteriaforum.do";
-//	}
-//	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	@RequestMapping(path="reportBurnComment.do", method = RequestMethod.POST)
+	public String reportBurnComment(String commentId) {
+
+		
+		BurnBookComment b = bbcDAO.findById(Integer.parseInt(commentId));
+		
+		b.setFlagged(true);
+		
+		bbcDAO.update(b);
+		
+		return "redirect:goToBurnBook.do";
+	}
 }

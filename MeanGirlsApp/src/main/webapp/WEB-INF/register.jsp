@@ -10,8 +10,6 @@
 <body>
 	<jsp:include page="nav.jsp" />
 	<div class="container">
-		<h1>Mean Girl Registration Page</h1>
-		<br />
 		<h3>Please enter your information:</h3>
 
 		<form action="register.do" method="POST">
@@ -27,19 +25,20 @@
 				<tr>
 					<%--TODO: mask password field when user types password--%>
 					<td>Password:</td>
-					<td><input type="text" name="password" /></td>
+					<td><input type="password" name="password" /></td>
 				</tr>
 				<tr>
 					<td>First Name:</td>
 					<td><input type="text" name="firstName" /></td>
-
+				</tr>
+				<tr>
 					<td>Last Name:</td>
 					<td><input type="text" name="lastName" /></td>
 				</tr>
 				<tr>
 					<td>Birthday:</td>
-					<td>Day:<input type="number" name="birthdayDay" /></td>
 					<td>Month:<input type="number" name="birthdayMonth" /></td>
+					<td>Day:<input type="number" name="birthdayDay" /></td>
 					<td>Year:<input type="number" name="birthdayYear" /></td>
 				</tr>
 				<tr>
