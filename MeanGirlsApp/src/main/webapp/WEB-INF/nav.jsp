@@ -16,7 +16,7 @@
 
 				<div class="collapse navbar-collapse" id="navbar">
 					<ul class="nav navbar-nav">
-						<li style="color: yellow;">DEBUG: USER LOGGED IN</li>
+						<!--  li style="color: yellow;">DEBUG: USER LOGGED IN</li -->
 						<li class="nav-item"><a class="nav-link active"
 							href="dashboard.do">Dashboard</a></li>
 						<li class="nav-item"><a class="nav-link active"

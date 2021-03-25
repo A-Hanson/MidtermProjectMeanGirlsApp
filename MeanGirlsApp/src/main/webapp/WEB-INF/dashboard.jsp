@@ -40,15 +40,12 @@
 								Name: ${student.firstName }&nbsp;${student.lastName } <br />
 								Birthday: ${student.birthdayDate}
 							</div>
-							<div class="col">
-								Total Fetch:
-								<h5 style="color: #b71c1c;">${student.totalFetch }</h5>
-							</div>
+							<div class="col">Total Fetch:&nbsp;${student.totalFetch }</div>
 							<div class="col d-flex justify-content-center">
 								<form action="dashboard.do" method="GET">
 									<input type="text" hidden="true" name="studentId"
 										value="${student.id}">
-									<button type="submit" class="btn-primary">Choose
+									<button type="submit" class="btn btn-primary">Choose
 										Student</button>
 								</form>
 							</div>
@@ -59,7 +56,7 @@
 						<form action="makeNewStudent.do" method="GET">
 							<input type="text" hidden="true" name="userIdString"
 								value="${user.id}">
-							<button type="submit" class="btn-primary">Enroll New
+							<button type="submit" class="btn btn-primary">Enroll New
 								Student</button>
 						</form>
 					</div>
@@ -71,8 +68,7 @@
 				<c:if test="${not empty student}">
 					<div class="row align-items-left">
 						<div class="col">
-							<h2>Playing as:</h2>
-							<h3>&nbsp;</h3>
+							<h5>Playing as:</h5>
 						</div>
 					</div>
 					<div class="row align-items-left">
@@ -84,9 +80,8 @@
 						</div>
 						<div class="col-6 align-items-left">
 							<h2 style="color: darkmagenta;">${student.firstName }&nbsp;${student.lastName }</h2>
-							<h5 style="color: darkmagenta;">Total Fetch:</h5>
-							<em style="color: #b71c1c;">${totalFetch }</em>
-
+							<h5 style="color: darkmagenta;">Total
+								Fetch:&nbsp;${student.totalFetch }</h5>
 						</div>
 						<div class="col-4 align-items-left">
 							<h5>About:</h5>
@@ -114,7 +109,7 @@
 					<div class="row">
 						<div class="col align-items-center">
 							<form action="changeStudent.do" method="GET">
-								<button type="submit" class="btn-primary">Change
+								<button type="submit" class="btn btn-primary">Change
 									Student</button>
 							</form>
 						</div>
@@ -123,30 +118,29 @@
 			</c:when>
 
 			<c:when test="${user.role=='admin' }">
-				
-				<div class="row align-items-left">
-						<div class="col">
-							<h2>My profile</h2>
-							<h3>&nbsp;</h3>
-						</div>
-					</div>
-					<div class="row align-items-left">
-						<div class="col-2 align-items-left">
-						</div>
-						<div class="col-6 align-items-left">
-							<h2 style="color: darkmagenta;">${user.firstName }&nbsp;${user.lastName }</h2>
-							<h5 style="color: darkmagenta;">Username:</h5>
-							<em style="color: #b71c1c;">${user.username}</em>
 
-						</div>
-						<div class="col-4 align-items-left">
-							<h5>About:</h5>
-							Birthday: ${user.birthdayDate} <br /> Gender:
-							${user.gender } <br /></div>
+				<div class="row align-items-left">
+					<div class="col">
+						<h2>My profile</h2>
+						<h3>&nbsp;</h3>
 					</div>
-					<hr />
-					<hr />
-					
+				</div>
+				<div class="row align-items-left">
+					<div class="col-2 align-items-left"></div>
+					<div class="col-6 align-items-left">
+						<h2 style="color: darkmagenta;">${user.firstName }&nbsp;${user.lastName }</h2>
+						<h5 style="color: darkmagenta;">Username:</h5>
+						<em style="color: #b71c1c;">${user.username}</em>
+
+					</div>
+					<div class="col-4 align-items-left">
+						<h5>About:</h5>
+						Birthday: ${user.birthdayDate} <br /> Gender: ${user.gender } <br />
+					</div>
+				</div>
+				<hr />
+				<hr />
+
 			</c:when>
 
 			<c:otherwise>
