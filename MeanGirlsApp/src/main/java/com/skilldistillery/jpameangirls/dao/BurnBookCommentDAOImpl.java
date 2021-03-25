@@ -71,4 +71,16 @@ public class BurnBookCommentDAOImpl implements BurnBookCommentDAO {
 		
 		return em.createQuery("select c from BurnBookComment c where c.flagged = true", BurnBookComment.class).getResultList();
 	}
+
+	@Override
+	public List<BurnBookComment> getAllEnabled() {
+		
+		return em.createQuery("select c from BurnBookComment c where c.enabled = true", BurnBookComment.class).getResultList();
+	}
+
+	@Override
+	public List<BurnBookComment> getAllEnabledAndFlagged() {
+		// TODO Auto-generated method stub
+		return em.createQuery("select c from BurnBookComment c where c.flagged = true and c.enabled = true", BurnBookComment.class).getResultList();
+	}
 }
