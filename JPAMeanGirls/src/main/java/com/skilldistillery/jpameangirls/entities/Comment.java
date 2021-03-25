@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Transient;
 
 @Entity
 public class Comment {
@@ -50,6 +51,10 @@ public class Comment {
 	
 	@OneToMany(mappedBy="replyingTo")
 	private List<Comment> replies;
+	
+	@Transient
+	private int totalFetch;
+	
 
 //	Constructor
 	public Comment() {
@@ -173,6 +178,16 @@ public class Comment {
 
 	public void setCommentVotes(List<CommentVote> commentVotes) {
 		this.commentVotes = commentVotes;
+	}
+
+	
+	
+	public int getTotalFetch() {
+		return totalFetch;
+	}
+
+	public void setTotalFetch(int totalFetch) {
+		this.totalFetch = totalFetch;
 	}
 
 	@Override
