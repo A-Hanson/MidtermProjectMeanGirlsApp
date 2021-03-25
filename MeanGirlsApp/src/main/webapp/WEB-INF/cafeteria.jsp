@@ -31,7 +31,8 @@
 								<!--<fmt:parseDate value="${comment.createdDate }"
 								var="parsedCreatedDate" pattern="dd/MM/yy hh:mm" /> -->
 								Time Created: ${comment.createdDate} <br /> Posted By:
-								${comment.student.firstName }&nbsp;${comment.student.lastName }
+								${comment.student.firstName }&nbsp;${comment.student.lastName } <br />
+								Comment Fetch Level: ${comment.totalFetch }
 							</div>
 							<div class="col-6">${comment.content}</div>
 							<div class="col d-flex justify-content-center">
@@ -59,6 +60,7 @@
 									<form action="deleteComment.do" method="POST">
 										<button class="btn btn-secondary m-1">Delete</button>
 										<input type="hidden" name="commentId" value="${comment.id}" />
+										<input type="hidden" name="cliqueId" value="${clique.id}" />
 									</form>
 								</div>
 							</c:if>

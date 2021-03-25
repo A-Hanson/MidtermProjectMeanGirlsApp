@@ -56,6 +56,7 @@ public class CommentController {
 		
 		commentDao.create(comment, student, plastics);
 		redir.addFlashAttribute("plasticsComment", comment);
+		redir.addFlashAttribute("student", student);
 		mv.setViewName("redirect:plasticsforum.do");
 		return mv;
 	}
@@ -92,11 +93,11 @@ public class CommentController {
 		switch (clId) {
 			case 1:
 				page = "redirect:cafeteriaforum.do";
-				model.addAttribute("cafeteriaComments", commentDao.findCommentsInTheLast24HoursFromCliqueWithId(1));
+//				model.addAttribute("cafeteriaComments", commentDao.findCommentsInTheLast24HoursFromCliqueWithId(1));
 				break;
 			case 2:
 				page = "redirect:plasticsforum.do";
-				model.addAttribute("plasticsComments", commentDao.findCommentsByCliqueId(2));
+//				model.addAttribute("plasticsComments", commentDao.findCommentsByCliqueId(2));
 				break;
 				
 		}
@@ -114,7 +115,8 @@ public class CommentController {
 	@RequestMapping(path="updateComment.do", method = RequestMethod.POST)
 	public String updateCafteriaComment(String id, String cliqueId, Comment comment, RedirectAttributes redir) {
 		int commentId = Integer.parseInt(id);
-		commentDao.update(commentId, comment);
+		comment = commentDao.update(commentId, comment);
+		String studentId = String.valueOf(comment.getStudent().getId());
 		String page = "redirect:cafeteriaforum.do";
 		int clId = Integer.parseInt(cliqueId);
 		switch (clId) {
@@ -122,6 +124,7 @@ public class CommentController {
 				page = "redirect:cafeteriaforum.do";
 				break;
 			case 2:
+				redir.addFlashAttribute("student", studentId);
 				page = "redirect:plasticsforum.do";
 				break;
 		}
