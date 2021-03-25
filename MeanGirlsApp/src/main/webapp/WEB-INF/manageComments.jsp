@@ -22,7 +22,7 @@
 				<div>
 					<div>
 						Look up comments by clique Id #
-						<form action="getComment.do" method="GET">
+						<form action="getCliqueComments.do" method="GET">
 							<input type="number" name="id" value="" id="id" required /> <br>
 							<input type="submit" value="Search" />
 						</form>
@@ -30,7 +30,7 @@
 					<br> <br> <br>
 					<div>
 						Look up comments by username
-						<form action="getUser.do" method="GET">
+						<form action="getCommentByUser.do" method="GET">
 							<input type="text" name="username" value="" /> <br> <input
 								type="submit" value="Search" />
 						</form>
@@ -45,7 +45,7 @@
 					<br> <br> <br>
 					<div>
 						List Burn Book Comments
-						<form action="getUser.do" method="GET">
+						<form action="getBurnComments.do" method="GET">
 							<input type="submit" value="Search" />
 						</form>
 					</div>

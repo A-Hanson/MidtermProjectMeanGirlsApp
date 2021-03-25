@@ -19,4 +19,5 @@ public interface CommentDAO {
 	Comment update(int id, Comment comment);
 	Comment softDelete(int id);
 	boolean deletePermanently(int id);
+	public List<Comment> findCommentsByUsername(String username);
 }

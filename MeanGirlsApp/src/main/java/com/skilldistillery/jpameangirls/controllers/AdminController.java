@@ -8,8 +8,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.skilldistillery.jpameangirls.dao.BurnBookCommentDAO;
+import com.skilldistillery.jpameangirls.dao.CliqueDAO;
 import com.skilldistillery.jpameangirls.dao.CommentDAO;
 import com.skilldistillery.jpameangirls.dao.UserDAO;
+import com.skilldistillery.jpameangirls.entities.Clique;
 import com.skilldistillery.jpameangirls.entities.User;
 
 @Controller
@@ -21,6 +24,11 @@ public class AdminController {
 	@Autowired
 	private CommentDAO commentDao;
 	
+	@Autowired
+	private BurnBookCommentDAO burnCommentDao;
+	@Autowired
+	
+	private CliqueDAO cliqueDao;
 	
 	
 	@RequestMapping(path= { "manageUsers.do"})
@@ -105,13 +113,70 @@ public class AdminController {
 		return mv;
 	}
 	
+	@RequestMapping(path = "getBurnComments.do")
+	public ModelAndView getBurnComments() {
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("burnBookComments", burnCommentDao.getAll());
+		mv.setViewName("burnBookCommentsList");
+		return mv;
+	}
+	
 	@RequestMapping(path="deleteCommentAdmin.do", method = RequestMethod.POST)
-	public String deleteCafeteriaComment(String commentId, RedirectAttributes redir) {
+	public String deleteAllComment(String commentId, RedirectAttributes redir) {
 
 		int cId = Integer.parseInt(commentId);
 		commentDao.softDelete(cId);
 		return "redirect:getComment.do";
 	}
 	
+	@RequestMapping(path="deleteCommentBook.do", method = RequestMethod.POST)
+	public String deleteBookComment(String commentId, RedirectAttributes redir) {
+		
+		int cId = Integer.parseInt(commentId);
+		commentDao.softDelete(cId);
+		return "redirect:getBurnComments.do";
+	}
+	
+	@RequestMapping(path="deleteCliqueComment.do", method = RequestMethod.POST)
+	public String deleteCliqueComment(String commentId,int cliqueId, RedirectAttributes redir) {
+		
+		int cId = Integer.parseInt(commentId);
+		commentDao.softDelete(cId);
+		redir.addAttribute("id", cliqueId);
+		return "redirect:getCliqueComments.do";
+	}
+	
+	
+	@RequestMapping(path = "getCliqueComments.do")
+	public ModelAndView getClickComments(String id, String cliqueId) {
+		ModelAndView mv = new ModelAndView();
+		int cId = Integer.parseInt(id);
+		Clique c = cliqueDao.findById(cId);
+		mv.addObject("clique", c);
+		mv.addObject("cliqueComments", commentDao.findCommentsByCliqueId(cId));
+		mv.setViewName("cliqueCommentsList");
+		return mv;
+	}
+	
+	
+	@RequestMapping(path = "getCommentByUser.do")
+	public ModelAndView getCommentsByUser(String username) {
+		ModelAndView mv = new ModelAndView();
+		User u = userDao.findUserByUsername(username);
+		mv.addObject("u", u);
+		mv.addObject("comments", commentDao.findCommentsByUsername(username));
+		mv.setViewName("commentsByUserList");
+		return mv;
+	}
+	
+	@RequestMapping(path="deleteUserComment.do", method = RequestMethod.POST)
+	public String deleteUserComment(String commentId,String username, RedirectAttributes redir) {
+		
+		int cId = Integer.parseInt(commentId);
+		commentDao.softDelete(cId);
+		redir.addAttribute("username", username);
+		return "redirect:getCommentByUser.do";
+	}
 	
 }
+
