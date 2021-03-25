@@ -56,8 +56,8 @@ public class CommentController {
 		Clique plastics = cliqueDao.findById(2);
 		
 		commentDao.create(comment, student, plastics);
-		redir.addFlashAttribute("plasticsComment", comment);
-		redir.addFlashAttribute("student", student);
+//		redir.addFlashAttribute("plasticsComment", comment);
+//		redir.addFlashAttribute("student", student);
 		mv.setViewName("redirect:plasticsforum.do");
 		return mv;
 	}
