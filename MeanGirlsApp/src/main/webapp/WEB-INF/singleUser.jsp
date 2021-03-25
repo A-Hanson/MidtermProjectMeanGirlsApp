@@ -12,36 +12,47 @@
 <body>
 
 
-<jsp:include page="nav.jsp" />
+	<jsp:include page="nav.jsp" />
 
-<div class="container">
-<c:out value="${loggedInUser }" />
-	<c:choose>
+	<div class="container">
+		<c:out value="${loggedInUser }" />
 
-		<c:when test="${empty userLookUp}">
-			<h3>No user Was Found.</h3>
-		</c:when>
+		<c:choose>
+			<c:when test="${user.role=='admin' }">
 
-		<c:otherwise>
-			
-  <h1>${userLookUp.firstName} ${userLookUp.lastName}</h1>
-   <p>${userLookUp.username}</p>
+				<c:choose>
 
-   <div >
-			<form action="updateUser.do" method="GET">
-				<input type="hidden" name="id" value="${userLookUp.id}"/> 
-				<input type="submit" value="Update" />
-			</form>
-			<form action="deleteUser.do" method="POST">
-				<input type="hidden" name="id" value="${userLookUp.id}"/> 
-				<input type="submit" value="Delete" onclick="return confirm('Are you sure? This CANNOT be undone.'); " />
-			</form>
-</div>
-  </c:otherwise>
-  </c:choose>
-</div>
+					<c:when test="${empty userLookUp}">
+						<h3>No user Was Found.</h3>
+					</c:when>
 
-		
-<jsp:include page="foot.jsp" />
+					<c:otherwise>
+
+						<h1>${userLookUp.firstName}${userLookUp.lastName}</h1>
+						<p>${userLookUp.username}</p>
+
+						<div>
+							<form action="updateUser.do" method="GET">
+								<input type="hidden" name="id" value="${userLookUp.id}" /> <input
+									type="submit" value="Update" />
+							</form>
+							<form action="deleteUser.do" method="POST">
+								<input type="hidden" name="id" value="${userLookUp.id}" /> <input
+									type="submit" value="Delete"
+									onclick="return confirm('Are you sure? This CANNOT be undone.'); " />
+							</form>
+						</div>
+					</c:otherwise>
+				</c:choose>
+			</c:when>
+			<c:otherwise>
+				<h2>Only admins are allow to see this page</h2>
+			</c:otherwise>
+
+		</c:choose>
+	</div>
+
+
+	<jsp:include page="foot.jsp" />
 </body>
 </html>

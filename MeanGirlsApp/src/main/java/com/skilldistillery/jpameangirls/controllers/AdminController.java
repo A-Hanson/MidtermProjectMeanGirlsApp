@@ -61,8 +61,8 @@ public class AdminController {
 	public String updateUserPage(int id, User user, RedirectAttributes redir, Model model) {
 		User u = null;
 		 u = userDao.updateUser(id, user);
-		 model.addAttribute("userLookUp", u);
-		return "singleUser";
+		 redir.addAttribute("id", u.getId());
+		return "redirect:getUser.do";
 	}
 	
 	@RequestMapping(path="deleteUser.do", method = RequestMethod.POST)

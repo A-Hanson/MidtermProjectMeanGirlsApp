@@ -113,6 +113,7 @@
 								<form action="deleteComment.do" method="POST">
 									<button style="">Delete</button>
 									<input type="hidden" name="commentId" value="${comment.id}" />
+									<input type="hidden" name="cliqueId" value="${clique.id}" />
 								</form>
 							</div>
 						</div>
