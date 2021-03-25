@@ -412,7 +412,10 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `meangirlsdb`;
-INSERT INTO `badge` (`id`, `name`, `description`, `image_url`, `enabled`) VALUES (1, 'First Day', 'First day at North Shore High School', 'https://smulook.com/wp-content/uploads/2020/09/regina-on-the-phone.jpg', NULL);
+INSERT INTO `badge` (`id`, `name`, `description`, `image_url`, `enabled`) VALUES (1, 'First Day', 'First day at North Shore High School', 'resources/images/firstDay.jpeg', NULL);
+INSERT INTO `badge` (`id`, `name`, `description`, `image_url`, `enabled`) VALUES (2, 'First Comment', 'Have a conversation in the cafeteria', 'resources/images/firstCafeteriaComment.png', NULL);
+INSERT INTO `badge` (`id`, `name`, `description`, `image_url`, `enabled`) VALUES (3, 'Social Climber', 'Finally cool enough to sit with the plastics', 'resources/images/plasticsClique.gif', NULL);
+INSERT INTO `badge` (`id`, `name`, `description`, `image_url`, `enabled`) VALUES (4, 'Gossip Queen', 'First Burn Book Comment', 'resources/images/gossip.jpeg', NULL);
 
 COMMIT;
 
