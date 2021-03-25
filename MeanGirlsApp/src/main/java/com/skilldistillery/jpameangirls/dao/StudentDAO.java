@@ -18,6 +18,9 @@ public interface StudentDAO {
 	
 //	UPDATE
 	Student update(int id, Student student);
+	
+	Student addBadgeToStudent(Student student, Badge badge);
+	
 //	DELETE
 	boolean deletePermanently(int id);
 }

@@ -30,12 +30,8 @@ public class StudentDAOImpl implements StudentDAO{
 		student.setCreatedDate(LocalDateTime.now());
 		student.addBadge(newStudentBadge);
 		student.addClique(cafeteria);
-		System.out.println("==================================" +
-				student.getCliques());
+
 		em.persist(student);
-		System.out.println("==================================" +
-				student.getCliques());
-//		em.flush();
 		return student;
 	}
 	
@@ -85,8 +81,19 @@ public class StudentDAOImpl implements StudentDAO{
 		managedStudent.setGradeLevel(student.getGradeLevel());
 		managedStudent.setBirthdayDate(student.getBirthdayDate());
 		managedStudent.setImageUrl(student.getImageUrl());
-		return student;
+		return managedStudent;
 	}
+	
+	@Override
+	public Student addBadgeToStudent(Student student, Badge badge) {
+//		FIXME
+		Badge managedBadge = em.find(Badge.class, badge.getId());
+		Student managedStudent = em.find(Student.class, student.getId());
+//		managedBadge.getStudents();
+		managedStudent.addBadge(managedBadge);
+		return managedStudent;
+	}
+	
 
 //	DELETE
 	
