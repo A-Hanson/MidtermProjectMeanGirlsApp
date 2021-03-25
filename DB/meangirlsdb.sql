@@ -343,7 +343,7 @@ CREATE TABLE IF NOT EXISTS `book_comment_vote` (
 ENGINE = InnoDB;
 
 SET SQL_MODE = '';
-DROP USER IF EXISTS meangirlsuser@localhost;
+-- DROP USER IF EXISTS meangirlsuser@localhost;
 SET SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
 CREATE USER 'meangirlsuser'@'localhost' IDENTIFIED BY 'meangirlsuser';
 
@@ -459,4 +459,3 @@ USE `meangirlsdb`;
 INSERT INTO `book_comment_vote` (`id`, `vote`, `burn_book_comment_id`, `student_id`) VALUES (1, 1, 1, 1);
 
 COMMIT;
-
