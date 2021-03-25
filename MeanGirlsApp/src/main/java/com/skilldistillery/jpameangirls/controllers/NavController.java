@@ -1,5 +1,7 @@
 package com.skilldistillery.jpameangirls.controllers;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,8 +11,10 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.skilldistillery.jpameangirls.dao.CliqueDAO;
 import com.skilldistillery.jpameangirls.dao.CommentDAO;
+import com.skilldistillery.jpameangirls.dao.CommentVoteDAO;
 import com.skilldistillery.jpameangirls.dao.StudentDAO;
 import com.skilldistillery.jpameangirls.entities.Clique;
+import com.skilldistillery.jpameangirls.entities.Comment;
 
 @Controller
 public class NavController {
@@ -23,6 +27,9 @@ public class NavController {
 	
 	@Autowired
 	private CliqueDAO cliqueDao;
+	
+	@Autowired
+	private CommentVoteDAO cvDao;
 
 	@RequestMapping(path = "goToRegisterPage.do")
 	public String goToRegisterPage() {
@@ -33,8 +40,12 @@ public class NavController {
 	public ModelAndView goToCafeteria() {
 		ModelAndView mv = new ModelAndView();
 		Clique cafeteria = cliqueDao.findById(1);
+		List<Comment> comments = commentDao.findCommentsInTheLast24HoursFromCliqueWithId(1);
+		for (Comment comment : comments) {
+			comment.setTotalFetch(cvDao.commentTotalScore(comment.getId()));
+		}
 		mv.addObject("clique", cafeteria);
-		mv.addObject("cafeteriaComments", commentDao.findCommentsInTheLast24HoursFromCliqueWithId(1));
+		mv.addObject("cafeteriaComments", comments);
 		mv.setViewName("cafeteria");
 		return mv;
 	}

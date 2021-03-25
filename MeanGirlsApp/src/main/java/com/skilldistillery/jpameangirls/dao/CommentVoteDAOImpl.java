@@ -56,14 +56,14 @@ public class CommentVoteDAOImpl implements CommentVoteDAO {
 
 	@Override
 	public int commentUpVoteTotal(int commentId) {
-		String query = "SELECT COUNT(cv) FROM CommentVote cv JOIN JOIN cv.comment c WHERE (c.id=:cid AND cv.vote=TRUE";
+		String query = "SELECT COUNT(cv) FROM CommentVote cv JOIN cv.comment c WHERE c.id=:cid AND cv.vote=TRUE";
 		long count = em.createQuery(query, Long.class).setParameter("cid", commentId).getSingleResult();
 		return (int) count;
 	}
 
 	@Override
 	public int commentDownVoteTotal(int commentId) {
-		String query = "SELECT COUNT(cv) FROM CommentVote cv JOIN cv.comment c WHERE (c.id=:cid AND cv.vote=FALSE";
+		String query = "SELECT COUNT(cv) FROM CommentVote cv JOIN cv.comment c WHERE c.id=:cid AND cv.vote=FALSE";
 		long count = em.createQuery(query, Long.class).setParameter("cid", commentId).getSingleResult();
 		return (int) count;
 	}
