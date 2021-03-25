@@ -39,6 +39,9 @@ public class StudentController {
 			if (user.getRole().equals("user")) {
 				int userId = user.getId();
 				List<Student> students = userDao.findAllStudentsForUser(userId);
+				for (Student student : students) {
+					student.setTotalFetch(cvDao.studentTotalScore(student.getId()));
+				}
 				session.setAttribute("userStudents", students);
 
 			}

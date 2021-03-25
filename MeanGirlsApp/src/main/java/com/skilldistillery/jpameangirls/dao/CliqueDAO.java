@@ -12,6 +12,7 @@ public interface CliqueDAO {
 	List<Clique> findByStudent(Student student);
 	Clique create(Clique clique);
 	Clique update(Clique clique);
+	Clique addStudentToClique(Student student);
 	Clique deletePermanently(Clique clique);
 	Clique deleteByIdPermanently(Integer id);
 }
