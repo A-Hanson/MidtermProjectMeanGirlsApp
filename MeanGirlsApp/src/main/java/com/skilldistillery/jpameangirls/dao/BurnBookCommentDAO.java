@@ -3,7 +3,6 @@ package com.skilldistillery.jpameangirls.dao;
 import java.util.List;
 
 import com.skilldistillery.jpameangirls.entities.BurnBookComment;
-import com.skilldistillery.jpameangirls.entities.Comment;
 
 public interface BurnBookCommentDAO {
 	
@@ -16,4 +15,5 @@ public interface BurnBookCommentDAO {
 	BurnBookComment update(BurnBookComment comment);
 	BurnBookComment deletePermanently(BurnBookComment comment);
 	BurnBookComment deleteByIdPermanently(Integer id);
+	public BurnBookComment softDelete(int id);
 }
