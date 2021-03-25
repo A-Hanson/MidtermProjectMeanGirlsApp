@@ -101,7 +101,7 @@
 						<div class="col-4 align-items-left">
 							<h5>Badges:</h5>
 							<c:forEach var="badge" items="${studentBadges}">
-								${badge.name} <img src="${badge.imageUrl }" />
+								${badge.name} <img style="max-width: 100px" class="img-thumbnail" src="${badge.imageUrl }" />
 								<br />
 							</c:forEach>
 						</div>
