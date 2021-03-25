@@ -12,44 +12,55 @@
 </head>
 <body>
 
-<jsp:include page="nav.jsp" />
+	<jsp:include page="nav.jsp" />
 
-<div >
-<c:out value="${loggedInUser }" />
-	
-	<c:choose>
+	<div>
+		<c:out value="${loggedInUser }" />
 
-		<c:when test="${empty users}">
-			<h3>No users were found".</h3>
-		</c:when>
+		<c:choose>
+			<c:when test="${user.role=='admin' }">
 
-		<c:otherwise>
+				<c:choose>
 
-	
-	<h3>Users</h3>
-	<table >
-		<thead>
-			<tr>
-				<th>ID</th>
-				<th>Name</th>
-			</tr>
+					<c:when test="${empty users}">
+						<h3>No users were found".</h3>
+					</c:when>
 
-		</thead>
+					<c:otherwise>
 
-		<tbody>
 
-		</tbody>
-		<c:forEach var="users" items="${users}">
+						<h3>Users</h3>
+						<table>
+							<thead>
+								<tr>
+									<th>ID</th>
+									<th>Name</th>
+								</tr>
 
-			<tr>
-				<td>${users.id}</td>
-				<td><a href="getUser.do?id=${users.id}">${users.firstName} ${users.lastName}</a></td>
-			</tr>
-		</c:forEach>
-		</tbody>
-	</table>
-	</c:otherwise>
-	</c:choose>
+							</thead>
+
+							<tbody>
+
+							</tbody>
+							<c:forEach var="users" items="${users}">
+
+								<tr>
+									<td>${users.id}</td>
+									<td><a href="getUser.do?id=${users.id}">${users.firstName}
+											${users.lastName}</a></td>
+								</tr>
+							</c:forEach>
+							</tbody>
+						</table>
+					</c:otherwise>
+				</c:choose>
+			</c:when>
+
+			<c:otherwise>
+				<h2>Only admins are allow to see this page</h2>
+			</c:otherwise>
+
+		</c:choose>
 	</div>
 	<jsp:include page="foot.jsp" />
 </body>
