@@ -15,59 +15,81 @@
 	<div class="container">
 		<c:choose>
 			<%-- USER LOGGED IN --%>
+
+
 			<c:when test="${user.role=='user' }">
-			
+				<!--
 			TEST -- ${addBurnCommentStudentID}
 			TEST -- ${student}
 
-				<h3 style="color: #b71c1c;">DEBUG: This displays when USER is
-					logged in</h3>
+				  <h3 style="color: #b71c1c;">DEBUG: This displays when USER is
+					logged in</h3>   -->
+				<h2>Burn Book</h2>
+				<hr />
 
 				<div class="row">
 					<c:forEach var="studentBurnPage" items="${students}">
+						<div class="card-deck m-1">
+							<!-- CARD -->
+							<div class="card" style="width: 18rem;">
 
-						<div class="card" style="width: 18rem;">
-							<img src="${studentBurnPage.imageUrl}" class="card-img-top" alt="...">
-							<div class="card-body">
-								<h5 class="card-title">${studentBurnPage.firstName}</h5>
-								<c:forEach var="comment"
-									items="${studentBurnPage.burnBookCommentsAboutMe}">
-                                  <c:if test="${comment.enabled}">
-									<div class="card">${comment.content}</div>
-									<form action="reportBurnComment.do" method="POST">
-										<input type="text" hidden="true" name="commentId" value="${comment.id}"> 
-										<input type="submit" value="report">
-									</form>
-									</c:if>
-								</c:forEach>
-								${studentBurnPage.id}
-								<form action="addBurnComment.do" method="GET">
-									<input type="text" hidden="true" name="userIdString"
-										value="${studentBurnPage.id}"> <input type="submit"
-										value="Add Burn Entry">
-										
-								</form>
+								<!-- PROFILE PIC -->
+								<img src="${studentBurnPage.imageUrl}" class="card-img-top"
+									alt="student's profile pic">
 
-
-								<c:if test="${addBurnCommentStudentID == studentBurnPage.id}">
-									<div>
-										<form action="SubmitBurnComment.do" method="POST">
-											<input type="text" hidden="true" name="postingStudentIdString" value="${student.id}"> 
-											<input type="text" hidden="true" name="subjectStudentIdString" value="${studentBurnPage.id}"> 
-											<input type="text" name="content" value="test"> 
-											<input type="submit" value="Post">
-										</form>
+								<!-- CARD BODY -->
+								<div class="card-body">
+									<div class="row">
+										<h5 class="card-title">${studentBurnPage.firstName}</h5>
 									</div>
-								</c:if>
-								
-								
+									<c:forEach var="comment"
+										items="${studentBurnPage.burnBookCommentsAboutMe}">
+										<c:if test="${comment.enabled}">
+											<div class="row">${comment.content}</div>
+											<form action="reportBurnComment.do" method="POST">
+												<div class="row">
+													<input type="text" hidden="true" name="commentId"
+														value="${comment.id}">
+													<button class="btn btn-secondary btn-sm" type="submit">Report</button>
+												</div>
+											</form>
+										</c:if>
+									</c:forEach>
+									<!-- debug: ${studentBurnPage.id}  -->
+								</div>
+
+								<!-- CARD FOOTER -->
+								<div class="card-footer">
+									<form action="addBurnComment.do" method="GET">
+										<input type="text" hidden="true" name="userIdString"
+											value="${studentBurnPage.id}">
+										<button type="submit" class="btn btn-primary">Add
+											Burn Entry</button>
+
+									</form>
+
+									<c:if test="${addBurnCommentStudentID == studentBurnPage.id}">
+										<div>
+											<form action="SubmitBurnComment.do" method="POST">
+												<input type="text" hidden="true"
+													name="postingStudentIdString" value="${student.id}">
+												<input type="text" hidden="true"
+													name="subjectStudentIdString" value="${studentBurnPage.id}">
+												<input type="text" name="content" value="test"> <input
+													type="submit" value="Post">
+											</form>
+										</div>
+									</c:if>
+
+								</div>
+								<!-- close card footer -->
 
 							</div>
+							<!-- close card -->
 						</div>
-
+						<!-- close card deck -->
 					</c:forEach>
-				</div> 
-
+				</div>
 			</c:when>
 			<%--------------------%>
 
