@@ -26,14 +26,12 @@
 					logged in</h3>   -->
 				<h2>Burn Book</h2>
 				<hr />
+
 				<div class="row">
 					<c:forEach var="studentBurnPage" items="${students}">
-
-
-
-						<div class="card-deck">
+						<div class="card-deck m-1">
 							<!-- CARD -->
-							<div class="card m-3" style="width: 18rem;">
+							<div class="card" style="width: 18rem;">
 
 								<!-- PROFILE PIC -->
 								<img src="${studentBurnPage.imageUrl}" class="card-img-top"
@@ -41,15 +39,19 @@
 
 								<!-- CARD BODY -->
 								<div class="card-body">
-									<h5 class="card-title">${studentBurnPage.firstName}</h5>
+									<div class="row">
+										<h5 class="card-title">${studentBurnPage.firstName}</h5>
+									</div>
 									<c:forEach var="comment"
 										items="${studentBurnPage.burnBookCommentsAboutMe}">
 										<c:if test="${comment.enabled}">
 											<div class="row">${comment.content}</div>
 											<form action="reportBurnComment.do" method="POST">
-												<input type="text" hidden="true" name="commentId"
-													value="${comment.id}"> <input type="submit"
-													value="report">
+												<div class="row">
+													<input type="text" hidden="true" name="commentId"
+														value="${comment.id}">
+													<button class="btn btn-secondary btn-sm" type="submit">Report</button>
+												</div>
 											</form>
 										</c:if>
 									</c:forEach>
@@ -82,38 +84,36 @@
 								</div>
 								<!-- close card footer -->
 
-
-
-
 							</div>
+							<!-- close card -->
 						</div>
+						<!-- close card deck -->
+					</c:forEach>
 				</div>
-				</c:forEach>
-	</div>
-	</c:when>
-	<%--------------------%>
+			</c:when>
+			<%--------------------%>
 
 
-	<%-- ADMIN LOGGED IN: --%>
-	<c:when test="${user.role=='admin' }">
+			<%-- ADMIN LOGGED IN: --%>
+			<c:when test="${user.role=='admin' }">
 
-		<h3 style="color: #b71c1c;">DEBUG: This displays when ADMIN is
-			logged in</h3>
+				<h3 style="color: #b71c1c;">DEBUG: This displays when ADMIN is
+					logged in</h3>
 
-	</c:when>
-	<%----------------------%>
+			</c:when>
+			<%----------------------%>
 
 
-	<%-- NO ONE LOGGED IN: --%>
-	<c:otherwise>
+			<%-- NO ONE LOGGED IN: --%>
+			<c:otherwise>
 
-		<h3 style="color: #b71c1c;">DEBUG: This displays when NO ONE is
-			logged in</h3>
+				<h3 style="color: #b71c1c;">DEBUG: This displays when NO ONE is
+					logged in</h3>
 
-	</c:otherwise>
-	<%-----------------------%>
+			</c:otherwise>
+			<%-----------------------%>
 
-	</c:choose>
+		</c:choose>
 	</div>
 	<jsp:include page="foot.jsp" />
 </body>
