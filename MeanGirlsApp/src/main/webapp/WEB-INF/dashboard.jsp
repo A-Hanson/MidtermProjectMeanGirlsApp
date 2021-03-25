@@ -122,19 +122,30 @@
 			</c:when>
 
 			<c:when test="${user.role=='admin' }">
-				<h2>Logged in as ADMIN</h2>
-				<div class="container">
-					<h4>Flagged Comments</h4>
-				</div>
-				<div>
-					<form action="manageUsers.do" method="GET">
-						<input type="submit" value="MANAGE USERS" />
-					</form>
-					<form action="manageComments.do" method="GET">
-						<input type="submit" value="MANAGE COMMENTS" />
-					</form>
+				
+				<div class="row align-items-left">
+						<div class="col">
+							<h2>My profile</h2>
+							<h3>&nbsp;</h3>
+						</div>
+					</div>
+					<div class="row align-items-left">
+						<div class="col-2 align-items-left">
+						</div>
+						<div class="col-6 align-items-left">
+							<h2 style="color: darkmagenta;">${user.firstName }&nbsp;${user.lastName }</h2>
+							<h5 style="color: darkmagenta;">Username:</h5>
+							<em style="color: #b71c1c;">${user.username}</em>
+
+						</div>
+						<div class="col-4 align-items-left">
+							<h5>About:</h5>
+							Birthday: ${user.birthdayDate} <br /> Gender:
+							${user.gender } <br /></div>
+					</div>
+					<hr />
+					<hr />
 					
-				</div>
 			</c:when>
 
 			<c:otherwise>
