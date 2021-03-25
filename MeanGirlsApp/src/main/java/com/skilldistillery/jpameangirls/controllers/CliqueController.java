@@ -10,11 +10,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.skilldistillery.jpameangirls.dao.CliqueDAO;
 import com.skilldistillery.jpameangirls.dao.CommentDAO;
 import com.skilldistillery.jpameangirls.dao.CommentVoteDAO;
-import com.skilldistillery.jpameangirls.dao.StudentDAO;
 import com.skilldistillery.jpameangirls.entities.Clique;
 import com.skilldistillery.jpameangirls.entities.Comment;
 import com.skilldistillery.jpameangirls.entities.Student;
@@ -31,8 +31,6 @@ public class CliqueController {
 	@Autowired
 	private CommentVoteDAO cvDao;
 	
-	@Autowired
-	private StudentDAO studentDao;
 
 	@RequestMapping(path = "cafeteriaforum.do")
 	public String index(Model model) {
@@ -54,6 +52,8 @@ public class CliqueController {
 		student.setTotalFetch(cvDao.studentTotalScore(student.getId()));
 		session.setAttribute("student", student);
 		Clique plastics = cliqueDao.findById(2);
+		boolean partOfClique = cliqueDao.isStudentPartOfClique(student, plastics);
+		mv.addObject("partOfClique", partOfClique);
 		List<Comment> comments = commentDao.findCommentsByCliqueId(2);
 		for (Comment comment : comments) {
 			comment.setTotalFetch(cvDao.commentTotalScore(comment.getId()));
@@ -64,10 +64,13 @@ public class CliqueController {
 		return mv;
 	}
 	
-	@RequestMapping(path="addClique.do", method=RequestMethod.POST)
-	public String addClique() {
-//		FIXME
-		return "";
+	@RequestMapping(path="addStudentToClique.do", method=RequestMethod.POST)
+	public String addClique(String cliqueId, HttpSession session, RedirectAttributes redir) {
+		Student student = (Student) session.getAttribute("student");
+		int id = Integer.parseInt(cliqueId);
+		Clique clique = cliqueDao.findById(id);
+		cliqueDao.addStudentToClique(student, clique);
+		return "redirect:plasticsform.do";
 	}
 
 

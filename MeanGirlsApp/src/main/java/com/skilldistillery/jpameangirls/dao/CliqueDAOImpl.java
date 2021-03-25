@@ -1,5 +1,6 @@
 package com.skilldistillery.jpameangirls.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -44,6 +45,20 @@ public class CliqueDAOImpl implements CliqueDAO {
 		
 		return null;
 	}
+	
+	@Override 
+	public boolean isStudentPartOfClique(Student student, Clique clique) {
+		if(student != null && clique != null) {
+			String query = "SELECT c.students FROM Clique c WHERE c.id =:cId";
+			List<Object> results  = em.createQuery(query, Object.class)
+					.setParameter("cId", clique.getId())
+				      .getResultList();
+			List<Student> list = new ArrayList<>();
+			results.stream().forEach(x->list.add((Student)x));
+			return (list.contains(student));
+		}
+		return false;
+	}
 
 	@Override
 	public Clique create(Clique clique) {
@@ -68,9 +83,12 @@ public class CliqueDAOImpl implements CliqueDAO {
 	}
 	
 	@Override
-	public Clique addStudentToClique(Student student) {
-		// TODO Auto-generated method stub
-		return null;
+	public Clique addStudentToClique(Student student, Clique clique) {
+		Clique c = em.find(Clique.class, clique.getId());
+		Student s = em.find(Student.class, student.getId());
+		s.getCliques();
+		c.addStudent(s);
+		return clique;
 	}
 
 	@Override
