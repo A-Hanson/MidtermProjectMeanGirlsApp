@@ -15,9 +15,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Transient;
 
 @Entity
 public class Student {
+	
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -70,6 +72,9 @@ public class Student {
 	
 	@OneToMany(mappedBy="student")
 	private List<BookCommentVote> burnCommentVotes;
+	
+	@Transient
+	private int totalFetch;
 	
 	
 	// constructors
@@ -276,6 +281,20 @@ public class Student {
 
 	public void setBurnCommentVotes(List<BookCommentVote> burnCommentVotes) {
 		this.burnCommentVotes = burnCommentVotes;
+	}
+
+	
+	
+	public int getTotalFetch() {
+		return totalFetch;
+	}
+
+	public void setTotalFetch(int totalFetch) {
+		this.totalFetch = totalFetch;
+	}
+
+	public void setComments(List<Comment> comments) {
+		this.comments = comments;
 	}
 
 	@Override

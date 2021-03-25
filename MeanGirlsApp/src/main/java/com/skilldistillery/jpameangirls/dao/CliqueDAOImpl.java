@@ -66,6 +66,12 @@ public class CliqueDAOImpl implements CliqueDAO {
 		
 		return c;
 	}
+	
+	@Override
+	public Clique addStudentToClique(Student student) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 	@Override
 	public Clique deletePermanently(Clique clique) {
@@ -81,5 +87,7 @@ public class CliqueDAOImpl implements CliqueDAO {
 		em.remove(toDelete);
 		return toDelete;
 	}
+
+
 
 }

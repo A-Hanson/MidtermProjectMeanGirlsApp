@@ -28,6 +28,7 @@
 					</div>
 					<hr />
 					<c:forEach var="student" items="${userStudents }">
+
 						<div class="row align-items-center">
 							<div class="col d-flex justify-content-center">
 								<c:if test="${ not empty student.imageUrl}">
@@ -41,7 +42,7 @@
 							</div>
 							<div class="col">
 								Total Fetch:
-								<h5 style="color: #b71c1c;">xx</h5>
+								<h5 style="color: #b71c1c;">${student.totalFetch }</h5>
 							</div>
 							<div class="col d-flex justify-content-center">
 								<form action="dashboard.do" method="GET">

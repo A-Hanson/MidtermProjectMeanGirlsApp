@@ -40,6 +40,12 @@ public class CliqueController {
 		model.addAttribute("plasticsComments", commentDao.findCommentsByCliqueId(2));
 		return "plastics";
 	}
+	
+	@RequestMapping(path="addClique.do", method=RequestMethod.POST)
+	public String addClique() {
+//		FIXME
+		return "";
+	}
 
 
 
