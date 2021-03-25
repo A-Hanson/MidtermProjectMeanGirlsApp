@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.skilldistillery.jpameangirls.dao.CommentDAO;
 import com.skilldistillery.jpameangirls.dao.UserDAO;
 import com.skilldistillery.jpameangirls.entities.User;
 
@@ -16,6 +17,10 @@ public class AdminController {
 
 	@Autowired
 	private UserDAO userDao;
+	
+	@Autowired
+	private CommentDAO commentDao;
+	
 	
 	
 	@RequestMapping(path= { "manageUsers.do"})
@@ -86,5 +91,27 @@ public class AdminController {
 
 		return mv;
 	}
+	
+	@RequestMapping(path= { "manageComments.do"})
+	public String manageComments() {
+		return "manageComments";
+	}
+	
+	@RequestMapping(path = "getComment.do")
+	public ModelAndView getAllComments() {
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("comments", commentDao.findAll());
+		mv.setViewName("commentsList");
+		return mv;
+	}
+	
+	@RequestMapping(path="deleteCommentAdmin.do", method = RequestMethod.POST)
+	public String deleteCafeteriaComment(String commentId, RedirectAttributes redir) {
+
+		int cId = Integer.parseInt(commentId);
+		commentDao.softDelete(cId);
+		return "redirect:getComment.do";
+	}
+	
 	
 }

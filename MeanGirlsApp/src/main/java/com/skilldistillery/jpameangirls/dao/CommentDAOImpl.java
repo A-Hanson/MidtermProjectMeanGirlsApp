@@ -28,7 +28,7 @@ public class CommentDAOImpl implements CommentDAO {
 
 	@Override
 	public List<Comment> findAll() {
-		String query = "select c from Comment c ORDER BY c.createdDate DESC";
+		String query = "select c from Comment c WHERE enabled = TRUE ORDER BY c.createdDate DESC";
 		return em.createQuery(query, Comment.class).getResultList();
 	}
 

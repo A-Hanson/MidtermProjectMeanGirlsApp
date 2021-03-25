@@ -44,7 +44,7 @@ public class User {
 
 	private String gender;
 
-	@OneToMany(mappedBy = "user")
+	@OneToMany(mappedBy = "user", orphanRemoval=true)
 	private List<Student> students;
 
 	// constructors
