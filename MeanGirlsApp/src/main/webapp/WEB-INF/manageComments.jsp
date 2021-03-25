@@ -50,6 +50,13 @@
 						</form>
 					</div>
 					<br> <br> <br>
+					<div>
+						List Flagged Comments
+						<form action="getFlaggedComments.do" method="GET">
+							<input type="submit" value="Search" />
+						</form>
+					</div>
+					<br> <br> <br>
 				</div>
 			</c:when>
 
