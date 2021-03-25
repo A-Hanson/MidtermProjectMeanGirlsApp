@@ -55,7 +55,7 @@
 									</c:forEach>
 									<!-- debug: ${studentBurnPage.id}  -->
 								</div>
-								
+
 								<!-- CARD FOOTER -->
 								<div class="card-footer">
 									<form action="addBurnComment.do" method="GET">
@@ -65,21 +65,23 @@
 											Burn Entry</button>
 
 									</form>
-								</div> <!-- close card footer -->
 
+									<c:if test="${addBurnCommentStudentID == studentBurnPage.id}">
+										<div>
+											<form action="SubmitBurnComment.do" method="POST">
+												<input type="text" hidden="true"
+													name="postingStudentIdString" value="${student.id}">
+												<input type="text" hidden="true"
+													name="subjectStudentIdString" value="${studentBurnPage.id}">
+												<input type="text" name="content" value="test"> <input
+													type="submit" value="Post">
+											</form>
+										</div>
+									</c:if>
 
-								<c:if test="${addBurnCommentStudentID == studentBurnPage.id}">
-									<div>
-										<form action="SubmitBurnComment.do" method="POST">
-											<input type="text" hidden="true"
-												name="postingStudentIdString" value="${student.id}">
-											<input type="text" hidden="true"
-												name="subjectStudentIdString" value="${studentBurnPage.id}">
-											<input type="text" name="content" value="test"> <input
-												type="submit" value="Post">
-										</form>
-									</div>
-								</c:if>
+								</div>
+								<!-- close card footer -->
+
 
 
 
