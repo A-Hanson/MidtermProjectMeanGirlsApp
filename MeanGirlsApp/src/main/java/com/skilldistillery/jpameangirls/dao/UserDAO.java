@@ -17,11 +17,13 @@ public interface UserDAO {
 	public User findUserByEmail(String email);
 	public List<Student> findAllStudentsForUser(int userId);
 	
+	
 //////// UPDATE
 	public User updateUser(int id, User user);
 
 //////// DELETE
 	public boolean deleteUser(int id);
+	public User softDelete(int id);
 	
 	public User getUserByUserNameAndPassword(String username, String password);
 	public boolean isValidUser(User u) ;
