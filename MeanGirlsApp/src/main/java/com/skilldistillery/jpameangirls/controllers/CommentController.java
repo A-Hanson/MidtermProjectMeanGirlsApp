@@ -12,7 +12,6 @@ import com.skilldistillery.jpameangirls.dao.CliqueDAO;
 import com.skilldistillery.jpameangirls.dao.CommentDAO;
 import com.skilldistillery.jpameangirls.dao.CommentVoteDAO;
 import com.skilldistillery.jpameangirls.dao.StudentDAO;
-import com.skilldistillery.jpameangirls.entities.BurnBookComment;
 import com.skilldistillery.jpameangirls.entities.Clique;
 import com.skilldistillery.jpameangirls.entities.Comment;
 import com.skilldistillery.jpameangirls.entities.Student;
@@ -56,9 +55,7 @@ public class CommentController {
 		Clique plastics = cliqueDao.findById(2);
 		
 		commentDao.create(comment, student, plastics);
-//		redir.addFlashAttribute("plasticsComment", comment);
-//		redir.addFlashAttribute("student", student);
-		mv.setViewName("redirect:plasticsforum.do");
+		mv.setViewName("redirect:plasticsform.do");
 		return mv;
 	}
 

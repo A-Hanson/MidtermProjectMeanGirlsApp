@@ -40,7 +40,7 @@
 					<c:when test="${student.totalFetch >= clique.minimumFetchLevel }">
 						<c:if test="${!partOfClique }">
 							<div class="container">
-								<h3>DEBUG: SHOW IF NOT PART OF CLIQUE</h3>
+				
 								<div class="row justify-content-center">
 									<iframe src="https://giphy.com/embed/3otPopJuagoFrYMWgo"
 										width="480" height="270" frameBorder="0" class="giphy-embed"

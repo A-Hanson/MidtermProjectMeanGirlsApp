@@ -85,12 +85,10 @@ public class StudentDAOImpl implements StudentDAO{
 	}
 	
 	@Override
-	public Student addBadgeToStudent(Student student, Badge badge) {
-//		FIXME
-		Badge managedBadge = em.find(Badge.class, badge.getId());
+	public Student addBadgeToStudent(Student student, int badgeId) {
 		Student managedStudent = em.find(Student.class, student.getId());
 //		managedBadge.getStudents();
-		managedStudent.addBadge(managedBadge);
+		managedStudent.addBadge(em.find(Badge.class, badgeId));
 		return managedStudent;
 	}
 	
