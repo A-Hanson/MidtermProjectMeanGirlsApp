@@ -46,6 +46,7 @@
 									<c:forEach var="comment"
 										items="${studentBurnPage.burnBookCommentsAboutMe}">
 										<c:if test="${comment.enabled}">
+										<div class="card-body">
 											<div class="row">${comment.content}</div>
 											<form action="reportBurnComment.do" method="POST">
 												<div class="row">
@@ -54,6 +55,7 @@
 													<button class="btn btn-secondary btn-sm" type="submit">Report</button>
 												</div>
 											</form>
+											</div>
 										</c:if>
 									</c:forEach>
 									<!-- debug: ${studentBurnPage.id}  -->
