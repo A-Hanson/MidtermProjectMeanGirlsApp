@@ -64,7 +64,8 @@
 			</c:when>
 
 			<c:otherwise>
-				<h2>Only admins are allow to see this page</h2>
+				<h3 style="color: #ee4498; text-align: center;" >Only admins are allow to see this page</h3>
+				   <center><img src="resources/images/gohere.png" alt="" height="700" width="900"> </center>
 			</c:otherwise>
 		</c:choose>
 	</div>

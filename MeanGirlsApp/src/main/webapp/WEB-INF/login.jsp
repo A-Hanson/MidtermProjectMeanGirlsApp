@@ -11,27 +11,66 @@
 <jsp:include page="head.jsp" />
 </head>
 <body>
+<div class="login">
+
 	<jsp:include page="nav.jsp" />
-	<div class="container">
-		<div class="row">
-			<div class="col-6">
+	<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+          <div class="centerLogin text-center">
+			<div >
+			<br>
+			<br>
+			<h3>Log In</h3>
+			<p>Get in loser, we're going shopping!</p>
+			<br>
+			<br>
 				<form:form action="login.do" method="POST" modelAttribute="user">
 					<form:label path="username">Username:</form:label>
 					<form:input path="username" />
 					<form:errors path="username" />
 					<br />
+					<br />
 					<form:label path="password">Password:</form:label>
 					<form:input type="password" path="password" />
 					<form:errors path="password" />
-					<button type="submit" class="btn btn-primary">Log In</button>
+					<br>
+					<br>
+					<br>
+					<button type="submit" class="btn btn-primary">  Let's Go!  </button>
 				</form:form>
+				<br>
+				<br>
+				<br>
+				<br>
 			</div>
-			<div class="col-6">
+			<!-- <div class="col-6">
 				<img src="resources/images/conference-call.jpg" style="max-width: 100%;" />
-			</div>
-		</div>
+			 -->
 
-	</div>
+		</div>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
 	<jsp:include page="foot.jsp" />
+	</div>
 </body>
 </html>

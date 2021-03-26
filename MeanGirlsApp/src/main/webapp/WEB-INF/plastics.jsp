@@ -160,8 +160,8 @@
 			<%-- NO ONE LOGGED IN: --%>
 			<c:otherwise>
 
-				<h3 style="color: #b71c1c;">DEBUG: This displays when NO ONE is
-					logged in</h3>
+				<h3 style="color: #ee4498; text-align: center;" >Log into your account to see this page.</h3>
+				   <center><img src="resources/images/gohere.png" alt="" height="700" width="900"> </center>
 				<iframe src="https://giphy.com/embed/sw7KSBKL3yme4" width="480"
 					height="470" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
 				<p>

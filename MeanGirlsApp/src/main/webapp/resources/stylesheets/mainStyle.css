@@ -100,3 +100,29 @@ aside>h4>a:link, aside>h4>a:visited, aside>h4>a:hover, aside>h4>a:active
 	border: 3px solid #FFFFFF !important;
 	background-color: white !important;
 }
+
+.centerLogin {
+	margin: auto !important;
+	width: 30% !important;
+	background-color: #ee4498 !important;
+	border-radius: 25px;
+}
+
+.centerLogin h3, p , label {
+	color: white;
+}
+
+.centerLogin .btn-primary{
+	
+	background-color: white !important;
+	border-color: white !important;
+	color: #ee4498;
+	
+}
+
+.login{
+	
+	background-image: url("../images/quoteslogin.png");
+	background-repeat: no-repeat;
+	background-size: cover;
+}
