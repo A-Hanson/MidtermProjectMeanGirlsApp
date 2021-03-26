@@ -46,5 +46,5 @@ This is a web app that allows the user to role-play as a "Mean Girls" character 
 
 
 - Sofia:
-  * It was really fun to build a web application from the ground up.  I got to work with three smart people with different approaches to design and problem solving.  I learned a lot from each of them.
+  * It was really fun to build a web application from the ground up.  I got to work with people who had different approaches to design and problem solving.  I got to learn from others.  And I think we all had fun getting creative with this.
   * I learned how to write a self join's mappings and utility methods. I got to learn a lot about Sessions and RedirectAttributes, which were weak points for me.
