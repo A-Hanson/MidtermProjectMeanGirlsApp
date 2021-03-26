@@ -89,3 +89,16 @@ a:hover, a:active {
 #admin-navbar {
 		background-color: darkmagenta !important;
 }
+
+.admin{
+		background-color: darkmagenta !important;
+	
+}
+
+.center {
+  margin: auto !important;
+  width: 70% !important;
+  border: 3px solid #FFFFFF !important;
+  background-color: white !important;  
+}
+

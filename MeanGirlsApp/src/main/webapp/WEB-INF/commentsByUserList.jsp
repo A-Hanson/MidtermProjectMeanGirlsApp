@@ -29,7 +29,7 @@
 					<c:otherwise>
 
 
-						<h3>Comments by username ${u.username}</h3>
+						<h3 style="color: darkmagenta">Comments by username ${u.username}</h3>
 						<table>
 							<thead>
 								<tr>
@@ -47,7 +47,7 @@
 									<td>${com.id}</td>
 									<td>${com.content}</td>
 									<td><form action="deleteUserComment.do" method="POST">
-										<button style="">Delete</button>
+										<button style="" class="btn btn-primary">Delete</button>
 										<input type="hidden" name="commentId" value="${com.id}" />
 										<input type="hidden" name="username" value="${u.username}" />
 									</form></td>

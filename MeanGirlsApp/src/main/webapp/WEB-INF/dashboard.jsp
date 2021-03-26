@@ -118,10 +118,11 @@
 			</c:when>
 
 			<c:when test="${user.role=='admin' }">
-
+              <div class="admin">
+              <div class="center">
 				<div class="row align-items-left">
 					<div class="col">
-						<h2>My profile</h2>
+						<h2 style="color: darkmagenta">My profile</h2>
 						<h3>&nbsp;</h3>
 					</div>
 				</div>
@@ -134,13 +135,12 @@
 
 					</div>
 					<div class="col-4 align-items-left">
-						<h5>About:</h5>
+						<h5 style="color: darkmagenta">About:</h5>
 						Birthday: ${user.birthdayDate} <br /> Gender: ${user.gender } <br />
 					</div>
 				</div>
-				<hr />
-				<hr />
-
+				</div>
+				</div>
 			</c:when>
 
 			<c:otherwise>

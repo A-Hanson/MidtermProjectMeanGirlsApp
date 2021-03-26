@@ -11,10 +11,7 @@
 
 </head>
 <body>
-
 	<jsp:include page="nav.jsp" />
-
-	<div>
 		<c:out value="${loggedInUser }" />
 
 		<c:choose>
@@ -61,7 +58,6 @@
 			</c:otherwise>
 
 		</c:choose>
-	</div>
 	<jsp:include page="foot.jsp" />
 </body>
 </html>
