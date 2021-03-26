@@ -24,23 +24,23 @@
 			<div >
 			<br>
 			<br>
-			<h3>Log In</h3>
-			<p>Get in loser, we're going shopping!</p>
+			<h3 class="ctr-reformat">Log In</h3>
+			<p class="ctr-reformat">Get in loser, we're going shopping!</p>
 			<br>
 			<br>
 				<form:form action="login.do" method="POST" modelAttribute="user">
-					<form:label path="username">Username:</form:label>
+					<form:label path="username" class="ctr-reformat">Username:</form:label>
 					<form:input path="username" />
 					<form:errors path="username" />
 					<br />
 					<br />
-					<form:label path="password">Password:</form:label>
+					<form:label path="password" class="ctr-reformat">Password:</form:label>
 					<form:input type="password" path="password" />
 					<form:errors path="password" />
 					<br>
 					<br>
 					<br>
-					<button type="submit" class="btn btn-primary">  Let's Go!  </button>
+					<button type="submit" class="btn btn-primary ctr-reformat">  Let's Go!  </button>
 				</form:form>
 				<br>
 				<br>
