@@ -55,6 +55,7 @@ public class StudentController {
 		int id = Integer.parseInt(studentId);
 		Student student = studentDao.findById(id);
 		student.setTotalFetch(cvDao.studentTotalScore(student.getId()));
+		student.setBadges(studentDao.findAllBadgesForAStudent(id));
 		session.setAttribute("student", student);
 		session.setAttribute("studentCliques", studentDao.findAllCliquesForAStudent(id));
 		session.setAttribute("studentBadges", studentDao.findAllBadgesForAStudent(id));
@@ -74,6 +75,8 @@ public class StudentController {
 		studentDao.create(newStudent);
 		ModelAndView mv = new ModelAndView();
 		session.setAttribute("student", newStudent);
+		session.setAttribute("studentCliques", studentDao.findAllCliquesForAStudent(newStudent.getId()));
+		session.setAttribute("studentBadges", studentDao.findAllBadgesForAStudent(newStudent.getId()));
 		mv.addObject("student", newStudent);
 		mv.setViewName("dashboard");
 		return mv; // (ViewResolver in use)
