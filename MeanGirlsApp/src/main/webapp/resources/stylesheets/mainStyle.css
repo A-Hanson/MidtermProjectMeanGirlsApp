@@ -21,10 +21,6 @@ body {
 		BlinkMacSystemFont, sans-serif;
 }
 
-a {
-	color: white;
-}
-
 nav {
 	background-color: #ee4498;
 	border-bottom: 2px solid #000;
@@ -42,15 +38,11 @@ aside {
 	color: white;
 }
 
-a:link, a:visited {
-	color: yellow;
-	text-decoration:none;
+aside>h4>a:link, aside>h4>a:visited, aside>h4>a:hover, aside>h4>a:active
+	{
+	color: yellow !important;
+	text-decoration: none !important;
 }
-
-a:hover, a:active {
-	color: white;
-	text-decoration:none;
-} 
 
 .nav-item {
 	color: white;
@@ -74,7 +66,7 @@ a:hover, a:active {
 }
 
 #index-background {
-	background-image: url("/resources/images/mean-girls-4-posing.jpg");
+	background-image: url("../images/mean-girls-4-posing.jpg");
 	background-repeat: no-repeat;
 	background-position: left top;
 	height: 100vh;

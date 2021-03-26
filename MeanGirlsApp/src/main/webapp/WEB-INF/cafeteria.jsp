@@ -22,7 +22,7 @@
    <!-- Now I can access safely to "myAttribute" -->
 </C:if>
 		 --%>
-				<h2 style="">Bulletin Board</h2>
+
 				<hr />
 				<div class="table">
 					<c:forEach var="comment" items="${cafeteriaComments}">
@@ -31,8 +31,8 @@
 								<!--<fmt:parseDate value="${comment.createdDate }"
 								var="parsedCreatedDate" pattern="dd/MM/yy hh:mm" /> -->
 								Time Created: ${comment.createdDate} <br /> Posted By:
-								${comment.student.firstName }&nbsp;${comment.student.lastName } <br />
-								Comment Fetch Level: ${comment.totalFetch }
+								${comment.student.firstName }&nbsp;${comment.student.lastName }
+								<br /> Comment Fetch Level: ${comment.totalFetch }
 							</div>
 							<div class="col-6">${comment.content}</div>
 							<div class="col d-flex justify-content-center">
@@ -50,21 +50,15 @@
 									<input type="hidden" name="cliqueId" value="${clique.id}" /> <input
 										type="hidden" name="vote" value="false" />
 								</form>
-								
-								<%-- <form action="reply.do" method="GET">
-									<button class="btn btn-primary m-1">Not EVEN...</button>
-									<input type="hidden" name="commentId" value="${comment.id}" />
-									<input type="hidden" name="studentId" value="${student.id}" />
-									<input type="hidden" name="cliqueId" value="${clique.id}" /> <input
-										type="hidden" name="reply" value="reply" />
-								</form> --%>
-								<form action="reportComment.do" method="POST">
-									<input type="text" hidden="true" name="commentId" value="${comment.id}"> 
-									<input type="submit" value="report">
-								</form>
-							
+
 							</div>
-							
+
+							<form action="reportComment.do" method="POST">
+								<input type="text" hidden="true" name="commentId"
+									value="${comment.id}">
+								<button class="btn btn-secondary m-1">report</button>
+							</form>
+
 							<c:if test="${comment.student.id == student.id}">
 								<div class="col d-flex justify-content-center">
 									<form action="updateComment.do" method="GET">
@@ -98,7 +92,7 @@
 
 
 					<form action="plasticsform.do" method="GET">
-						<input type="hidden" name="studentId" value="${student.id}" />
+
 						<h4>&nbsp;</h4>
 						<button class="btn btn-primary" type="submit">Visit the
 							Plastics</button>
@@ -112,8 +106,6 @@
 			<%-- ADMIN LOGGED IN: --%>
 			<c:when test="${user.role=='admin' }">
 
-				<h3 style="color: #b71c1c;">DEBUG: This displays when ADMIN is
-					logged in</h3>
 
 				<div class="table">
 					<c:forEach var="comment" items="${cafeteriaComments}">
@@ -130,6 +122,12 @@
 						<br />
 					</c:forEach>
 				</div>
+				<form action="plasticsform.do" method="GET">
+
+					<h4>&nbsp;</h4>
+					<button class="btn btn-primary" type="submit">Visit the
+						Plastics</button>
+				</form>
 
 			</c:when>
 			<%----------------------%>

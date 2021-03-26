@@ -101,7 +101,8 @@
 						<div class="col-4 align-items-left">
 							<h5>Badges:</h5>
 							<c:forEach var="badge" items="${studentBadges}">
-								${badge.name} <img src="${badge.imageUrl }"/><br />
+								${badge.name} <img style="max-width: 100px" class="img-thumbnail" src="${badge.imageUrl }" />
+								<br />
 							</c:forEach>
 						</div>
 					</div>
@@ -117,34 +118,37 @@
 				</c:if>
 			</c:when>
 
-			<c:when test="${user.role=='admin' }">
-              <div class="admin">
-              <div class="center">
-				<div class="row align-items-left">
-					<div class="col">
-						<h2 style="color: darkmagenta">My profile</h2>
-						<h3>&nbsp;</h3>
-					</div>
-				</div>
-				<div class="row align-items-left">
-					<div class="col-2 align-items-left"></div>
-					<div class="col-6 align-items-left">
-						<h2 style="color: darkmagenta;">${user.firstName }&nbsp;${user.lastName }</h2>
-						<h5 style="color: darkmagenta;">Username:</h5>
-						<em style="color: #b71c1c;">${user.username}</em>
 
-					</div>
-					<div class="col-4 align-items-left">
-						<h5 style="color: darkmagenta">About:</h5>
-						Birthday: ${user.birthdayDate} <br /> Gender: ${user.gender } <br />
-					</div>
-				</div>
-				</div>
+
+
+			<%-- LOGGED IN AS ADMIN --%>
+			<c:when test="${user.role=='admin' }">
+				<div class="container">
+					<h3>Admin Dashboard</h3>
+					<hr />
+					<h4>Name: ${user.firstName }&nbsp;${user.lastName }</h4>
+					<h5>Username: ${user.username}</h5>
+					<hr />
+					<h5>
+						<a class="nav-link active justify-content-left"
+							href="manageUsers.do">Manage Users</a>
+					</h5>
+					<h5>
+						<a class="nav-link active" href="manageComments.do">Manage
+							Comments</a>
+					</h5>
+					<h5>
+						<a class="nav-link active" href="goToCafeteria.do">Go to
+							Cafeteria</a>
+					</h5>
+					<h5>
+						<a class="nav-link active" href="logout.do">Log Out</a>
+					</h5>
 				</div>
 			</c:when>
 
 			<c:otherwise>
-				<h2>Please log in to see your dashboard!</h2>
+				<h5>Please log in to see your dashboard.</h5>
 			</c:otherwise>
 		</c:choose>
 
