@@ -79,24 +79,24 @@ aside>h4>a:link, aside>h4>a:visited, aside>h4>a:hover, aside>h4>a:active
 }
 
 #admin-navbar {
-
 	background-color: darkmagenta !important;
 }
 
-#burnbook {
-	background-image: url('../images/burnbookcover.jpg'); 
-	background-size: 33.3%;
+#burnbook img {
+	display: block;
+	margin-left: 30%;
+	margin-right: 50%;
+	width: 40%;
+	position: absolute;
 }
 
-.admin{
-		background-color: darkmagenta !important;
-	
+.admin {
+	background-color: darkmagenta !important;
 }
 
 .center {
-  margin: auto !important;
-  width: 70% !important;
-  border: 3px solid #FFFFFF !important;
-  background-color: white !important;  
+	margin: auto !important;
+	width: 70% !important;
+	border: 3px solid #FFFFFF !important;
+	background-color: white !important;
 }
-
