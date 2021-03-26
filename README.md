@@ -9,14 +9,14 @@ This is a web app that allows the user to role-play as a "Mean Girls" character 
 - Zoom and Slack for remote collaboration
 - Pair programming
 - Relational databases:
-⋅⋅* MySQL
-⋅⋅* MySQL Workbench
-⋅⋅* Schemas
-⋅⋅* JPQL
+  * MySQL
+  * MySQL Workbench
+  * Schemas
+  * JPQL
 - Design Patterns:
-⋅⋅* Model View Controller
-⋅⋅* Design Access Object
-⋅⋅* Test-Driven Design with JUnit
+  * Model View Controller
+  * Design Access Object
+  * Test-Driven Design with JUnit
 - Gradle
 - JPA
 - Spring Boot
@@ -30,24 +30,24 @@ This is a web app that allows the user to role-play as a "Mean Girls" character 
 
 ### Lessons Learned
 - Anna:
-⋅⋅*
-⋅⋅*
-⋅⋅*
-⋅⋅*
+  *
+  *
+  *
+  *
 
 - Eric:
-⋅⋅* This was a great opportunity to practice some debugging skills, pair programming, and full stack development. In the immortal words of David Thomas and Andrew Hunt, "Read the damn error message!" 
-⋅⋅* I learned a lot about front-end development and Bootstrap (which has historically been a weaness of mine).
-⋅⋅* It doesn't matter who wrote the bug... chip in and fix it! Everyone will break the development branch from time to time, and trying to find who is to blame is a waste of time.
+  * This was a great opportunity to practice some debugging skills, pair programming, and full stack development. In the immortal words of David Thomas and Andrew Hunt, "Read the damn error message!" 
+  * I learned a lot about front-end development and Bootstrap (which has historically been a weaness of mine).
+  * It doesn't matter who wrote the bug... chip in and fix it! Everyone will break the development branch from time to time, and trying to find who is to blame is a waste of time.
 
 - Karen:
-⋅⋅*
-⋅⋅*
-⋅⋅*
-⋅⋅*
+  *
+  *
+  *
+  *
 
 - Sofia:
-⋅⋅*
-⋅⋅*
-⋅⋅*
-⋅⋅*
+  *
+  *
+  *
+  *
