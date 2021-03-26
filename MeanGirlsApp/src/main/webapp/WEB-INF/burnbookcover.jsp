@@ -7,12 +7,14 @@
 <title>burn book cover</title>
 <jsp:include page="head.jsp" />
 </head>
-<body id="burnbook">
-
-	<form action="openburnbook.do" method="GET">
-		<button class="btn btn-secondary m-1">Open Burn Book</button>
-		<input type="hidden" name="commentId" value="${comment.id}" />
-	</form>
+<body>
+<jsp:include page="nav.jsp" />
+<div id="burnbook">
+	<a href="openburnbook.do">
+	<img alt="" src="resources/images/burn.png">
+	</a>
+</div>
+	
 <jsp:include page="foot.jsp" />
 </body>
 </html>
