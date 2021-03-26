@@ -22,7 +22,7 @@
 
 				<c:choose>
 
-					<c:when test="${empty comments}">
+					<c:when test="${(empty comments) and (empty burnComments)}">
 						<h3>No comments were found.</h3>
 					</c:when>
 
@@ -36,23 +36,43 @@
 									<th>ID</th>
 									<th>Content</th>
 								</tr>
-
 							</thead>
-
 							<tbody>
-
-							<c:forEach var="com" items="${comments}">
-
+								<c:forEach var="com" items="${comments}">
+									
+										<tr>
+											<td>${com.id}</td>
+											<td>${com.content}</td>
+											<td><form action="deleteFlaggedComments.do" method="POST">
+													<button style="" class="btn btn-primary">Delete</button>
+													<input type="hidden" name="commentId" value="${com.id}" />
+												</form></td>
+										</tr>
+									
+								</c:forEach>
+							</tbody>
+						</table>
+						<h3 style="color: darkmagenta">Flagged Burn Book Comments</h3>
+						<table>
+							<thead>
 								<tr>
-									<td>${com.id}</td>
-									<td>${com.content}</td>
-									<td><form action="deleteFlaggedComments.do" method="POST">
-										<button style="" class="btn btn-primary">Delete</button>
-										<input type="hidden" name="commentId" value="${com.id}" />
-									</form></td>
+									<th>ID</th>
+									<th>Content</th>
 								</tr>
-						
-							</c:forEach>
+							</thead>
+							<tbody>
+								<c:forEach var="com" items="${burnComments}">
+									
+									<tr>
+										<td>${com.id}</td>
+										<td>${com.content}</td>
+										<td><form action="deleteFlaggedBurnComments.do"
+												method="POST">
+												<button style="" class="btn btn-primary">Delete</button>
+												<input type="hidden" name="commentId" value="${com.id}" />
+											</form></td>
+									</tr>
+								</c:forEach>
 							</tbody>
 						</table>
 					</c:otherwise>
@@ -60,8 +80,12 @@
 			</c:when>
 
 			<c:otherwise>
-				<h3 style="color: #ee4498; text-align: center;" >Only admins are allow to see this page</h3>
-				   <center><img src="resources/images/gohere.png" alt="" height="700" width="900"> </center>
+				<h3 style="color: #ee4498; text-align: center;">Only admins
+					are allow to see this page</h3>
+				<center>
+					<img src="resources/images/gohere.png" alt="" height="700"
+						width="900">
+				</center>
 			</c:otherwise>
 
 		</c:choose>
