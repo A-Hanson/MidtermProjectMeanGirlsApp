@@ -15,14 +15,16 @@
 				<div class="col">
 				<div class="row justify-content-center">
 				<div class="col align-self-center bg-transparent text-light">
-				<h3 class="display-4">MEAN GIRLS <br>
-				<small>Welcome to North Shore High!</small></h3>
+				<h3 class="display-4">MEAN GIRLS <br></h3>
 				</div>
 				</div>
 				</div>
 			</div>
 			<div class="col-4 rt-sidebar min-height:100vh">
 				<aside>
+					<h3 id ="welcome-text">Welcome to <br> North Shore High.</h3>
+					<br/>
+					<br/>
 					<h6>Raise your hand if you have ever been personally
 						victimized by Regina George.</h6>
 					<h4>
