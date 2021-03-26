@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.skilldistillery.jpameangirls.dao.CliqueDAO;
 import com.skilldistillery.jpameangirls.dao.CommentDAO;
@@ -52,9 +53,17 @@ public class NavController {
 	
 	
 	@RequestMapping(path = "goToBurnBook.do")
-	public ModelAndView goToBurnBook(HttpSession session) {
+	public ModelAndView goToBurnBook(HttpSession session, RedirectAttributes redir) {
 		
 		ModelAndView mv = new ModelAndView();
+		
+		Boolean visitedBurnBook = (Boolean) session.getAttribute("visitedBurnBook");
+		if(visitedBurnBook != null) {
+			mv.setViewName("redirect:openburnbook.do");
+			return mv;
+		}
+		
+		session.setAttribute("visitedBurnBook", true);
 		
 		mv.setViewName("burnbookcover");
 		return mv;
