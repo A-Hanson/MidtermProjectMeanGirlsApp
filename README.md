@@ -30,10 +30,9 @@ This is a web app that allows the user to role-play as a "Mean Girls" character 
 
 ### Lessons Learned
 - Anna:
-  *
-  *
-  *
-  *
+  * I learned so much as Scrum Master in terms of setting the tone and flow of our daily stand-ups. I LOVED getting to work with a group of such passionate and skilled individuals.
+  * In terms of controllers, it was super important to build them flexible from the beginning and use the session information rather than relying on a form to submit the user information with every transition.
+  * For the DAO Implementations, it was really interesting puzzling through creating methods that would return aggregate fields for the comments. I learned a lot about lazy loading and how to efficiently query the database for the information that we wanted.
 
 - Eric:
   * This was a great opportunity to practice some debugging skills, pair programming, and full stack development. In the immortal words of David Thomas and Andrew Hunt, "Read the damn error message!" 
