@@ -148,7 +148,14 @@
 			</c:when>
 
 			<c:otherwise>
-				<h5>Please log in to see your dashboard.</h5>
+			<br>
+			<br>
+			<br>
+			<br>
+				<h3 style="color: #ee4498; text-align: center;" >Please log in to see your dashboard.</h3>
+				   <center><img src="resources/images/gohere.png" alt="" height="700" width="900"> </center>
+
+				
 			</c:otherwise>
 		</c:choose>
 
