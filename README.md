@@ -5,6 +5,9 @@
 ### Description
 This is a web app that allows the user to role-play as a "Mean Girls" character from the totally fetch 2004 movie starring Lindsay Lohan. The user can make a profile and then create multiple Mean Girls characters. Acting as a character, the user can join cliques (if they are cool enough... ), post on a general cafeteria bulletin board, write totally mean comments about others in the Burn Book, and vote on how fetch other characters' comments are. Will you totally make "fetch" a thing? Will your hair be big and full of secrets? Will you wear pink on Wednesdays? Then get in loser, we're going to the mall.
 
+### How to Run
+- Navigate to the URL for the deployed website in any browser
+
 ### Topics and Technologies Used
 - Zoom and Slack for remote collaboration
 - Pair programming
@@ -24,9 +27,6 @@ This is a web app that allows the user to role-play as a "Mean Girls" character 
 - JSTL
 - Bootstrap
 - Amazon Web Services
-
-### How to Run
-- Navigate to the URL for the deployed website in any browser
 
 ### Lessons Learned
 - Anna:
