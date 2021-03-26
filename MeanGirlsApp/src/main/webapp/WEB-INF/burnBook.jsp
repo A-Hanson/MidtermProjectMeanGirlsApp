@@ -34,8 +34,9 @@
 							<div class="card" style="width: 18rem;">
 
 								<!-- PROFILE PIC -->
-								<img src="${studentBurnPage.imageUrl}" class="card-img-top"
-									alt="student's profile pic">
+								<center><img src="${studentBurnPage.imageUrl}" class="card-img-top"
+									alt="student's profile pic" style="width:200px;
+  height:200px"></center>
 
 								<!-- CARD BODY -->
 								<div class="card-body">
