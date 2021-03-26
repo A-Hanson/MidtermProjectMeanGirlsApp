@@ -15,9 +15,11 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.skilldistillery.jpameangirls.dao.CliqueDAO;
 import com.skilldistillery.jpameangirls.dao.CommentDAO;
 import com.skilldistillery.jpameangirls.dao.CommentVoteDAO;
+import com.skilldistillery.jpameangirls.dao.StudentDAO;
 import com.skilldistillery.jpameangirls.entities.Clique;
 import com.skilldistillery.jpameangirls.entities.Comment;
 import com.skilldistillery.jpameangirls.entities.Student;
+import com.skilldistillery.jpameangirls.entities.User;
 
 @Controller
 public class CliqueController {
@@ -30,6 +32,9 @@ public class CliqueController {
 
 	@Autowired
 	private CommentVoteDAO cvDao;
+	
+	@Autowired
+	private StudentDAO studentDao;
 	
 
 	@RequestMapping(path = "cafeteriaforum.do")
@@ -47,9 +52,9 @@ public class CliqueController {
 	@RequestMapping(path="plasticsform.do", method=RequestMethod.GET)
 	public ModelAndView loadPlastics(HttpSession session) {
 		ModelAndView mv = new ModelAndView();
-		
+		User user = (User) session.getAttribute("user");
 		Clique plastics = cliqueDao.findById(2);
-		if (session.getAttribute("user").equals("user")) {
+		if (user.getRole().equals("user")) {
 			Student student = (Student) session.getAttribute("student");
 			student.setTotalFetch(cvDao.studentTotalScore(student.getId()));
 			session.setAttribute("student", student);
@@ -74,6 +79,7 @@ public class CliqueController {
 		int id = Integer.parseInt(cliqueId);
 		Clique clique = cliqueDao.findById(id);
 		cliqueDao.addStudentToClique(student, clique);
+		studentDao.addBadgeToStudent(student, 3); // HARDCODED AT THE MOMENT JUST FOR THE PLASTICS
 		return "redirect:plasticsform.do";
 	}
 
