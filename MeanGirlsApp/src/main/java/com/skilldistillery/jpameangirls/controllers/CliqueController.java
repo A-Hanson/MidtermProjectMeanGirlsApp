@@ -47,13 +47,17 @@ public class CliqueController {
 	@RequestMapping(path="plasticsform.do", method=RequestMethod.GET)
 	public ModelAndView loadPlastics(HttpSession session) {
 		ModelAndView mv = new ModelAndView();
-
-		Student student = (Student) session.getAttribute("student");
-		student.setTotalFetch(cvDao.studentTotalScore(student.getId()));
-		session.setAttribute("student", student);
+		
 		Clique plastics = cliqueDao.findById(2);
-		boolean partOfClique = cliqueDao.isStudentPartOfClique(student, plastics);
-		mv.addObject("partOfClique", partOfClique);
+		if (session.getAttribute("user").equals("user")) {
+			Student student = (Student) session.getAttribute("student");
+			student.setTotalFetch(cvDao.studentTotalScore(student.getId()));
+			session.setAttribute("student", student);
+			
+			boolean partOfClique = cliqueDao.isStudentPartOfClique(student, plastics);
+			mv.addObject("partOfClique", partOfClique);
+		}
+
 		List<Comment> comments = commentDao.findCommentsByCliqueId(2);
 		for (Comment comment : comments) {
 			comment.setTotalFetch(cvDao.commentTotalScore(comment.getId()));
