@@ -11,6 +11,12 @@ body {
 	font-family: Helvetica Neue, Helvetica, Arial, -apple-system,
 		BlinkMacSystemFont, sans-serif;
 	padding-top: 56px;
+	background: #b09c9c;
+}
+
+#welcome-text {
+	color: white;
+	padding: 0px;
 }
 
 .rt-sidebar {
