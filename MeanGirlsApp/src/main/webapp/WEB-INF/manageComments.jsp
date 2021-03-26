@@ -9,22 +9,25 @@
 <jsp:include page="head.jsp" />
 </head>
 <body>
-
+<div class="admin">
 	<jsp:include page="nav.jsp" />
-
-	<div class="container">
+<br>
+<br>
+<br>
+	<div class="center text-center">
 		<c:out value="${loggedInUser }" />
 
 		<c:choose>
-			<c:when test="${user.role=='admin' }">
-				<h1>MANAGE COMMENTS</h1>
+			<c:when test="${user.role=='admin' }"><br>
+			<br>
+				<h1 style="color: darkmagenta">MANAGE COMMENTS</h1>
 
 				<div>
 					<div>
 						Look up comments by clique Id #
 						<form action="getCliqueComments.do" method="GET">
 							<input type="number" name="id" value="" id="id" required /> <br>
-							<input type="submit" value="Search" />
+							<input type="submit" value="Search" class="btn btn-primary" />
 						</form>
 					</div>
 					<br> <br> <br>
@@ -32,28 +35,28 @@
 						Look up comments by username
 						<form action="getCommentByUser.do" method="GET">
 							<input type="text" name="username" value="" /> <br> <input
-								type="submit" value="Search" />
+								type="submit" value="Search" class="btn btn-primary"/>
 						</form>
 					</div>
 					<br> <br> <br>
 					<div>
 						List All Comments
 						<form action="getComment.do" method="GET">
-							<input type="submit" value="Search" />
+							<input type="submit" value="Search" class="btn btn-primary"/>
 						</form>
 					</div>
 					<br> <br> <br>
 					<div>
 						List Burn Book Comments
 						<form action="getBurnComments.do" method="GET">
-							<input type="submit" value="Search" />
+							<input type="submit" value="Search" class="btn btn-primary"/>
 						</form>
 					</div>
 					<br> <br> <br>
 					<div>
 						List Flagged Comments
 						<form action="getFlaggedComments.do" method="GET">
-							<input type="submit" value="Search" />
+							<input type="submit" value="Search" class="btn btn-primary" />
 						</form>
 					</div>
 					<br> <br> <br>
@@ -65,8 +68,11 @@
 			</c:otherwise>
 		</c:choose>
 	</div>
+		<br>
+<br>
+<br>
 	<jsp:include page="foot.jsp" />
 
-
+</div>
 </body>
 </html>

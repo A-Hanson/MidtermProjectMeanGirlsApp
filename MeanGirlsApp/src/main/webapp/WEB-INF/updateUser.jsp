@@ -29,7 +29,7 @@
 							<h3>No User Was Found With Id Number: ${idNum}.</h3>
 						</c:when>
 						<c:otherwise>
-							<h2>Enter User Information Here!</h2>
+							<h2 style="color: darkmagenta">Enter User Information Here!</h2>
 							<br>
 							<form action="updateUser.do" method="POST">
 								<table>
