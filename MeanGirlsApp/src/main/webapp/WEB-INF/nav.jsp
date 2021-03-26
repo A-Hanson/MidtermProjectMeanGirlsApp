@@ -7,7 +7,7 @@
 	<c:when test="${user.role=='user' and not empty student }">
 		<nav class="navbar navbar-expand-md navbar-dark fixed-top">
 			<div class="container">
-				<a class="navbar-brand" href="home.do"><img src="/resources/images/mean.png" style="max-width: 150px"></a>
+				<a class="navbar-brand" href="home.do"><img src="resources/images/mean.png" style="max-width: 150px"></a>
 
 				<button type="button" class="navbar-toggler" data-toggle="collapse"
 					data-target="#navbar">
