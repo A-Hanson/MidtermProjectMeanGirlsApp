@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.skilldistillery.jpameangirls.entities.Badge;
 import com.skilldistillery.jpameangirls.entities.Clique;
+import com.skilldistillery.jpameangirls.entities.Comment;
 import com.skilldistillery.jpameangirls.entities.Student;
 
 public interface StudentDAO {
@@ -15,6 +16,7 @@ public interface StudentDAO {
 	List<Student> findAll();
 	List<Clique> findAllCliquesForAStudent(int studentId);
 	List<Badge> findAllBadgesForAStudent(int studentId);
+	List<Comment> findAllCommentForAStudent(int studentId);
 	
 //	UPDATE
 	Student update(int id, Student student);

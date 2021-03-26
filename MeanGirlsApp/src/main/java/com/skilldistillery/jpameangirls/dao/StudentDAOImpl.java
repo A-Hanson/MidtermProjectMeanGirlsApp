@@ -70,6 +70,17 @@ public class StudentDAOImpl implements StudentDAO{
 		return badges;
 	}
 	
+	@Override
+	public List<Comment> findAllCommentForAStudent(int studentId){
+		String query = "SELECT s.comments FROM Student s WHERE s.id=:sId";
+		List<Object> results = em.createQuery(query, Object.class)
+				.setParameter("sId", studentId)
+				.getResultList();
+		List<Comment> comments = new ArrayList<>();
+		results.stream().forEach(x -> comments.add((Comment) x));
+		return comments;		
+	}
+	
 //	UPDATE
 	
 	@Override
