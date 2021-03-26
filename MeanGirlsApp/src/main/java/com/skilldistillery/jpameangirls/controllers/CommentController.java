@@ -36,10 +36,13 @@ public class CommentController {
 	public ModelAndView addCafeteriaComment(Comment comment, String studentId, RedirectAttributes redir) {
 		ModelAndView mv = new ModelAndView();
 		Integer integerId = Integer.parseInt(studentId);
-
 		Student student = studentDao.findById(integerId);
-		Clique cafeteria = cliqueDao.findById(1);
+		
+		if (studentDao.findAllCommentForAStudent(integerId) == null || studentDao.findAllCommentForAStudent(integerId).size() == 0) {
+			studentDao.addBadgeToStudent(student, 2); // HARDCODED TO FIRST COMMENT BADGE
+		}
 
+		Clique cafeteria = cliqueDao.findById(1);
 		commentDao.create(comment, student, cafeteria);
 		redir.addFlashAttribute("cafeteriaComment", comment);
 		mv.setViewName("redirect:cafeteriaforum.do");
