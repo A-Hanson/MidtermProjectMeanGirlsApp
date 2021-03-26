@@ -35,15 +35,15 @@ This is a web app that allows the user to role-play as a "Mean Girls" character 
   * For the DAO Implementations, it was really interesting puzzling through creating methods that would return aggregate fields for the comments. I learned a lot about lazy loading and how to efficiently query the database for the information that we wanted.
 
 - Eric:
-  * This was a great opportunity to practice some debugging skills, pair programming, and full stack development. In the immortal words of David Thomas and Andrew Hunt, "Read the damn error message!" 
+  * This was a great opportunity to practice some debugging skills, pair programming, and full stack development. In the immortal words of David Thomas and Andrew Hunt, "Read the damn error message!"
   * I learned a lot about front-end development and Bootstrap (which has historically been a weaness of mine).
   * It doesn't matter who wrote the bug... chip in and fix it! Everyone will break the development branch from time to time, and trying to find who is to blame is a waste of time.
 
 - Karen:
-  *
-  *
-  *
-  *
+  * This was an amazing experience, i definitely feel more confortable working in code with other people and i got to practice pair programming.  
+  * I gained more experience with MVC and CSS.
+  * At first working in with Agile Methodologies was not that easy but we learned how to work as a team and we did an amazing job.
+
 
 - Sofia:
   *
